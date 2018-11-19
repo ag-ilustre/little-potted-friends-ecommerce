@@ -1,0 +1,19 @@
+* {
+	background-color: red !important;
+	font-family: 'Roboto', sans-serif !important;
+}
+
+#nav-link__font {
+	color: red !important;
+	height: 1rem;
+}
+
+.nav-link__font:hover {
+	color: teal !important;
+	height: 1rem;
+}
+
+.nav-link__font:active {
+	color: teal !important;
+	height: 1rem;
+}
