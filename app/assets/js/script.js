@@ -3,7 +3,7 @@ $(document).ready(()=>{
 
    function showCategories(categoryId){
 		$.ajax({
-			"url": "../controllers/show_items.php",
+			"url": "show_items.php",
 			"method": "POST",
 			"data": {
 				categoryId : categoryId

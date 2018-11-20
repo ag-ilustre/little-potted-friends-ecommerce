@@ -13,7 +13,7 @@
         <a class="nav-link" href="catalog.php" id="nav-catalog">CATALOG <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link nav-link__font" href="#" id="nav-cart"><i class='fas fa-shopping-cart'></i>  CART <span class="sr-only">(current)</span></a>
+        <a class="nav-link nav-link__font" href="#" id="nav-cart"><i class="fas fa-shopping-cart"></i>  CART <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link nav-link__font" href="#" id="nav-about_us">ABOUT US <span class="sr-only">(current)</span></a>

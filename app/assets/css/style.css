@@ -1,19 +1,21 @@
 * {
-	background-color: red !important;
+	/*background-color: #F7F7F7;*/
 	font-family: 'Roboto', sans-serif !important;
 }
 
 #nav-link__font {
-	color: red !important;
+	color: #443266 !important;
 	height: 1rem;
 }
 
 .nav-link__font:hover {
-	color: teal !important;
+	color: #443266 !important;
 	height: 1rem;
+	border-color: #F7F7F7;
 }
 
 .nav-link__font:active {
-	color: teal !important;
+	color: #443266 !important;
 	height: 1rem;
+	border-color: #F7F7F7;
 }

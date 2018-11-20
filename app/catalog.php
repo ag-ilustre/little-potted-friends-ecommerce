@@ -5,9 +5,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<p id="catalog-category-selected">COLLECTION</p>
+				<h4 id="catalog-category-selected">COLLECTION</h4>
 				<hr>
-				<h1>Categories</h1>
+				<h2>Categories</h2>
 				<div class="list-group">
 		      		<ul class="list-group">
 		      			<li class="list-group-item"><button class="btn btn-link" id="btn-catalog-c1">Category 1</button></li>
@@ -52,7 +52,7 @@
 	}
 </script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(document).ready(()=>{
 		let categoryId = "";
 
@@ -94,4 +94,4 @@
 			$('#catalog-category-selected').html("CATEGORY 3");
 		});
 	});
-</script>
+</script> -->
