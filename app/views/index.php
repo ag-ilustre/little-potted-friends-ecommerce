@@ -1,5 +1,5 @@
-<?php require_once 'partials/header.php'; ?>
-<?php require_once 'partials/navbar.php'; ?>  
+<?php require_once '../partials/header.php'; ?>
+<?php require_once '../partials/navbar.php'; ?>  
 
 <div class="container">
 
@@ -19,9 +19,8 @@
   <!-- /.jumbotron -->
 
   <div class="row text-center">
-    <!-- <div class="col-lg-12"> -->
-      
-      <!-- <div class="row mx-auto"> -->
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10 col-md-12 text-center">
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -47,11 +46,9 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
-        </div>     
-      <!-- </div> -->
-    <!-- </div>     -->
-      
-   
+        </div>       
+    </div>
+    <div class="col-lg-1"></div>    
   </div>
   <!-- /.row -->
 
@@ -126,4 +123,4 @@
   </div>
 </footer>
 
-<?php require_once 'partials/footer.php'; ?>
+<?php require_once '../partials/footer.php'; ?>

@@ -1,11 +1,12 @@
 * {
 	/*background-color: #F7F7F7;*/
-	font-family: 'Roboto', sans-serif !important;
+	/*font-family: 'Roboto', sans-serif;*/
 }
 
 #nav-link__font {
 	color: #443266 !important;
 	height: 1rem;
+	font-family: 'Roboto', sans-serif;
 }
 
 .nav-link__font:hover {

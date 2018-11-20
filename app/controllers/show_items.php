@@ -1,6 +1,6 @@
 <?php
 	//connect to the database
-	include 'controllers/connect.php';
+	include 'connect.php';
 
 	$data = "";
 	
@@ -16,7 +16,7 @@
 	              <div class='card h-100'>
 	              <img src='$row[img_path]'>
 	                <div class='card-body'>
-	                  <h4 class='card-title'>$row[name]</h4>
+	                  <h4 class='card-title'><a href='product.php?id=$row[id]'>$row[name]</a></h4>
 	                  <h5>&#8369 $row[price]</h5>
 	                  <p class='card-text'>
 	                    $row[description]

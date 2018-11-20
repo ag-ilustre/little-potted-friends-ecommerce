@@ -3,7 +3,7 @@ $(document).ready(()=>{
 
    function showCategories(categoryId){
 		$.ajax({
-			"url": "show_items.php",
+			"url": "../controllers/show_items.php",
 			"method": "POST",
 			"data": {
 				categoryId : categoryId
@@ -19,23 +19,24 @@ $(document).ready(()=>{
 		categoryId = 1;
 		$('#products').html("");
 		$('#catalog-category-selected').html("");
-		showCategories(categoryId);
 		$('#catalog-category-selected').html("CATEGORY 1");
+		showCategories(categoryId);
 	});
 
 	$('#btn-catalog-c2').click(()=>{
 		categoryId = 2;
 		$('#products').html("");
 		$('#catalog-category-selected').html("");
-		showCategories(categoryId);
 		$('#catalog-category-selected').html("CATEGORY 2");
+		showCategories(categoryId);
 	});
 
 	$('#btn-catalog-c3').click(()=>{
 		let categoryId = 3;
 		$('#products').html("");
 		$('#catalog-category-selected').html("");
-		showCategories(categoryId);
 		$('#catalog-category-selected').html("CATEGORY 3");
+		showCategories(categoryId);
 	});
+
 });
