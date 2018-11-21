@@ -1,3 +1,12 @@
+	<!-- footer -->
+	<footer class="navbar navbar-dark bg-dark fixed-bottom">  
+	<!-- copyright -->
+	<div class="mx-auto">
+	  <p class="navbar-brand copyright">Copyright &copy; 2018 Your Website</p>
+	<!-- end of copyright -->
+	</div>
+	</footer>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="../assets/js/script.js"></script>

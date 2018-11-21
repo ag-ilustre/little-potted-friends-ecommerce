@@ -6,8 +6,26 @@
 	<div class="row mt-2">
 		<div class="col-lg-3">
 			<h4 id="catalog-category-selected">COLLECTION</h4>
-			<hr>
-			<h2>Categories</h2>
+		</div>
+		<div class="col-lg-9">
+			<div class="input-group mb-3">
+			  <input type="text" class="form-control" placeholder="Search an item" aria-label="Search an item" aria-describedby="button-addon2" id="searchAnItem">
+			  <div class="input-group-append">
+			    <button class="btn btn-outline-secondary" type="button">      <i class="fas fa-search"></i>      </button>
+			  </div>
+			</div>
+			<!-- <input type="text/number" name="searchItem" class="mx-0 px-0"></input><button><i class="fas fa-search"></i></button> -->
+		</div>
+	</div>
+
+	<div class="row mt-2">
+		<div class="col-lg-12">
+		<hr>
+		</div>
+	</div>
+
+	<div class="row mt-2">
+		<div class="col-lg-3">	
 			<div class="list-group">
 	      		<ul class="list-group">
 	      			<li class="list-group-item"><button class="btn btn-link" id="btn-catalog-c1">Category 1</button></li>
@@ -17,11 +35,28 @@
 	      	<!-- removed php codes -->
 			</div>
 			<!-- /.list-group -->
+			<hr>
+
+			<h4 id="catalog-category-selected mb-2">PRICE</h4>
+			<div class="dropdown">
+			  <button class="btn btn-outline-secondary btn-block dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select a price range
+			  </button>
+			  <div class="dropdown-menu btn-block dropdown-menu-right" aria-labelledby="dropdownMenu2" class="text-left">
+			    <a class="dropdown-item" href="#" id="click-priceRange1">&#8369 0 - &#8369 499</a>
+			    <a class="dropdown-item" href="#" id="click-priceRange2">&#8369 500 - &#8369 749</a>
+			    <a class="dropdown-item" href="#" id="click-priceRange3">&#8369 750 - &#8369 999</a>
+			    <a class="dropdown-item" href="#" id="click-priceLowToHigh">Lowest to Highest</a>
+			    <a class="dropdown-item" href="#" id="click-priceHighToLow">Highest to Lowest</a>
+			  </div>
+			</div>
+			<!-- <div class="list-group">
+				<input type="number" class="form-control" placeholder="  - - - - -">
+			</div> -->
 		</div>
 		<!-- /.col-lg-3 -->
 		
 		<div class="col-lg-9">
-			<div class="row mt-5" id="products">
+			<div class="row" id="products">
 				<?php
 					//connect to the database
 					include '../controllers/connect.php';

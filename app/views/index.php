@@ -112,15 +112,8 @@
 </div>
 <!-- end of container -->
 
-<div id="footer-space-top"></div>
 
-<!-- footer -->
-<footer class="navbar navbar-dark bg-dark fixed-bottom">  
-  <!-- copyright -->
-  <div class="mx-auto">
-    <p class="navbar-brand copyright">Copyright &copy; 2018 Your Website</p>
-  <!-- end of copyright -->
-  </div>
-</footer>
+    
+
 
 <?php require_once '../partials/footer.php'; ?>
