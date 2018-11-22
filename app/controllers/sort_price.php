@@ -5,16 +5,9 @@
 	$data = "";
 	
 	$order = $_POST['order'];
-
-	switch ($order){
-		case 0 :
-			$sql = "SELECT * FROM tbl_items ORDER BY price";
-			break;
-		case 1:
-			$sql = "SELECT * FROM tbl_items ORDER BY price DESC";
-			break;
-	}
-
+	
+	$sql = "SELECT * FROM tbl_items ORDER BY price '$order'";
+	
 	$result = mysqli_query($conn, $sql);
 	if(mysqli_num_rows($result) > 0){
 		while($row = mysqli_fetch_assoc($result)){

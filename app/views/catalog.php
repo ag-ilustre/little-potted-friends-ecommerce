@@ -28,17 +28,36 @@
 		<div class="col-lg-3">	
 			<div class="list-group">
 	      		<ul class="list-group">
-	      			<li class="list-group-item"><button class="btn btn-link" id="btn-catalog-c1">Category 1</button></li>
-	      			<li class="list-group-item"><button class="btn btn-link" id="btn-catalog-c2">Category 2</button></li>
-	      			<li class="list-group-item"><button class="btn btn-link" id="btn-catalog-c3">Category 3</button></li>
+	      			<li class="list-group-item">	      				
+	      				<?php 
+	      					require "../controllers/connect.php";
+
+	      					$sql = "SELECT * FROM tbl_categories";
+	      					$result = mysqli_query($conn, $sql);
+
+	      					if (mysqli_num_rows($result) > 0) {
+	      						while ($row = mysqli_fetch_assoc($result)) {
+	      							echo "
+	      							<a href='#' class='dropdown-item' onclick='showCategories($row[id])'>$row[name]</a>";
+	      						}
+	      					}
+	      				?>
+
+	      			</li>	      			
 	      		</ul>
 	      	<!-- removed php codes -->
 			</div>
 			<!-- /.list-group -->
 			<hr>
 
-			<h4 id="catalog-category-selected mb-2">PRICE</h4>
-			<div class="dropdown">
+			<h4 class="mb-2">PRICE</h4>
+				<select class="custom-select" id="price">
+					<option selected=""> ------ </option>
+					<option value="ASC">Lowest to Highest</option>
+					<option value="DESC">Highest to Lowest</option>
+				</select>
+
+			<!-- <div class="dropdown">
 			  <button class="btn btn-outline-secondary btn-block dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select a price range
 			  </button>
 			  <div class="dropdown-menu btn-block dropdown-menu-right" aria-labelledby="dropdownMenu2" class="text-left">
@@ -48,10 +67,8 @@
 			    <a class="dropdown-item" href="#" id="click-priceLowToHigh">Lowest to Highest</a>
 			    <a class="dropdown-item" href="#" id="click-priceHighToLow">Highest to Lowest</a>
 			  </div>
-			</div>
-			<!-- <div class="list-group">
-				<input type="number" class="form-control" placeholder="  - - - - -">
 			</div> -->
+			
 		</div>
 		<!-- /.col-lg-3 -->
 		
@@ -103,7 +120,7 @@
 	function showCategories(categoryId){
 		// alert(categoryId);
 		$.ajax({
-			"url": "controllers/show_items.php",
+			"url": "../controllers/show_items.php",
 			"method": "POST",
 			"data": {
 				categoryId : categoryId

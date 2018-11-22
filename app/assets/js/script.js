@@ -1,49 +1,50 @@
-$(document).ready(()=>{
-	let categoryId = "";
+// $(document).ready(()=>{
 	let minPrice = "";
 	let maxPrice = "";
-	let order = "";
 
-   function showCategories(categoryId){
+ 	function showCategories(categoryId){
+ 		$('#catalog-category-selected').html("");
+ 		$('#catalog-category-selected').html("CATEGORY " + categoryId);
+
+		// alert(categoryId);
 		$.ajax({
 			"url": "../controllers/show_items.php",
 			"method": "POST",
 			"data": {
 				categoryId : categoryId
 			},
+			"dataType": "text",
 			"success": function(datafromPHP){
+				//
 				$('#products').html(datafromPHP);
 			}
 		});
-		
 	}
 
-	function filterPrice(minPrice, maxPrice){
+	// function filterPrice(minPrice, maxPrice){
+	// 	$.ajax({
+	// 		"url": "../controllers/filter_price.php",
+	// 		"method": "POST",
+	// 		"data": {
+	// 			minPrice : minPrice,
+	// 			maxPrice : maxPrice
+	// 		},
+	// 		"success": function(datafromPHP){
+	// 			$('#products').html(datafromPHP);
+	// 		}
+	// 	});
 		
+	// }
 
-		$.ajax({
-			"url": "../controllers/filter_price.php",
-			"method": "POST",
-			"data": {
-				minPrice : minPrice,
-				maxPrice : maxPrice
-			},
-			"success": function(datafromPHP){
-				$('#products').html(datafromPHP);
-			}
-		});
-		
-	}
-
-	function sortPrice(order){
-		
-
+	function sortPrice(order){	
+		// alert(order);
 		$.ajax({
 			"url": "../controllers/sort_price.php",
 			"method": "POST",
 			"data": {
 				order : order
 			},
+			"dataType": "text",
 			"success": function(datafromPHP){
 				$('#products').html(datafromPHP);
 			}
@@ -51,33 +52,14 @@ $(document).ready(()=>{
 		
 	}
 
+	$('#price').change(function(){
+		let order = $(this).val();
+		sortPrice(order);
+	})
+
 // CATALOG BUTTONS AND LINKS
 
-	$('#btn-catalog-c1').click(()=>{
-		categoryId = 1;
-		$('#products').html("");
-		$('#catalog-category-selected').html("");
-		$('#catalog-category-selected').html("CATEGORY 1");
-		showCategories(categoryId);
-	});
-
-	$('#btn-catalog-c2').click(()=>{
-		categoryId = 2;
-		$('#products').html("");
-		$('#catalog-category-selected').html("");
-		$('#catalog-category-selected').html("CATEGORY 2");
-		showCategories(categoryId);
-	});
-
-	$('#btn-catalog-c3').click(()=>{
-		let categoryId = 3;
-		$('#products').html("");
-		$('#catalog-category-selected').html("");
-		$('#catalog-category-selected').html("CATEGORY 3");
-		showCategories(categoryId);
-	});
-
- 	$("#searchAnItem").keyup(function(){
+	$("#searchAnItem").keyup(function(){
 
  		let word = $(this).val();
  		// to check if it's working
@@ -93,29 +75,29 @@ $(document).ready(()=>{
  		}  		
  	});
 
- 	$('#click-priceRange1').click(()=>{
-		$('#products').html("");
-		filterPrice(0, 499);
-	});
+ // 	$('#click-priceRange1').click(()=>{
+	// 	$('#products').html("");
+	// 	filterPrice(0, 499);
+	// });
 
-	$('#click-priceRange2').click(()=>{
-		$('#products').html("");
-		filterPrice(500, 749);
-	});
+	// $('#click-priceRange2').click(()=>{
+	// 	$('#products').html("");
+	// 	filterPrice(500, 749);
+	// });
 
-	$('#click-priceRange3').click(()=>{
-		$('#products').html("");
-		filterPrice(750, 999);
-	});
+	// $('#click-priceRange3').click(()=>{
+	// 	$('#products').html("");
+	// 	filterPrice(750, 999);
+	// });
 
- 	$('#click-priceLowToHigh').click(()=>{
-		$('#products').html("");
-		sortPrice(0);
-	});
+ // 	$('#click-priceLowToHigh').click(()=>{
+	// 	$('#products').html("");
+	// 	sortPrice(0);
+	// });
 
- 	$('#click-priceHighToLow').click(()=>{
-		$('#products').html("");
-		sortPrice(1);
-	});
+ // 	$('#click-priceHighToLow').click(()=>{
+	// 	$('#products').html("");
+	// 	sortPrice(1);
+	// });
  	
-});
+// }); // end of (document).ready
