@@ -6,7 +6,7 @@
 	
 	$order = $_POST['order'];
 	
-	$sql = "SELECT * FROM tbl_items ORDER BY price '$order'";
+	$sql = "SELECT * FROM tbl_items ORDER BY price $order";
 	
 	$result = mysqli_query($conn, $sql);
 	if(mysqli_num_rows($result) > 0){

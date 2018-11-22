@@ -28,7 +28,7 @@
 		<div class="col-lg-3">	
 			<div class="list-group">
 	      		<ul class="list-group">
-	      			<li class="list-group-item">	      				
+	      				      				
 	      				<?php 
 	      					require "../controllers/connect.php";
 
@@ -38,12 +38,12 @@
 	      					if (mysqli_num_rows($result) > 0) {
 	      						while ($row = mysqli_fetch_assoc($result)) {
 	      							echo "
-	      							<a href='#' class='dropdown-item' onclick='showCategories($row[id])'>$row[name]</a>";
+	      							<li class='list-group-item'>
+	      								<a href='#' class='dropdown-item' onclick='showCategories($row[id])'>$row[name]</a>
+	      							</li>";
 	      						}
 	      					}
-	      				?>
-
-	      			</li>	      			
+	      				?>	      				      			
 	      		</ul>
 	      	<!-- removed php codes -->
 			</div>
@@ -97,7 +97,7 @@
 				                </div>
 				                <div class='card-footer'>
 				                	<input type='number' class='form-control mb-3'>
-				                  <button class='btn btn-block btn-primary'><i class='fas fa-shopping-cart'></i>  Add to Cart</button>
+				                  <button class='btn btn-block btn-dark'><i class='fas fa-shopping-cart'></i>  Add to Cart</button>
 				                </div>
 				              </div>
 				            </div>";
