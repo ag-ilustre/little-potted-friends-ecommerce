@@ -149,22 +149,29 @@ $("#searchAnItem").keyup(function(){
 // 	});
 // });
 
-function validateEmail(email) {
-	$.ajax({
-		"url" : "../controllers/process_email.php",
-		"data" : {"email" : email},
-		"type" : "POST",
-		"success" : (data) => {
-			$('#error_email').css("color","red");
-			$('#error_email').html(data);				
-		}
-	});
-}
 
-$('#email').blur(()=>{
-	let email = $('#email').val();
-	validateEmail(email);
-	
+$('#email').keyup(function(){
+	let email = $(this).val();	
+	let error = 0;
+
+	$("#btn_submit").html("<input class='btn btn-dark btn-block' type='submit' value='SUBMIT' id='btnRegister' disabled>");
+	$("#error_email").html("");
+
+	$.post("../controllers/validate_email.php", {email:email}, function(data){
+
+			if (data == 1) {
+				$('#error_email').css("color","red");
+				$("#error_email").html("Please enter a valid and unique email!");
+				error = 1;
+			}
+		})
+
+	if (error == 0) {
+		$.post("../controllers/process_email.php", {email:email}, function(data){
+			$("#btn_submit").html(data);
+			})
+	}
+
 });
 
 // $('#password').blur(()=>{
@@ -211,47 +218,47 @@ $("#btnRegister").click(()=>{
 
 		// validation for the firstname
 		if (firstname == "") {
-			$("#firstname").next().css("color","red");
-			$("#firstname").next().html("First Name is required!");
+			$("#error_firstname").next().css("color","red");
+			$("#error_firstname").next().html("First Name is required!");
 			error_flag = 1;
 		} else {
-			$("#firstname").next().html("");
+			$("#error_firstname").next().html("");
 		}
 
 		// validation for the lastname
 		if (lastname == "") {
-			$("#lastname").next().css("color","red");
-			$("#lastname").next().html("Last Name is required!");
+			$("#error_lastname").next().css("color","red");
+			$("#error_lastname").next().html("Last Name is required!");
 			error_flag = 1;
 		} else {
-			$("#lastname").next().html("");
+			$("#error_lastname").next().html("");
 		}
 
 		// validation for the email
 		if (email == "") {
-			$("#email").next().css("color","red");
-			$("#email").next().html("Email is required!");
+			$("#error_email").next().css("color","red");
+			$("#error_email").next().html("Email is required!");
 			error_flag = 1;
 		} else {
-			$("#email").next().html("");
+			$("#error_email").next().html("");
 		}
 
 		// validation for the password
 		if (password == "") {
-			$("#password").next().css("color","red");
-			$("#password").next().html("Password is required!");
+			$("#error_password").next().css("color","red");
+			$("#error_password").next().html("Password is required!");
 			error_flag = 1;
 		} else {
-			$("#password").next().html("");
+			$("#error_password").next().html("");
 		}
 
 		// validation for the address
 		if (address == "") {
-			$("#address").next().css("color","red");
-			$("#address").next().html("Address is required!");
+			$("#error_address").next().css("color","red");
+			$("#error_address").next().html("Address is required!");
 			error_flag = 1;
 		} else {
-			$("#address").next().html("");
+			$("#error_address").next().html("");
 		}
 
 		if(error_flag == 0){

@@ -23,7 +23,7 @@
 	                </div>
 	                <div class='card-footer'>
 	                	<input type='number' class='form-control mb-3'>
-	                  <button class='btn btn-block btn-primary'><i class='fas fa-shopping-cart'></i>  Add to Cart</button>
+	                  <button class='btn btn-block btn-dark'><i class='fas fa-shopping-cart'></i>  Add to Cart</button>
 	                </div>
 	              </div>
 	            </div>";

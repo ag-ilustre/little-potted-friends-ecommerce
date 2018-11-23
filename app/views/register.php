@@ -9,36 +9,38 @@
         		<!-- in the meantime, use "required" in input filed -->
         		<div class="form-group">
                     <label>First Name</label>
-                    <input type="text" class="form-control" name="firstname" id="firstname" required>
+                    <input type="text" class="form-control mb-1" name="firstname" id="firstname" required>
                     <p id="error_firstname"> </p>
                 </div>
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" name="lastname" id="lastname" required>
+                    <input type="text" class="form-control mb-1" name="lastname" id="lastname" required>
                     <p id="error_lastname"> </p>
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control" name="email" id="email" required>
+                    <input type="text" class="form-control mb-1" name="email" id="email">
                     <p id="error_email"> </p>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control" name="password" id="password" required>
+                    <input type="password" class="form-control mb-1" name="password" id="password" required>
                     <p id="error_password"> </p>
                 </div>
                  <div class="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" class="form-control" name="cpassword" id="cpassword" required>
+                    <input type="password" class="form-control mb-1" name="cpassword" id="cpassword" required>
                     <p id="error_cpassword"> </p>
                 </div>
         		<div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control" name="address" id="address" required>
+                    <input type="text" class="form-control mb-1" name="address" id="address" required>
                     <p id="error_address"> </p>
                 </div>
                 <div class="text-center mt-2">
-	                <input class="btn btn-dark btn-block" type="submit" value="SUBMIT" id="btnRegister">
+
+	                <span id="btn_submit"><input class='btn btn-dark btn-block' type='submit' value='SUBMIT' id='btnRegister' disabled></span>
+
                 </div>
         	</form>
         </div>      

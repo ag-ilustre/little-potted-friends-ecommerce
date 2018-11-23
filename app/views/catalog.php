@@ -25,7 +25,7 @@
 	</div>
 
 	<div class="row mt-2">
-		<div class="col-lg-3">	
+		<div class="col-lg-2">	
 			<div class="list-group">
 	      		<ul class="list-group">
 	      				      				
@@ -72,7 +72,7 @@
 		</div>
 		<!-- /.col-lg-3 -->
 		
-		<div class="col-lg-9">
+		<div class="col-lg-10">
 			<div class="row" id="products">
 				<?php
 					//connect to the database
