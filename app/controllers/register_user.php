@@ -16,6 +16,7 @@
 
 	if($count = 1){	
 		header("Location: ../views/catalog.php");	
+		$data = "Success";
 	} else {
 		header("Location: ../views/register.php");	
 	} 
