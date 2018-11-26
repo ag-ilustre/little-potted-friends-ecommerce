@@ -159,3 +159,51 @@ $("#btnRegister").click(()=>{
 		// }
 	});
 
+
+// =================================== LOGIN =================================== //
+
+// $("#btnLogin").click(()=>{
+// 		let email = $("#login-email").val();
+// 		let password = $("#login-password").val();
+
+// 		let error_flag = 0; //if any error is detected, the form should not be submitted
+
+// 		// to debug
+// 		// alert(email + " " + password);
+
+// 		// validation for the email
+// 		if (email == "") {
+// 			$("#error_login-email").next().css("color","red");
+// 			$("#error_login-email").next().html("This field is required");
+// 			error_flag = 1;
+// 		} else {
+// 			$("#error_login-email").next().html("");
+// 		}
+
+// 		// validation for the password
+// 		if (password == "") {
+// 			$("#error_login-password").next().css("color","red");
+// 			$("#error_login-password").next().html("This field is required");
+// 			error_flag = 1;
+// 		} else {
+// 			$("#error_login-password").next().html("");
+// 		}
+
+// 		if(error_flag == 0){
+// 			// then we can submit the form
+// 			$.ajax({
+// 				"url" : "../controllers/process_login.php",
+// 				"data" : {"email" : email,    
+// 						"password" : password},
+// 				"type" : "POST",
+// 				"success" : (dataFromPHP) => {
+// 						if(!dataFromPHP) {
+// 							$("#error_message").css("color", "red");
+// 							$("#error_message").html("Invalid email/password");
+// 						}
+// 					}
+// 			});
+// 		}
+// 	});
+
+// 

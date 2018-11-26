@@ -5,14 +5,14 @@
 	require_once 'connect.php';
 
 	// Get vaues fromt the login form
-	$email = $_POST['email1'];
-	$password = sha1($_POST['password1']);
-
+	$email = $_POST['email'];
+	$password = sha1($_POST['password']);
+	$data = "";
 
 	$sql = "SELECT * FROM tbl_users WHERE email = '$email' && password = '$password'";
 	$result = mysqli_query($conn, $sql);
 
-	if (mysqli_num_rows($result) > 0) {
+	if (mysqli_num_rows($result) == 1) {
 		while ($row = mysqli_fetch_assoc($result)) {
 			// echo $row['lastname'];
 			// echo "<br>";
@@ -24,5 +24,5 @@
 			$_SESSION['firstname'] = $row['firstname'];
 		}
 		header("Location: ../views/catalog.php");
-	}
+	} 
 ?>
