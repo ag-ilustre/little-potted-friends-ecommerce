@@ -41,8 +41,6 @@ function sortPrice(order){
 }
 
 
-
-
 // =================================== CATALOG BUTTONS AND LINKS =================================== //
 
 $("#searchAnItem").keyup(function(){
@@ -83,6 +81,8 @@ $("#email").keyup(function(){
 
 });
 
+
+// to submit the registration form and add the new user to the database
 $("#btnRegister").click(()=>{
 		let firstname = $("#firstname").val();
 		let lastname = $("#lastname").val();

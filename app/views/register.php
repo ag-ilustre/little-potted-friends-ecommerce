@@ -1,5 +1,4 @@
 <?php require_once '../partials/header.php'; ?>
-<?php require_once '../partials/navbar.php'; ?> 
 
 <div class="container">
     <div class="row">

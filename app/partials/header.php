@@ -1,4 +1,6 @@
-<!doctype html>
+<?php session_start(); ?>
+
+<!DOCTYPE HTML>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -26,3 +28,51 @@
     <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1.min.js"></script>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 sticky-top">
+      <a class="navbar-brand px-5" href="index.php">F : W</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.php" id="nav-home">HOME <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="catalog.php" id="nav-catalog">CATALOG <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="nav-cart"><i class="fas fa-shopping-cart"></i>  CART <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="nav-about_us">ABOUT US <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <!-- LOGIN / LOGOUT -->
+           <?php 
+              if(isset($_SESSION['email'])){ 
+                echo "<li class='nav-item dropdown'>
+                      <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>HELLO, ". STRTOUPPER($_SESSION['firstname']) . "!<span class='sr-only'>(current)</span></a>
+                      <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                        <a class='dropdown-item' href='#'>YOUR ORDERS</a>
+                        <a class='dropdown-item' href='#'>YOUR PROFILE</a>
+                        <div class='dropdown-divider'></div>
+                        <a class='dropdown-item' href='../controllers/process_logout.php'>LOGOUT</a>
+                      </div>
+                    </li>
+                      ";
+              } else {
+                echo "<a class='nav-link' href='login.php'>LOGIN <span class='sr-only'>(current)</span></a>
+                      </li>          
+                      <li class='nav-item'>
+                        <a class='nav-link' href='register.php' id='nav-register'>REGISTER <span class='sr-only'>(current)</span></a>
+                      </li>
+                      ";
+              }     
+            ?>  
+
+          
+         </form>
+      </div>
+    </nav>
