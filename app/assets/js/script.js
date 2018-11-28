@@ -67,6 +67,34 @@ $('#price').change(function(){
 
 
 
+$("button#addToCart").on("click", function(){
+  // Get the prooduct id
+  var productId = $(this).attr("data-id");
+
+  // Get the quantity
+  var quantity = $("#quantity" + productId).val();
+  
+  // Alternative way to get the value from the input field
+  // var quantity = $(this).prev().val();
+
+  console.log("Quantity: " + quantity);
+  console.log("ProductId: " + productId);
+
+      $.ajax({
+        url: "../controllers/add_to_cart.php",
+        method: "POST",
+        data: 
+          {
+            productId: productId,
+            quantity: quantity
+          },
+        dataType: "text",
+          success: function(data){
+            $('#cart').html(data);
+          }
+      })
+  })
+
 
 // =================================== REGISTER A USER - INSERT TO DATABASE =================================== //
 

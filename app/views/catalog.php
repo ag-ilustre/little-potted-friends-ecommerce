@@ -95,8 +95,8 @@
 				                  </p>
 				                </div>
 				                <div class='card-footer'>
-				                	<input type='number' class='form-control mb-3'>
-				                  <button class='btn btn-block btn-dark'><i class='fas fa-shopping-cart'></i>  Add to Cart</button>
+				                	<input type='number' class='form-control mb-3' min='1' value='1' id='quantity$row[id]'>
+				                	<button class='btn btn-block btn-dark' id='addToCart' data-id='$row[id]'><i class='fas fa-shopping-cart'></i>  Add to Cart</button>
 				                </div>
 				              </div>
 				            </div>";
