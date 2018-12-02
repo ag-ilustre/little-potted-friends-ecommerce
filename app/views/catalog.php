@@ -26,25 +26,13 @@
 	<div class="row mt-2">
 		<div class="col-lg-2">	
 			<div class="list-group">
-	      		<ul class="list-group">
-	      				      				
-	      				<?php 
-	      					require "../controllers/connect.php";
-
-	      					$sql = "SELECT * FROM tbl_categories";
-	      					$result = mysqli_query($conn, $sql);
-
-	      					if (mysqli_num_rows($result) > 0) {
-	      						while ($row = mysqli_fetch_assoc($result)) {
-	      							echo "
-	      							<li class='list-group-item'>
-	      								<a href='#' class='dropdown-item' onclick='showCategories($row[id])'>$row[name]</a>
-	      							</li>";
-	      						}
-	      					}
-	      				?>	      				      			
-	      		</ul>
-	      	<!-- removed php codes -->
+				
+		      		<ul class="list-group">
+		      				      				
+		      			<?php require_once "../controllers/show_categories.php"; ?>
+		      							      			
+		      		</ul>
+	      	
 			</div>
 			<!-- /.list-group -->
 			<hr>

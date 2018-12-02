@@ -5,10 +5,11 @@ let maxPrice = "";
 
 // =================================== FUNCTIONS =================================== //
 
+
 function showCategories(categoryId){
 	$('#catalog-category-selected').html("");
 	$('#catalog-category-selected').html("CATEGORY " + categoryId);
-
+	
 	// alert(categoryId);
 	$.ajax({
 		"url": "../controllers/show_items.php",
@@ -18,7 +19,6 @@ function showCategories(categoryId){
 		},
 		"dataType": "text",
 		"success": function(datafromPHP){
-			//
 			$('#products').html(datafromPHP);
 		}
 	});
@@ -235,3 +235,54 @@ $("#btnRegister").click(()=>{
 // 	});
 
 // 
+
+// =================================== CART =================================== //
+
+function loadCart(){
+	$.get("../controllers/load_cart.php",function(data){
+		$("#loadCart").html(data);
+	});
+}
+
+$(document).ready(function(){
+	loadCart();
+});
+
+// Change the no. of items and display the new subtotal
+function changeNoItems(id){
+	let items = $("#quantity" + id).val();
+	// console.log(items);
+	let price = $("#price" + id).text();
+	let newPrice = items * price;
+	$("#subTotal" + id).html(newPrice);
+	
+	let a = [];
+	$(".sub-total").each(function(id){
+		a[id] = parseInt($(this).text());
+	});
+	// console.log(a);
+	let sum = 0;
+	$.each(a, function(index, value){
+		sum += value;
+	});
+	// console.log(sum);
+	
+	$("#grandTotal").html(sum);
+}
+
+function removeFromCart(id){
+	var ans = confirm("Are you sure?");
+	if(ans){
+		// alert("You answere YES!");
+		$.ajax({
+			url: "../controllers/remove_from_cart.php",
+			method: "POST",
+			data: {productId:id},
+			dataType: "text",
+			success: function(data){
+				$('a[href="cart.php"]').html(data);
+				loadCart();
+			}
+		});
+	}
+}

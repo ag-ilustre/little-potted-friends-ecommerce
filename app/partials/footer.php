@@ -1,11 +1,9 @@
 	<!-- footer -->
-	<footer class="navbar navbar-dark bg-dark fixed-bottom">  
-	<!-- copyright -->
-	<div class="mx-auto">
-	  <p class="navbar-brand copyright">Copyright &copy; 2018 Your Website</p>
-	<!-- end of copyright -->
-	</div>
-	</footer>
+	<!-- <footer class="navbar navbar-dark bg-dark fixed-bottom">  
+		<div class="mx-auto">
+		  <p class="navbar-brand copyright">Copyright &copy; 2018 Your Website</p>
+		</div>
+	</footer> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
