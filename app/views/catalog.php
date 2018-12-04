@@ -29,7 +29,7 @@
 				
 		      		<ul class="list-group">
 		      				      				
-		      			<?php require_once "../controllers/show_categories.php"; ?>
+		      			<?php include "../controllers/show_categories.php"; ?>
 		      							      			
 		      		</ul>
 	      	
@@ -61,7 +61,7 @@
 		
 		<div class="col-lg-10">
 			<div class="row" id="products">
-				<?php require_once '../controllers/show_catalog.php'; ?>
+				<?php include '../controllers/show_catalog.php'; ?>
 			</div>
 		</div>
 		<!-- /.col-lg-10 -->

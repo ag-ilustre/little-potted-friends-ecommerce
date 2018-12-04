@@ -4,7 +4,7 @@
     <div class="row">
         
         <div class="col-lg-12">
-        	<form method="POST" action="../controllers/register_user.php" id="form_register">
+        	<form method="POST" action="catalog.php" id="form_register">
         		<!-- in the meantime, use "required" in input filed -->
         		<div class="form-group">
                     <label>First Name</label>

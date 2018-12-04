@@ -53,7 +53,7 @@
            <?php 
               if(isset($_SESSION['email'])){ 
                 echo "<li class='nav-item dropdown'>
-                      <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>HELLO, ". STRTOUPPER($_SESSION['firstname']) . "!<span class='sr-only'>(current)</span></a>
+                      <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>HELLO, ".STRTOUPPER($_SESSION['firstname'])."<span class='sr-only'>(current)</span></a>
                       <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
                         <a class='dropdown-item' href='#'><i class='fas fa-list-ul'></i>   Your Orders</a>
                         <a class='dropdown-item' href='#'><i class='far fa-user'></i>   Your Profile</a>
