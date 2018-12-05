@@ -1,7 +1,6 @@
 // =================================== VARIABLE DECLARATIONS =================================== //
 
-let minPrice = "";
-let maxPrice = "";
+
 
 // =================================== FUNCTIONS =================================== //
 
@@ -22,6 +21,27 @@ function showCategories(categoryId){
 			$('#products').html(datafromPHP);
 		}
 	});
+}
+
+function newAddToCart(productId){
+	var quantity = $("#addToCart").prev().val();
+	// alert(productId);
+	console.log("Quantity: " + quantity);
+	console.log("ProductId: " + productId);
+
+	$.ajax({
+	  url: "../controllers/add_to_cart.php",
+	  method: "POST",
+	  data: 
+	    {
+	      productId: productId,
+	      quantity: quantity
+	    },
+	  dataType: "text",
+	    success: function(data){
+	      $('#cart').html(data);
+	    }
+	})
 }
 
 
@@ -67,33 +87,33 @@ $('#price').change(function(){
 
 
 
-$("button#addToCart").on("click", function(){
-  // Get the prooduct id
-  var productId = $(this).attr("data-id");
+// $("button#addToCart").on("click", function(){
+//   // Get the product id
+//   var productId = $(this).attr("data-id");
 
-  // Get the quantity
-  var quantity = $("#quantity" + productId).val();
+//   // Get the quantity
+//   var quantity = $("#quantity" + productId).val();
   
-  // Alternative way to get the value from the input field
-  // var quantity = $(this).prev().val();
+//   // Alternative way to get the value from the input field
+//   // var quantity = $(this).prev().val();
 
-  console.log("Quantity: " + quantity);
-  console.log("ProductId: " + productId);
+//   // console.log("Quantity: " + quantity);
+//   // console.log("ProductId: " + productId);
 
-      $.ajax({
-        url: "../controllers/add_to_cart.php",
-        method: "POST",
-        data: 
-          {
-            productId: productId,
-            quantity: quantity
-          },
-        dataType: "text",
-          success: function(data){
-            $('#cart').html(data);
-          }
-      })
-  })
+//       $.ajax({
+//         url: "../controllers/add_to_cart.php",
+//         method: "POST",
+//         data: 
+//           {
+//             productId: productId,
+//             quantity: quantity
+//           },
+//         dataType: "text",
+//           success: function(data){
+//             $('#cart').html(data);
+//           }
+//       })
+//   })
 
 
 // =================================== REGISTER A USER - INSERT TO DATABASE =================================== //
@@ -223,8 +243,7 @@ $("#btnLogin").click(()=>{
 				"data" : {"loginEmail" : loginEmail,    
 						"loginPassword" : loginPassword},
 				"type" : "POST",
-				"success" : (data) => {
-						$("#error_message").html("");
+				"success" : (data) => {						
 						if(data == "Success") {
 							$("#form_login").submit();						
 						} else {

@@ -1,6 +1,9 @@
 <?php session_start(); ?>
 <h1>My Cart</h1>
-<?php
+
+<?php 
+  
+  
   include 'connect.php';
   $data ='
            <table class="table table-hover">
@@ -15,6 +18,10 @@
              </thead>
              <tbody>
     ';
+
+  if(!isset($_SESSION["item_count"])){
+    echo "Your cart is empty!<br><br>";
+  } else {
 
   $grand_total = 0;
   foreach($_SESSION['cart'] as $id => $quantity) {
@@ -47,5 +54,8 @@
             <td></td>
             </tr>
             </tbody></table>";
+  }
+
   echo $data;
-  ?>
+
+?>

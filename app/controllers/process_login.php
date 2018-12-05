@@ -22,8 +22,8 @@
 			$_SESSION['lastname'] = $row['lastname'];
 			$_SESSION['firstname'] = $row['firstname'];
 		}
-		echo "Success";
-	} else {
-		echo "Invalid email/password";
-	}
+		header("location: ../views/catalog.php");	
+	} 
 ?>
+
+<!-- header("Location: ../views/catalog.php");	 -->

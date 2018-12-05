@@ -2,28 +2,30 @@
 
 	<div class="container">
     <div class="row">
-        
-        <div class="card mx-auto">
-      		<div class="card-header">LOGIN</div>
-      		<div class="card-body">
-      			<form action="catalog.php" method="POST" id="form_login">
-      				<div class="form-group">
-      					<label>Email</label>
-      					<input type="email" class="form-control" id="loginEmail">
-                <p class="validation"></p>    				
-      				</div>
-      				<div class="form-group">
-      					<label>Password</label>
-      					<input type="password" class="form-control" id="loginPassword">    
-                <p class="validation"></p>   				
-      				</div>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+          <div class="card">
+        		<div class="card-header">LOGIN</div>
+        		<div class="card-body">
+        			<form action="catalog.php" method="POST" id="form_login">
+        				<div class="form-group">
+        					<label>Email</label>
+        					<input type="email" class="form-control" id="loginEmail">
+                  <p class="validation"></p>    				
+        				</div>
+        				<div class="form-group">
+        					<label>Password</label>
+        					<input type="password" class="form-control" id="loginPassword">    
+                  <p class="validation"></p>   				
+        				</div>
 
                 <p id="error_message"></p>
 
-      				<button id="btnLogin" class="btn btn-dark" type="button">SUBMIT</button>
-      				<input class="btn btn-warning" type="reset" value="CLEAR">
-      			</form>
-      		</div>
+        				<button id="btnLogin" class="btn btn-dark" type="button">SUBMIT</button>
+        				<input class="btn btn-warning" type="reset" value="CLEAR">
+        			</form>
+        		</div>
+          </div>
       	</div>
     </div>
   </div>

@@ -1,4 +1,6 @@
 // =================================== THIS IS THE PRICE RANGE FEATURE. RESTORE LATER!!! =================================== //
+// let minPrice = "";
+// let maxPrice = "";
 
 // function filterPrice(minPrice, maxPrice){
 // 	$.ajax({

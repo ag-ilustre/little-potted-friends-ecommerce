@@ -15,9 +15,9 @@
 	$count = mysqli_num_rows($result);
 
 	if($count = 1){	
-		header("Location: ../views/catalog.php");	
+		header("location: ../views/catalog.php");	
 		$data = "Success";
 	} else {
-		header("Location: ../views/register.php");	
+		header("location: ../views/register.php");	
 	} 
 ?>

@@ -43,7 +43,19 @@
             <a class="nav-link" href="catalog.php" id="nav-catalog">CATALOG <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cart.php" id="nav-cart"><i class="fas fa-shopping-cart"></i> CART <span id="cart"></span> <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="cart.php" id="nav-cart">
+
+              <i class="fas fa-shopping-cart"></i> CART 
+              <?php 
+                if(isset($_SESSION["item_count"])){
+                  echo "<span class='badge badge-success'>". $_SESSION['item_count'] ."</span>";
+                } else {
+                  echo "<span id='cart'></span> ";
+                }
+              ?>               
+              <span class="sr-only">(current)</span>
+              
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" id="nav-about_us">ABOUT US <span class="sr-only">(current)</span></a>
