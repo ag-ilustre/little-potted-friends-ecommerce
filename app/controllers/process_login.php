@@ -7,23 +7,32 @@
 	// Get vaues fromt the login form
 	$loginEmail = $_POST['loginEmail'];
 	$loginPassword = sha1($_POST['loginPassword']);
-	// $data = "";
+	$data = "";
 
-	$sql = "SELECT * FROM tbl_users WHERE email = '$loginEmail' && password = '$loginPassword'";
+	$sql = "SELECT * FROM tbl_users WHERE email = '$loginEmail' AND password = '$loginPassword'";
 	$result = mysqli_query($conn, $sql);
 
-	if (mysqli_num_rows($result) == 1) {
-		while ($row = mysqli_fetch_assoc($result)) {
-			// echo $row['lastname'];
-			// echo "<br>";
-			// echo $row['firstname'];
+	// if (mysqli_num_rows($result) == 1) {
+	// 	while ($row = mysqli_fetch_assoc($result)) {
+	// 		// echo $row['lastname'];
+	// 		// echo "<br>";
+	// 		// echo $row['firstname'];
 
-			$_SESSION['email'] = $row['email'];
-			$_SESSION['lastname'] = $row['lastname'];
-			$_SESSION['firstname'] = $row['firstname'];
-		}
-		header("location: ../views/catalog.php");	
-	} 
+	// 		$_SESSION['email'] = $row['email'];
+	// 		$_SESSION['lastname'] = $row['lastname'];
+	// 		$_SESSION['firstname'] = $row['firstname'];
+	// 	}
+	// $data = "Success";
+	// } 
+	// echo $data;
+
+	$count = mysqli_num_rows($result);
+
+	if($count == 1){
+		echo "Success";
+	} else {
+		echo "Invalid username/password";
+	}
 ?>
 
 <!-- header("Location: ../views/catalog.php");	 -->

@@ -7,7 +7,7 @@
           <div class="card">
         		<div class="card-header">LOGIN</div>
         		<div class="card-body">
-        			<form action="catalog.php" method="POST" id="form_login">
+        			<form action="" method="POST" id="form_login">
         				<div class="form-group">
         					<label>Email</label>
         					<input type="email" class="form-control" id="loginEmail">
@@ -19,7 +19,7 @@
                   <p class="validation"></p>   				
         				</div>
 
-                <p id="error_message"></p>
+                <p id="error_msg"></p>
 
         				<button id="btnLogin" class="btn btn-dark" type="button">SUBMIT</button>
         				<input class="btn btn-warning" type="reset" value="CLEAR">

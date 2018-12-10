@@ -26,8 +26,8 @@ function showCategories(categoryId){
 function newAddToCart(productId){
 	var quantity = $("#addToCart").prev().val();
 	// alert(productId);
-	console.log("Quantity: " + quantity);
-	console.log("ProductId: " + productId);
+	// console.log("Quantity: " + quantity);
+	// console.log("ProductId: " + productId);
 
 	$.ajax({
 	  url: "../controllers/add_to_cart.php",
@@ -86,7 +86,7 @@ $('#price').change(function(){
 })
 
 
-
+// commented out; added onclick to button
 // $("button#addToCart").on("click", function(){
 //   // Get the product id
 //   var productId = $(this).attr("data-id");
@@ -121,11 +121,18 @@ $('#price').change(function(){
 $("#email").keyup(function(){
 	let email = $(this).val();
 
-	$("#btn_submit").html("<input class='btn btn-dark btn-block' type='submit' value='SUBMIT' id='btnRegister' disabled>");
+	// $("#btn_submit").html("<input class='btn btn-dark btn-block' type='submit' value='SUBMIT' id='btnRegister' disabled>");
+
+	$("#error_msg_email").html("");
 
 	$.post("../controllers/process_email.php", {email:email}, function(data){
-			$("#btn_submit").html(data);
-	})
+			if(data == "Success"){
+				$("#btnRegister").removeAttr("disabled");
+			} else {
+				$("#error_msg_email").css("color","red");
+				$("#error_msg_email").html("Please enter a unique and valid email.");
+			}
+	});
 
 });
 
@@ -136,56 +143,67 @@ $("#btnRegister").click(()=>{
 		let lastname = $("#lastname").val();
 		let email = $("#email").val();
 		let password = $("#password").val();
+		let cpassword = $("#cpassword").val();
 		let address = $("#address").val();
 
-		// let error_flag = 0; //if any error is detected, the form should not be submitted
+		let error_flag = 0; //if any error is detected, the form should not be submitted
 
-		// // validation for the firstname
-		// if (firstname == "") {
-		// 	$("#error_firstname").next().css("color","red");
-		// 	$("#error_firstname").next().html("First Name is required!");
-		// 	error_flag = 1;
-		// } else {
-		// 	$("#error_firstname").next().html("");
-		// }
+		// validation for the firstname
+		if (firstname == "") {
+			$("#error_firstname").css("color","red");
+			$("#error_firstname").html("First Name is required!");
+			error_flag = 1;
+		} else {
+			$("#error_firstname").html("");
+		}
 
-		// // validation for the lastname
-		// if (lastname == "") {
-		// 	$("#error_lastname").next().css("color","red");
-		// 	$("#error_lastname").next().html("Last Name is required!");
-		// 	error_flag = 1;
-		// } else {
-		// 	$("#error_lastname").next().html("");
-		// }
+		// validation for the lastname
+		if (lastname == "") {
+			$("#error_lastname").css("color","red");
+			$("#error_lastname").html("Last Name is required!");
+			error_flag = 1;
+		} else {
+			$("#error_lastname").html("");
+		}
 
-		// // validation for the email
-		// if (email == "") {
-		// 	$("#error_email").next().css("color","red");
-		// 	$("#error_email").next().html("Email is required!");
-		// 	error_flag = 1;
-		// } else {
-		// 	$("#error_email").next().html("");
-		// }
+		// validation for the email
+		if (email == "") {
+			$("#error_msg_email").css("color","red");
+			$("#error_msg_email").html("Email is required!");
+			error_flag = 1;
+		} else {
+			$("#error_msg_email").html("");
+		}
 
-		// // validation for the password
-		// if (password == "") {
-		// 	$("#error_password").next().css("color","red");
-		// 	$("#error_password").next().html("Password is required!");
-		// 	error_flag = 1;
-		// } else {
-		// 	$("#error_password").next().html("");
-		// }
+		
+		// validation for the password
+		if (password == "" ) {
+			$("#error_password").css("color","red");
+			$("#error_password").html("Password is required!");
+			error_flag = 1;
+		} else {
+			$("#error_password").html("");
+		}
 
-		// // validation for the address
-		// if (address == "") {
-		// 	$("#error_address").next().css("color","red");
-		// 	$("#error_address").next().html("Address is required!");
-		// 	error_flag = 1;
-		// } else {
-		// 	$("#error_address").next().html("");
-		// }
+		// validation for the cpassword
+		if ((password == cpassword) || (cpassword == "")) {
+			$("#error_cpassword").css("color","red");
+			$("#error_cpassword").html("Password and Confirm Password do not match!");
+			error_flag = 1;
+		} else {
+			$("#error_cpassword").html("");
+		}
 
-		// if(error_flag == 0){
+		// validation for the address
+		if (address == "") {
+			$("#error_address").css("color","red");
+			$("#error_address").html("Address is required!");
+			error_flag = 1;
+		} else {
+			$("#error_address").html("");
+		}
+
+		if(error_flag == 0){
 			// then we can submit the form
 			$.ajax({
 				"url" : "../controllers/register_user.php",
@@ -195,21 +213,20 @@ $("#btnRegister").click(()=>{
 						"password" : password,
 						"address" : address},
 				"type" : "POST",
-				"success" : (dataFromPHP) => {
-						if(dataFromPHP == "Success") {
-							// $("#error_message").css("color", "green");
-							// $("#error_message").html(dataFromPHP);
-							$("#form_register").submit();		
-						}
-					}
+				"success" : (data) => {
+						
+
+					
 			});
 		// }
 	});
 
 
 // =================================== LOGIN =================================== //
+$(document).ready(()=>{
 
 $("#btnLogin").click(()=>{
+		$("#error_message").html("");
 		let loginEmail = $("#loginEmail").val();
 		let loginPassword = $("#loginPassword").val();
 
@@ -244,16 +261,18 @@ $("#btnLogin").click(()=>{
 						"loginPassword" : loginPassword},
 				"type" : "POST",
 				"success" : (data) => {						
-						if(data == "Success") {
-							$("#form_login").submit();						
+						if(data === "Success") {
+							$("#form_login").submit();	
+							location.reload();					
 						} else {
-							$("#error_message").css("color", "red");
-							$("#error_message").html(data);
+							$("#error_msg").css("color", "red");
+							$("#error_msg").html(data);
 						}
 					}
 			});
 		}
 	});
+});
 
 // function pageRedirect() {
 //     window.location.href("catalog.php");

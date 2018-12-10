@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label>Email</label>
                     <input type="text" class="form-control mb-1" name="email" id="email">
-                    <p id="error_email"> </p>
+                    <p id="error_msg_email"> </p>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="text-center mt-2">
 
-	                <span id="btn_submit"><input class='btn btn-dark btn-block' type='submit' value='SUBMIT' id='btnRegister' disabled></span>
+	                <button class='btn btn-dark btn-block' type='submit' id='btnRegister' disabled=''>SUBMIT</button>
 
                 </div>
         	</form>
