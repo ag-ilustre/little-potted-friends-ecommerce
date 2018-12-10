@@ -118,23 +118,24 @@ $('#price').change(function(){
 
 // =================================== REGISTER A USER - INSERT TO DATABASE =================================== //
 
-$("#email").keyup(function(){
-	let email = $(this).val();
+// $("#email").keyup(function(){
+// 	let email = $(this).val();
 
-	// $("#btn_submit").html("<input class='btn btn-dark btn-block' type='submit' value='SUBMIT' id='btnRegister' disabled>");
+// 	// $("#btn_submit").html("<input class='btn btn-dark btn-block' type='submit' value='SUBMIT' id='btnRegister' disabled>");
 
-	$("#error_msg_email").html("");
+// 	$("#error_msg_email").html("");
 
-	$.post("../controllers/process_email.php", {email:email}, function(data){
-			if(data == "Success"){
-				$("#btnRegister").removeAttr("disabled");
-			} else {
-				$("#error_msg_email").css("color","red");
-				$("#error_msg_email").html("Please enter a unique and valid email.");
-			}
-	});
+// 	$.post("../controllers/process_email.php", {email:email}, function(data){
+// 			if(data == "Success"){
+// 				$("#btnRegister").removeAttr("disabled");
+// 			} else {
+// 				$("#error_msg_email").css("color","red");
+// 				$("#error_msg_email").html("Please enter a unique and valid email.");
+// 				$("#btnRegister").addAttr("disabled");
+// 			}
+// 	});
 
-});
+// });
 
 
 // to submit the registration form and add the new user to the database
@@ -214,11 +215,12 @@ $("#btnRegister").click(()=>{
 						"address" : address},
 				"type" : "POST",
 				"success" : (data) => {
-						
-
-					
+					if(!data){
+						$("#form_register").submit();					
+					}
+				}
 			});
-		// }
+		}
 	});
 
 

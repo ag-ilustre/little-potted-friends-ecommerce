@@ -72,7 +72,7 @@
 <!-- /.container -->
 
 <!-- footer -->
-<?php include '../partials/footer.php'; ?>
+<?php require '../partials/footer.php'; ?>
 
 <!-- <script type="text/javascript">
 	function showCategories(categoryId){

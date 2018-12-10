@@ -1,6 +1,6 @@
 <?php
 	//connect to the database
-	require_once 'connect.php';
+	require 'connect.php';
 
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];

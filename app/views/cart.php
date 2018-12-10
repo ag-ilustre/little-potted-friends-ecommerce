@@ -24,4 +24,4 @@
 
 
 <!-- footer -->
-<?php include '../partials/footer.php'; ?>
+<?php require '../partials/footer.php'; ?>
