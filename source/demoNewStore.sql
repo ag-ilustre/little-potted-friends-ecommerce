@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 23, 2018 at 02:27 PM
+-- Generation Time: Dec 11, 2018 at 02:37 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -72,11 +72,62 @@ INSERT INTO `tbl_items` (`id`, `name`, `price`, `description`, `img_path`, `cate
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_orders`
+--
+
+CREATE TABLE `tbl_orders` (
+  `id` int(11) NOT NULL,
+  `transaction_code` varchar(255) NOT NULL,
+  `purchase_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) DEFAULT NULL,
+  `status_id` int(11) DEFAULT NULL,
+  `payment_mode_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_order_items`
+--
+
+CREATE TABLE `tbl_order_items` (
+  `id` int(11) NOT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `price` decimal(18,2) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `item_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_payment_modes`
+--
+
+CREATE TABLE `tbl_payment_modes` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_status`
+--
+
+CREATE TABLE `tbl_status` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_users`
 --
 
 CREATE TABLE `tbl_users` (
-  `id` int(10) NOT NULL,
+  `id` int(11) NOT NULL,
   `firstname` varchar(150) NOT NULL,
   `lastname` varchar(150) NOT NULL,
   `email` varchar(150) NOT NULL,
@@ -89,12 +140,12 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `firstname`, `lastname`, `email`, `password`, `address`) VALUES
-(1, ' ', '', '', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', ''),
-(2, 'Anne ', 'Ilustre', 'ag.ilustre@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Manila'),
-(3, 'Rena ', 'Laig', 'laig.renalyny@gmail.com', '51eac6b471a284d3341d8c0c63d0f1a286262a18', 'Batangas'),
-(12, 'Ana ', 'Santos', 'asantos@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Marikina City'),
-(13, ' ', '', '', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', ''),
-(14, ' ', '', 'ag.ilustre@gmail.com', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '');
+(16, 'Anne ', 'Ilustre', 'ag.ilustre@gmail.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 'Manila'),
+(18, 'Natasha ', 'Romanoff', 'blackwidow@avengers.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 'Moscow'),
+(19, 'Rachel ', 'Greene', 'rachelgreene@mail.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 'New York'),
+(20, 'Joyce ', 'Perez', 'japerez.ph@gmail.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 'Pasay City'),
+(23, 'Peter ', 'Parker', 'spiderman@marvel.com', 'spiderman1', 'New York'),
+(24, 'Tony ', 'Stark', 'ironman@marvel.com', 'ironman1', 'New York');
 
 --
 -- Indexes for dumped tables
@@ -114,6 +165,35 @@ ALTER TABLE `tbl_items`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
   ADD KEY `category_id` (`category_id`);
+
+--
+-- Indexes for table `tbl_orders`
+--
+ALTER TABLE `tbl_orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `status_id` (`status_id`),
+  ADD KEY `payment_mode_id` (`payment_mode_id`);
+
+--
+-- Indexes for table `tbl_order_items`
+--
+ALTER TABLE `tbl_order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `item_id` (`item_id`);
+
+--
+-- Indexes for table `tbl_payment_modes`
+--
+ALTER TABLE `tbl_payment_modes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_status`
+--
+ALTER TABLE `tbl_status`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_users`
@@ -139,10 +219,34 @@ ALTER TABLE `tbl_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `tbl_orders`
+--
+ALTER TABLE `tbl_orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_order_items`
+--
+ALTER TABLE `tbl_order_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_payment_modes`
+--
+ALTER TABLE `tbl_payment_modes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_status`
+--
+ALTER TABLE `tbl_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -153,6 +257,21 @@ ALTER TABLE `tbl_users`
 --
 ALTER TABLE `tbl_items`
   ADD CONSTRAINT `tbl_items_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `tbl_categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_orders`
+--
+ALTER TABLE `tbl_orders`
+  ADD CONSTRAINT `tbl_orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_orders_ibfk_2` FOREIGN KEY (`status_id`) REFERENCES `tbl_status` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_orders_ibfk_3` FOREIGN KEY (`payment_mode_id`) REFERENCES `tbl_payment_modes` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_order_items`
+--
+ALTER TABLE `tbl_order_items`
+  ADD CONSTRAINT `tbl_order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `tbl_orders` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_order_items_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `tbl_items` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

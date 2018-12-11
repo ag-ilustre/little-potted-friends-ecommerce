@@ -17,19 +17,19 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-
+    <link rel="icon" type="image/png" href="../assets/images/cactus.png">
+    <!-- <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"           title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"          title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
 
     <!-- external stylesheet -->
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 
-    <title>Fitness Wearables</title>
+    <title>Little Potted Lives</title>
 
     <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1.min.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 sticky-top">
-      <a class="navbar-brand px-5" href="index.php">F : W</a>
+      <a class="navbar-brand px-5" href="index.php" id="storeName">Little Potted Lives</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -58,7 +58,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="nav-about_us">ABOUT US <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="aboutus.php" id="nav-about_us">ABOUT US <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <!-- LOGIN / LOGOUT -->

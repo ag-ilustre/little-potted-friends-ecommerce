@@ -14,11 +14,11 @@
 
   <div class='row'>
   	<div class='col-lg-8'>
-  		<p>Shipping Address</p>
+  		<h5>Shipping Address</h5>
   		<input type='text' class ='form-control'>
   	</div>
   	<div class='col-lg-4'>
-  		<p>Payment Method<p>
+  		<h5>Payment Method<h5>
   		<select class='custom-select'>
   		  <option value='COD'>COD</option>
   		  <option value='Paypal'>Paypal</option>					    		  
@@ -28,7 +28,12 @@
 
   <div class='row'>
   	<div class='col-lg-8'>
-    	<p id='#orderSummary'></p>
+    	<h5 id='#orderSummary'>Order Summary</h5>
+      <p>Total
+        <span id="totalWidth">
+        <?php echo $_SESSION["total"]; ?>
+        </span>
+      </p>
   	</div>
   </div>
 

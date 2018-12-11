@@ -13,11 +13,12 @@
 		  <table class='table table-hover'>
 		  	<tbody>
 			  	<tr>
-    				<td colspan='4'><a class='btn btn-success' id='btnCheckOut' href='checkout.php'>Proceed to Checkout</a><h4></td>
+    				<td colspan='4'><a class='btn btn-success' id='btnCheckOut' href='checkout.php' onclick="">Proceed to Checkout</a><h4></td>
    					<td></td>
   				</tr>
 					</tbody>
 				</table>
+			
   	</div>
 	</div>
 </div>

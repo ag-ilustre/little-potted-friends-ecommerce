@@ -4,19 +4,17 @@
 
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
-	$email = $_POST['email'];
-	$password = sha1($_POST['password']);
+	$email = sha1($_POST['email']);
+	// $password = sha1($_POST['password']);
+	$password = $_POST['password'];
 	$address = $_POST['address'];
 
 	$sql = "INSERT tbl_users (firstname, lastname, email, password, address)
 				VALUES('$firstname ', '$lastname', '$email', '$password', '$address')";  
 	$result = mysqli_query($conn, $sql); // this is like clicking the "Go" in MySQL
 
-	$count = mysqli_num_rows($result);
+	
+	header("Location: ../views/catalog.php");
+	 
 
-	if($count == 1){	
-		header("Location: ../views/catalog.php");
-	} 
-
-	echo $data; 
 ?>

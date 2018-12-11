@@ -37,6 +37,8 @@
                          $subTotal = $quantity * $price;
                          $grand_total += $subTotal;
 
+                          $_SESSION['total'] = $grand_total;
+
                          $data .=
                            "<tr>
                                <td><img src='$row[img_path]' width='25%' height='25%'> $name</td>
@@ -59,3 +61,8 @@
   echo $data;
 
 ?>
+
+<script>
+  
+  
+</script>

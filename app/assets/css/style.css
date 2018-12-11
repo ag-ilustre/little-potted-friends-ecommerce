@@ -3,20 +3,43 @@
 	/*font-family: 'Roboto', sans-serif;*/
 }
 
-#nav-link__font {
-	color: #443266 !important;
-	height: 1rem;
-	font-family: 'Roboto', sans-serif;
+@font-face {
+  font-family: AmithenExtra;
+  src: url(../font/AmithenExtra.otf);
 }
 
-.nav-link__font:hover {
-	color: #443266 !important;
+
+/*HEADER*/
+
+#storeName {
+	color: #d6c272 !important;
+	font-family: AmithenExtra !important;
+}
+
+/*#nav-home {
+	color: #d6c272 !important;
+	height: 1rem;
+	font-family: 'Roboto', sans-serif;
+}*/
+
+.nav-link:link {
+	color: #d6c272 !important;
+}
+
+.nav-link:hover {
+	color: #d6c272 !important;
 	height: 1rem;
 	border-color: #F7F7F7;
 }
 
-.nav-link__font:active {
-	color: #443266 !important;
+.nav-link:active {
+	color: #d6c272 !important;
+	height: 1rem;
+	border-color: #F7F7F7;
+}
+
+.nav-link:visited {
+	color: #d6c272 !important;
 	height: 1rem;
 	border-color: #F7F7F7;
 }
@@ -28,3 +51,13 @@
 }
 
 /*FOOTER*/
+
+
+/*CHECKOUT PAGE*/
+
+/*verify width of span*/
+#totalWidth {
+	/*border-style: solid;*/
+	/*border-width: 2px;*/
+	padding-left: 150px;
+}

@@ -187,7 +187,7 @@ $("#btnRegister").click(()=>{
 		}
 
 		// validation for the cpassword
-		if ((password == cpassword) || (cpassword == "")) {
+		if ((password != cpassword) || (cpassword == "")) {
 			$("#error_cpassword").css("color","red");
 			$("#error_cpassword").html("Password and Confirm Password do not match!");
 			error_flag = 1;
@@ -205,34 +205,21 @@ $("#btnRegister").click(()=>{
 		}
 
 		if(error_flag == 0){
-			// then we can submit the form
-			$.ajax({
-				"url" : "../controllers/register_user.php",
-				"data" : {"firstnmame" : firstnmame,    //  left side = key; right side = value from username variable
-						"lastname" : lastname,
-						"email" : email,
-						"password" : password,
-						"address" : address},
-				"type" : "POST",
-				"success" : (data) => {
-					if(!data){
-						$("#form_register").submit();					
-					}
-				}
-			});
+		// then we can submit the form			
+			$("#form_register").submit();				
 		}
 	});
 
 
 // =================================== LOGIN =================================== //
-$(document).ready(()=>{
+
 
 $("#btnLogin").click(()=>{
 		$("#error_message").html("");
 		let loginEmail = $("#loginEmail").val();
 		let loginPassword = $("#loginPassword").val();
 
-		let error_flag = 0; //if any error is detected, the form should not be submitted
+		let error_flag2 = 0; //if any error is detected, the form should not be submitted
 
 		// to debug
 		// alert(email + " " + password);
@@ -241,7 +228,7 @@ $("#btnLogin").click(()=>{
 		if (loginEmail == "") {
 			$("#loginEmail").next().css("color","red");
 			$("#loginEmail").next().html("This field is required");
-			error_flag = 1;
+			error_flag2 = 1;
 		} else {
 			$("#loginEmail").next().html("");
 		}
@@ -250,12 +237,12 @@ $("#btnLogin").click(()=>{
 		if (loginPassword == "") {
 			$("#loginPassword").next().css("color","red");
 			$("#loginPassword").next().html("This field is required");
-			error_flag = 1;
+			error_flag2 = 1;
 		} else {
 			$("#loginPassword").next().html("");
 		}
 
-		if(error_flag == 0){
+		if(error_flag2 == 0){
 			// then we can submit the form
 			$.ajax({
 				"url" : "../controllers/process_login.php",
@@ -263,18 +250,17 @@ $("#btnLogin").click(()=>{
 						"loginPassword" : loginPassword},
 				"type" : "POST",
 				"success" : (data) => {						
-						if(data === "Success") {
-							$("#form_login").submit();	
-							location.reload();					
-						} else {
-							$("#error_msg").css("color", "red");
-							$("#error_msg").html(data);
-						}
+					if(data == "Invalid") {	
+						$("#error_message").css("color", "red");
+						$("#error_message").html("Invalid email/password");
+					}else{					
+						$("#form_login").submit();									
 					}
+				}
 			});
 		}
 	});
-});
+
 
 // function pageRedirect() {
 //     window.location.href("catalog.php");
@@ -313,6 +299,22 @@ function changeNoItems(id){
 	// console.log(sum);
 	
 	$("#grandTotal").html(sum);
+
+
+	$.ajax({
+	  url: "../controllers/add_to_cart.php",
+	  method: "POST",
+	  data: 
+	    {
+	      productId: id,
+	      quantity: items
+	    },
+	  dataType: "text",
+	    success: function(data){
+	    	loadCart();
+	    }
+	})
+
 }
 
 function removeFromCart(id){
@@ -338,6 +340,8 @@ $(document).on("click","#btnCheckOut",()=>{
 	let totalOrder = $("#grandTotal").text();
 	
 	$("#orderSummary").text(totalOrder);
+
+	changeNoItems(id)
 		
 // 	// let grandTotal = $("#grandTotal").val;
 
