@@ -1,7 +1,7 @@
 * {
 	/*background-color: #F7F7F7;*/
 	font-family: 'Lato', sans-serif;
-	color: rgba(43,195,122,1) !important;
+	/*color: rgba(43,195,122,1) !important;*/
 }
 
 /*@font-face {
@@ -27,6 +27,11 @@
 	height: 1rem;
 	font-family: 'Roboto', sans-serif;
 }*/
+
+#itemCount {
+	color: #F7F7F7 !important;
+	font-size: 0.9rem;
+}
 
 .nav-link:link {
 	color: rgba(43,195,122,1) !important;

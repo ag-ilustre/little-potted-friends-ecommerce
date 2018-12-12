@@ -44,12 +44,12 @@
           <li class="nav-item">
             <a class="nav-link" href="cart.php" id="nav-cart">
 
-              <i class="fas fa-shopping-cart"></i> CART 
+              <!-- <i class="fas fa-shopping-cart"></i> CART  -->
               <?php 
                 if(isset($_SESSION["item_count"])){
-                  echo "<span class='badge badge-success'>". $_SESSION['item_count'] ."</span>";
+                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger' id='itemCount'>". $_SESSION['item_count'] ."</span>";
                 } else {
-                  echo "<span id='cart'></span> ";
+                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger'><span id='cart'>0</span>";
                 }
               ?>               
               <span class="sr-only">(current)</span>
