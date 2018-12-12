@@ -7,8 +7,16 @@
 //CATALOG
 function showCategories(categoryId){
 	$('#catalog-category-selected').html("");
-	$('#catalog-category-selected').html("CATEGORY " + categoryId);
-	
+	switch(categoryId) {
+	  case 1:
+	    $('#catalog-category-selected').html("Singles");		
+	    break;
+	  case 2:
+	    $('#catalog-category-selected').html("Sets");		
+	    break;
+	  case 3:
+	    $('#catalog-category-selected').html("Supplies");		
+	}
 	// alert(categoryId);
 	$.ajax({
 		"url": "../controllers/show_items.php",
@@ -280,7 +288,7 @@ $("#btnRegister").click(()=>{
 
 // =================================== LOGIN =================================== //
 
-
+//stretch goal: on keypress ENTER
 $("#btnLogin").click(()=>{
 		$("#error_message").html("");
 		let loginEmail = $("#loginEmail").val();

@@ -1,6 +1,6 @@
 * {
 	/*background-color: #F7F7F7;*/
-	font-family: 'Lato', sans-serif;
+	font-family: 'Quicksand', sans-serif;
 	/*color: rgba(43,195,122,1) !important;*/
 }
 
@@ -11,16 +11,19 @@
 */
 
 /*HEADER*/
-/*
+nav {
+	background-color: #fbfbfb;
+	border-bottom: rgb(0,0,0); 
+}
+
 #storeName {
-	color: rgba(43,195,122,1) !important;
-	font-size: 1.5rem;
-	font-family: 'Satisfy', cursive ;
-}*/
+	padding: 0;
+}
 
 #companyLogo {
-	height: 60px;
+	height: 70px;
 	width: auto;
+	padding: 0;
 }
 /*#nav-home {
 	color: #d6c272 !important;
@@ -28,13 +31,13 @@
 	font-family: 'Roboto', sans-serif;
 }*/
 
-#itemCount {
+.itemCount {
 	color: #F7F7F7 !important;
 	font-size: 0.9rem;
 }
 
 .nav-link:link {
-	color: rgba(43,195,122,1) !important;
+	color: rgba(43,195,144,1) !important;
 }
 
 .nav-link:hover {

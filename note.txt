@@ -1,0 +1,5 @@
+NOTES:
+
+1. PRODUCT page - not yet resposive.
+2. BUTTON text - make smaller in ALL CAPS.
+3. INPUT field - make width smaller, center number.

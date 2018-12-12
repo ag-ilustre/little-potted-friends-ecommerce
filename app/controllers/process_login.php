@@ -19,7 +19,6 @@
 			// echo $row['firstname'];
 
 			$_SESSION['email'] = $row['email'];
-			$_SESSION['lastname'] = $row['lastname'];
 			$_SESSION['firstname'] = $row['firstname'];
 		}
 	} else {

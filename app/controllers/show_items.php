@@ -24,7 +24,7 @@
             </div>
             <div class='card-footer'>
             	<input type='number' class='form-control mb-3' min='1' value='1' id='quantity$row[id]'>
-            	<button class='btn btn-block btn-dark' id='addToCart' data-id='$row[id]' onclick='newAddToCart($row[id])'><i class='fas fa-shopping-cart'></i>  Add to Cart</button>
+            	<button class='btn btn-block btn-dark' id='addToCart' data-id='$row[id]' onclick='newAddToCart($row[id])'><i class='fas fa-shopping-cart'></i>  ADD TO CART</button>
             </div>
           </div>
         </div>";

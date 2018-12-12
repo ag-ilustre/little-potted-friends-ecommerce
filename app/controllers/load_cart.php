@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-<h1>My Cart</h1>
+<h1>Your Cart</h1>
 
 <?php   
   

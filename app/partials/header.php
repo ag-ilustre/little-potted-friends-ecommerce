@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     
     <!-- google font -->
-   <link href="https://fonts.googleapis.com/css?family=Lato|Satisfy" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Quicksand|Satisfy" rel="stylesheet">
 
     <!-- favicon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
@@ -22,13 +22,14 @@
     <!-- external stylesheet -->
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 
-    <title>Little Potted Lives</title>
+    <title>Little Potted Friends</title>
 
     <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1.min.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 sticky-top">
-      <a class="navbar-brand px-5" href="index.php" id="storeName"><img src="../assets/images/lpl_storename.png" id="companyLogo"></a>
+    <nav class="navbar navbar-expand-lg navbar-light mb-4 sticky-top">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 sticky-top"> -->
+      <a class="navbar-brand px-5" href="index.php" id="storeName"><img src="../assets/images/company-name.png" id="companyLogo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -47,9 +48,9 @@
               <!-- <i class="fas fa-shopping-cart"></i> CART  -->
               <?php 
                 if(isset($_SESSION["item_count"])){
-                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger' id='itemCount'>". $_SESSION['item_count'] ."</span>";
+                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger itemCount'>". $_SESSION['item_count'] ."</span>";
                 } else {
-                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger'><span id='cart'>0</span>";
+                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger itemCount'>0</span>";
                 }
               ?>               
               <span class="sr-only">(current)</span>
@@ -64,7 +65,7 @@
            <?php 
               if(isset($_SESSION['email'])){ 
                 echo "<li class='nav-item dropdown'>
-                      <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>HELLO, ".STRTOUPPER($_SESSION['firstname'])."<span class='sr-only'>(current)</span></a>
+                      <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Hello, ".STRTOUPPER($_SESSION['firstname'])."<span class='sr-only'>(current)</span></a>
                       <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
                         <a class='dropdown-item' href='#'><i class='fas fa-list-ul'></i>   Your Orders</a>
                         <a class='dropdown-item' href='#'><i class='far fa-user'></i>   Your Profile</a>
