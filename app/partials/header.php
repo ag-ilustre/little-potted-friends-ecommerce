@@ -14,11 +14,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     
     <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Lato|Satisfy" rel="stylesheet">
 
     <!-- favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/cactus.png">
-    <!-- <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"           title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"          title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
 
     <!-- external stylesheet -->
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
@@ -29,7 +28,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 sticky-top">
-      <a class="navbar-brand px-5" href="index.php" id="storeName">Little Potted Lives</a>
+      <a class="navbar-brand px-5" href="index.php" id="storeName"><img src="../assets/images/lpl_storename.png" id="companyLogo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
