@@ -2,11 +2,9 @@
 <?php require_once '../partials/header.php'; ?>
 
 <?php                        
-    /*if(!isset($_SESSION['email'])){ 
+    if(!isset($_SESSION['email'])){ 
       header("Location: login.php");
-    } */
-
-    
+    }     
 ?>
 
 
@@ -29,8 +27,8 @@
     		<label for='paymentMethod'>Payment Method</label>
     		<select class='custom-select' id='paymentMethod'>
           <option value=''>------</option>
-    		  <option value='COD'>COD</option>
-    		  <option value='Paypal'>Paypal</option>					    		  
+    		  <option value='1'>COD</option>
+    		  <option value='2'>Paypal</option>					    		  
     		</select>
         <p id='error_paymentMethod'></p>
     	</div>

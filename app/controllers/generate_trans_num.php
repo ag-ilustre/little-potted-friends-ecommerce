@@ -1,5 +1,7 @@
+
 <?php
 //Transaction Number Generator
+/*
 function generate_trans_number(){
 	$ref_number = '';
 	$source = array('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F');
@@ -10,7 +12,6 @@ function generate_trans_number(){
 	return $ref_number;
 }
 
-//call the function and echo;
-echo generate_trans_number();
-
+	$_SESSION["transaction_code"] = generate_trans_number();
+*/
 ?>

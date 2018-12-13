@@ -377,14 +377,11 @@ $("#btnPlaceOrder").click(()=>{
 			$.ajax({
 				"url" : "../controllers/place_order.php",
 				"data" : {"paymentMethodId" : paymentMethodId,    
-									"userAddress" : userAddress},
+							"userAddress" : userAddress},
 				"type" : "POST",
 				"success" : (data) => {						
-					if(data == "Success") {	
-						// $("#error_message").css("color", "red");
-						// $("#error_message").html("Invalid email/password");
-					}else{					
-						// $("#form_login").submit();									
+					if(data) {	
+						alert(data);
 					}
 				}
 			});
