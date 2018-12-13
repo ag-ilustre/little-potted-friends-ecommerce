@@ -9,11 +9,10 @@
 	// $password = $_POST['password'];
 	$address = $_POST['address'];
 
-	$sql = "INSERT tbl_users (firstname, lastname, email, password, address)
+	$sql = "INSERT INTO tbl_users (firstname, lastname, email, password, address)
 				VALUES('$firstname ', '$lastname', '$email', '$password', '$address')";  
 	$result = mysqli_query($conn, $sql); // this is like clicking the "Go" in MySQL
 
-	
 	header("Location: ../views/catalog.php");
 	 
 

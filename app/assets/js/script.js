@@ -9,13 +9,13 @@ function showCategories(categoryId){
 	$('#catalog-category-selected').html("");
 	switch(categoryId) {
 	  case 1:
-	    $('#catalog-category-selected').html("Singles");		
+	    $('#catalog-category-selected').html("Sassy Single Pots");		
 	    break;
 	  case 2:
-	    $('#catalog-category-selected').html("Sets");		
+	    $('#catalog-category-selected').html("So Stylish Sets");		
 	    break;
 	  case 3:
-	    $('#catalog-category-selected').html("Supplies");		
+	    $('#catalog-category-selected').html("Super Supplies");		
 	}
 	// alert(categoryId);
 	$.ajax({
@@ -33,6 +33,7 @@ function showCategories(categoryId){
 
 //CATALOG
 function sortPrice(order){	
+	$('#catalog-category-selected').html("Collection");
 	// alert(order);
 	$.ajax({
 		"url": "../controllers/sort_price.php",
@@ -134,11 +135,12 @@ function removeFromCart(id){
 		});
 	}
 }
-//CART
+
 
 // =================================== CATALOG BUTTONS AND LINKS =================================== //
 
 $("#searchAnItem").keyup(function(){
+		$('#catalog-category-selected').html("Collection");
 
 		let word = $(this).val();
 		// to check if it's working
@@ -193,6 +195,7 @@ $('#price').change(function(){
 
 // =================================== REGISTER A USER - INSERT TO DATABASE =================================== //
 
+//CHECK UNIQUENESS OF EMAIL ADDRESS + ENABLING/DISABLING REGISTER BUTTON
 // $("#email").keyup(function(){
 // 	let email = $(this).val();
 
@@ -337,34 +340,90 @@ $("#btnLogin").click(()=>{
 	});
 
 
-// function pageRedirect() {
-//     window.location.href("catalog.php");
-// }      
 
 
 // =================================== CART =================================== //
-
 
 $(document).ready(function(){
 	loadCart();
 });
 
 
-
 // =================================== CHECKOUT =================================== //
 
-$(document).on("click","#btnCheckOut",()=>{
-	let totalOrder = $("#grandTotal").text();
+$("#btnPlaceOrder").click(()=>{
+	let paymentMethodId = $("#paymentMethod").val();
+	let userAddress = $("#shipAddress").val();
+	let error_flag3 = 0; 
+
+	if (userAddress == "") {
+		$("#error_shippingAdress").css("color","red");
+		$("#error_shippingAdress").html("This field is required");
+		error_flag3 = 1;
+	} else {
+		$("#error_shippingAdress").html("");
+	}
+
+	if (paymentMethodId == "") {
+		$("#error_paymentMethod").css("color","red");
+		$("#error_paymentMethod").html("This field is required");
+		error_flag3 = 1;
+	} else {
+		$("#error_paymentMethod").html("");
+	}
+
+	if(error_flag3 == 0){
+			// then we can submit the form
+			$.ajax({
+				"url" : "../controllers/place_order.php",
+				"data" : {"paymentMethodId" : paymentMethodId,    
+									"userAddress" : userAddress},
+				"type" : "POST",
+				"success" : (data) => {						
+					if(data == "Success") {	
+						// $("#error_message").css("color", "red");
+						// $("#error_message").html("Invalid email/password");
+					}else{					
+						// $("#form_login").submit();									
+					}
+				}
+			});
+		}
+
+});
+
+// function pageRedirect() {
+//     window.location.href("confirmation.php");
+// }      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $(document).on("click","#btnCheckOut",()=>{
+// 	let totalOrder = $("#grandTotal").text();
 	
-	$("#orderSummary").text(totalOrder);
+// 	$("#orderSummary").text(totalOrder);
 
 	
 		
-// 	// let grandTotal = $("#grandTotal").val;
+// // 	// let grandTotal = $("#grandTotal").val;
 
-// 	// if (grandTotal == 0) {
+// // 	// if (grandTotal == 0) {
 	
-// 	// } else {
-// 	// 	window.location.href="checkout.php";
-// 	// }
-});
+// // 	// } else {
+// // 	// 	window.location.href="checkout.php";
+// // 	// }
+// });

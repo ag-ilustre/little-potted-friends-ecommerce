@@ -12,30 +12,37 @@
 
 
 <div class="container">
-	<div class='row'>
-		<h3>This is the checkout page.</h3>
-	</div>
-
-  <div class='row'>
-  	<div class='col-lg-8'>
-  		<h5>Shipping Address</h5>
-  		<input type='text' class ='form-control'>
-  	</div>
-  	<div class='col-lg-4'>
-  		<h5>Payment Method<h5>
-  		<select class='custom-select'>
-  		  <option value='COD'>COD</option>
-  		  <option value='Paypal'>Paypal</option>					    		  
-  		</select>
+	<div class='row mb-3'>
+    <div class='col-lg-10'>
+  		<h3>Please fill out the details below.</h3>
   	</div>
   </div>
 
+  <form>
+  <div class='row mb-3'>      
+    	<div class='col-lg-8'>
+    		<label for='shipAddress'>Shipping Address:</label>
+    		<input type='text' id='shipAddress' class ='form-control' value='<?= $_SESSION["address"]?>'>
+        <p id='error_shippingAdress'></p>
+    	</div>
+    	<div class='col-lg-4'>
+    		<label for='paymentMethod'>Payment Method</label>
+    		<select class='custom-select' id='paymentMethod'>
+          <option value=''>------</option>
+    		  <option value='COD'>COD</option>
+    		  <option value='Paypal'>Paypal</option>					    		  
+    		</select>
+        <p id='error_paymentMethod'></p>
+    	</div>
+  </div>
+  </form>
+
   <div class='row mb-3'>
-  	<div class='col-lg-8'>
-    	<h5 id='#orderSummary'>Order Summary</h5>
+  	<div class='col-lg-12'>
+    	<h3 id='#orderSummary'>Order Summary</h3>
       <p>TOTAL
         <span id="totalWidth">
-         <?php echo " &#x20B1; " . $_SESSION["total"]; ?>
+         
         </span>
       </p>
 
@@ -43,8 +50,9 @@
     </div>
   </div>
 
-  <div class='row'>
-    <div class='col-lg-8'>
+
+  <div class='row mb-3 mx-auto'>
+    <div class='col-lg-10'>
 
 <?php
      
@@ -53,9 +61,9 @@
       $data = "<table class='table table-hover'>
         <thead>
           <tr>
-            <th width='40%'>Product</th>
-            <th width='30%'>Price</th>
-            <th width='30%'>Quantity</th>
+            <th width='40%' class='text-center'>Product</th>
+            <th width='30%' class='text-center'>Price</th>
+            <th width='30%' class='text-center'>Quantity</th>
 
           </tr>
         </thead>
@@ -72,9 +80,9 @@
 
                              $data .=
                                "<tr>
-                                   <td><img src='$row[img_path]' width='25%' height='25%'> $name</td>
-                                   <td id='price$id'> $price</td>
-                                   <td><input disabled type='number' class ='form-control' value ='$quantity' id='quantity$id'  min='1' onchange = changeNoItems($id)></td>
+                                   <td class='text-center'><img src='$row[img_path]' width='25%' height='25%'> $name</td>
+                                   <td class='text-center'>$price</td>
+                                   <td class='text-center'>$quantity</td>
                                </tr>";
                          }
                      }

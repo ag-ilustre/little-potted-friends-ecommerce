@@ -64,6 +64,11 @@ nav {
 	width: 100px !important;
 }
 
+#catalog-category-selected {
+	font-family: 'Pacifico', cursive;
+	font-size: 1.75rem;
+}
+
 /*FOOTER*/
 
 

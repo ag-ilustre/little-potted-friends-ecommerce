@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 13, 2018 at 02:41 PM
+-- Generation Time: Dec 11, 2018 at 02:37 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -38,9 +38,9 @@ CREATE TABLE `tbl_categories` (
 --
 
 INSERT INTO `tbl_categories` (`id`, `name`) VALUES
-(1, 'Sassy Single Pots'),
-(2, 'So Sytlish Sets'),
-(3, 'Super Supplies');
+(1, 'Category 1'),
+(2, 'Category 2'),
+(3, 'Category 3');
 
 -- --------------------------------------------------------
 
@@ -109,14 +109,6 @@ CREATE TABLE `tbl_payment_modes` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbl_payment_modes`
---
-
-INSERT INTO `tbl_payment_modes` (`id`, `name`) VALUES
-(1, 'COD'),
-(2, 'Paypal');
-
 -- --------------------------------------------------------
 
 --
@@ -127,15 +119,6 @@ CREATE TABLE `tbl_status` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_status`
---
-
-INSERT INTO `tbl_status` (`id`, `name`) VALUES
-(1, 'Pending'),
-(2, 'Completed'),
-(3, 'Cancelled');
 
 -- --------------------------------------------------------
 
@@ -251,13 +234,13 @@ ALTER TABLE `tbl_order_items`
 -- AUTO_INCREMENT for table `tbl_payment_modes`
 --
 ALTER TABLE `tbl_payment_modes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`

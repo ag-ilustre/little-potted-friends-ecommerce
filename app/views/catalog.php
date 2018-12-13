@@ -3,8 +3,8 @@
 <!-- Page Content -->
 <div class="container">
 	<div class="row mt-2">
-		<div class="col-lg-3">
-			<h4 id="catalog-category-selected">COLLECTION</h4>
+		<div class="col-lg-3 text-center">
+			<h4 id="catalog-category-selected">Collection</h4>
 		</div>
 		<div class="col-lg-9">
 			<div class="input-group mb-3">
@@ -24,7 +24,7 @@
 	</div>
 
 	<div class="row mt-2">
-		<div class="col-lg-2">	
+		<div class="col-lg-3">	
 			<div class="list-group">
 				
 		      		<ul class="list-group">
@@ -59,7 +59,7 @@
 		</div>
 		<!-- /.col-lg-3 -->
 		
-		<div class="col-lg-10">
+		<div class="col-lg-9">
 			<div class="row" id="products">
 				<?php include '../controllers/show_catalog.php'; ?>
 			</div>

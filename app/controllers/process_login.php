@@ -17,9 +17,11 @@
 			// echo $row['lastname'];
 			// echo "<br>";
 			// echo $row['firstname'];
-
-			$_SESSION['email'] = $row['email'];
-			$_SESSION['firstname'] = $row['firstname'];
+			$_SESSION["lastname"] = $row['lastname'];
+			$_SESSION["firstname"] = $row['firstname'];
+			$_SESSION["email"] = $row['email'];
+			$_SESSION["address"] = $row['address'];
+			$_SESSION["id"] = $row['id'];
 		}
 	} else {
 		echo "Invalid";
