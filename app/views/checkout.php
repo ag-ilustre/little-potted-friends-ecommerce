@@ -8,7 +8,6 @@
 ?>
 
 
-
 <div class="container">
 	<div class='row mb-3'>
     <div class='col-lg-10'>
@@ -16,16 +15,16 @@
   	</div>
   </div>
 
-  <form>
+  <form action="../controllers/place_order.php" method="POST" id="formCheckout">
   <div class='row mb-3'>      
     	<div class='col-lg-8'>
     		<label for='shipAddress'>Shipping Address:</label>
-    		<input type='text' id='shipAddress' class ='form-control' value='<?= $_SESSION["address"]?>'>
+    		<input type='text' id='shipAddress' class ='form-control' name="address" value='<?= $_SESSION["address"]?>'>
         <p id='error_shippingAdress'></p>
     	</div>
     	<div class='col-lg-4'>
     		<label for='paymentMethod'>Payment Method</label>
-    		<select class='custom-select' id='paymentMethod'>
+    		<select class='custom-select' id='paymentMethod' name="paymentMethod">
           <option value=''>------</option>
     		  <option value='1'>COD</option>
     		  <option value='2'>Paypal</option>					    		  
@@ -44,7 +43,7 @@
         </span>
       </p>
 
-      <button class='btn btn-primary' id='btnPlaceOrder'>Place Order Now</button>
+      <button class='btn btn-primary' id='btnPlaceOrder' type="button">Place Order Now</button>
     </div>
   </div>
 

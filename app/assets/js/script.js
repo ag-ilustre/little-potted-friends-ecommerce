@@ -353,10 +353,10 @@ $(document).ready(function(){
 
 $("#btnPlaceOrder").click(()=>{
 	let paymentMethodId = $("#paymentMethod").val();
-	let userAddress = $("#shipAddress").val();
+	let shipAddress = $("#shipAddress").val();
 	let error_flag3 = 0; 
 
-	if (userAddress == "") {
+	if (shipAddress == "") {
 		$("#error_shippingAdress").css("color","red");
 		$("#error_shippingAdress").html("This field is required");
 		error_flag3 = 1;
@@ -373,18 +373,19 @@ $("#btnPlaceOrder").click(()=>{
 	}
 
 	if(error_flag3 == 0){
-			// then we can submit the form
-			$.ajax({
-				"url" : "../controllers/place_order.php",
-				"data" : {"paymentMethodId" : paymentMethodId,    
-							"userAddress" : userAddress},
-				"type" : "POST",
-				"success" : (data) => {						
-					if(data) {	
-						alert(data);
-					}
-				}
-			});
+			
+			// $.ajax({
+			// 	"url" : "../controllers/place_order.php",
+			// 	"data" : {"paymentMethodId" : paymentMethodId,    
+			// 				"userAddress" : userAddress},
+			// 	"type" : "POST",
+			// 	"success" : (data) => {						
+			// 		if(data) {	
+			// 			alert(data);
+			// 		}
+			// 	}
+			// });
+			$("#formCheckout").submit();
 		}
 
 });
