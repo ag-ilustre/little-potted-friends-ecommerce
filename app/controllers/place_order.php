@@ -14,12 +14,13 @@
 		return $ref_number;
 	}
 
-	$address = $_POST["address"];
+	$address = $_POST["deliveryAddress"];
 	$email = $_SESSION["email"];
 
 //Update the address in USERS table using the email
 	$sql = "UPDATE tbl_users SET address = '$address' WHERE email = '$email'";
-	
+	$result = mysqli_query($conn, $sql);
+
 	$user_id = $_SESSION["id"];
 	$_SESSION["transaction_code"] = generate_trans_number();
 	$transaction_code = $_SESSION["transaction_code"];
@@ -29,44 +30,64 @@
 	$status_id = 1; //The default is always 1 since it is a new order. (tbl_status)
 	$payment_mode_id = $_POST["paymentMethod"];
 
-	if(mysqli_query($conn, $sql)){
-		$sql1 = "INSERT INTO tbl_orders (transaction_code, purchase_date, user_id, status_id, payment_mode_id)
-				VALUES ($transaction_code', '$purchase_date', '$user_id', '$status_id', '$payment_mode_id')";
+// to check
+	// echo $user_id ." ". $transaction_code ." ". $purchase_date ." ". $status_id ." ". $payment_mode_id . "<br>";
 
-		if(mysqli_query($conn, $sql1)){
-			$order_id = mysqli_insert_id($conn);
+	$sql1 = "INSERT INTO tbl_orders (transaction_code, purchase_date, user_id, status_id, payment_mode_id)
+				   VALUES ('$transaction_code', '$purchase_date', '$user_id', '$status_id', '$payment_mode_id')";
+	
+	if (mysqli_query($conn, $sql1)){
+		$_SESSION["order_id"] = mysqli_insert_id($conn);
+	} else {
+      echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);
+  }
 
-		//Insert items to ORDER_ITEMS table
-			//order_id, item_id, quantity, price
-			foreach($_SESSION["cart"] as $item_id => $quantity) {
-			   $sql2= "SELECT * FROM tbl_items where id = '$item_id'";
-			             $result2 = mysqli_query($conn, $sql2);
-			               if(mysqli_num_rows($result2) > 0){
-			                  while($row = mysqli_fetch_assoc($result2)){
-			                    $price = $row["price"];
-			                       
-		                      $sql3 = "INSERT INTO tbl_order_items (order_id, item_id, quantity, price)
-		                       				VALUES ('$order_id', '$item_id', '$quantity', '$price')";
-				               		$result3 = mysqli_query($conn, $sql3);
-		                   }
-			               }
-			}
+	
+//Insert items to ORDER_ITEMS table
+	//order_id, item_id, quantity, price
+	// $data = ""; //to check
+	
+	foreach($_SESSION["cart"] as $item_id => $quantity) {
+	  $sql2= "SELECT * FROM tbl_items where id = '$item_id'";
+	  $result2 = mysqli_query($conn, $sql2);
+	    if(mysqli_num_rows($result2) > 0){
+	      while($row = mysqli_fetch_assoc($result2)){
+          $sql3 = "";
+          $price = $row["price"];
+          $order_id = $_SESSION["order_id"];   
 
-			//cart back to ZERO
-			unset($_SESSION["cart"]);
+          //$data .= $order_id ." ". $item_id ." ". $quantity ." ". $price; //to check
 
-			//check if inserted to database
-			$sql4 = "SELECT * FROM tbl_orders WHERE id = '$order_id'";
-			$result4 = mysqli_query($conn, $sql4);
+          $sql3 = "INSERT INTO tbl_order_items (order_id, item_id, quantity, price)
+           				VALUES ('$order_id', '$item_id', '$quantity', '$price'); ";
 
-			if (mysqli_num_rows($result4) == 1) {
-				header("Location: ../views/confirmation.php");			
-			} 
-		}
+          $result3 = mysqli_query($conn, $sql3);
+         	unset($_SESSION["cart"][$item_id]);
+
+       		// if (mysqli_query($conn, $sql3)){
+       			
+       		// } else {
+       	 //      echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
+       	 //  }
+
+     			// 
+       }
+     }
 	}
+
+	//check if inserted to database
+	$sql4 = "SELECT * FROM tbl_orders WHERE id = '$order_id'";
+	$result4 = mysqli_query($conn, $sql4);
+
+	if (mysqli_num_rows($result4) == 1) {
 	
-//Insert to ORDERS table
-	
+		unset($_SESSION["order_id"]);
+		$_SESSION["item_count"] = array_sum($_SESSION["cart"]);
+
+		echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger itemCount'>". $_SESSION['item_count'] ."</span>";
+
+		header("Location: ../views/confirmation.php");			
+	} 
 	
 
 ?>

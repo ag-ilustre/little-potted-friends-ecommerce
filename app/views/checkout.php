@@ -11,15 +11,15 @@
 <div class="container">
 	<div class='row mb-3'>
     <div class='col-lg-10'>
-  		<h3>Please fill out the details below.</h3>
+  		<h2>Please fill out the details below.</h2>
   	</div>
   </div>
 
   <form action="../controllers/place_order.php" method="POST" id="formCheckout">
-  <div class='row mb-3'>      
+  <div class='row mb-4'>      
     	<div class='col-lg-8'>
     		<label for='shipAddress'>Shipping Address:</label>
-    		<input type='text' id='shipAddress' class ='form-control' name="address" value='<?= $_SESSION["address"]?>'>
+    		<input type='text' id='shipAddress' class ='form-control' name="deliveryAddress" value='<?= $_SESSION["address"]?>'>
         <p id='error_shippingAdress'></p>
     	</div>
     	<div class='col-lg-4'>
@@ -34,21 +34,21 @@
   </div>
   </form>
 
-  <div class='row mb-3'>
-  	<div class='col-lg-12'>
-    	<h3 id='#orderSummary'>Order Summary</h3>
-      <p>TOTAL
+  <div class='row mb-4'>
+  	<div class='col-lg-10'>
+    	<h3 id='#orderSummary'class='mb-3'>Order Summary</h3>
+      <h4 class='mb-3'>Total
         <span id="totalWidth">
-         
+         <?php echo "&#x20B1; " . $_SESSION["total"]; ?>
         </span>
-      </p>
+      </h4>
 
-      <button class='btn btn-primary' id='btnPlaceOrder' type="button">Place Order Now</button>
+      <button class='btn btn-primary' id='btnPlaceOrder' type="submit">Place Order Now</button>
     </div>
   </div>
 
 
-  <div class='row mb-3 mx-auto'>
+  <div class='row mx-auto'>
     <div class='col-lg-10'>
 
 <?php

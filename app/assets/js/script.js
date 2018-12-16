@@ -9,10 +9,10 @@ function showCategories(categoryId){
 	$('#catalog-category-selected').html("");
 	switch(categoryId) {
 	  case 1:
-	    $('#catalog-category-selected').html("Sassy Single Pots");		
+	    $('#catalog-category-selected').html("Sassy Singles");		
 	    break;
 	  case 2:
-	    $('#catalog-category-selected').html("So Stylish Sets");		
+	    $('#catalog-category-selected').html("Stylish Sets");		
 	    break;
 	  case 3:
 	    $('#catalog-category-selected').html("Super Supplies");		
@@ -373,18 +373,7 @@ $("#btnPlaceOrder").click(()=>{
 	}
 
 	if(error_flag3 == 0){
-			
-			// $.ajax({
-			// 	"url" : "../controllers/place_order.php",
-			// 	"data" : {"paymentMethodId" : paymentMethodId,    
-			// 				"userAddress" : userAddress},
-			// 	"type" : "POST",
-			// 	"success" : (data) => {						
-			// 		if(data) {	
-			// 			alert(data);
-			// 		}
-			// 	}
-			// });
+
 			$("#formCheckout").submit();
 		}
 

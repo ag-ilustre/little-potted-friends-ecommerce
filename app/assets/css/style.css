@@ -80,3 +80,15 @@ nav {
 	/*border-width: 2px;*/
 	padding-left: 150px;
 }
+
+/*CONFIRMATION PAGE*/
+
+#confirmationMessage {
+	padding: 20px;
+	border: 2px solid rgba(43,195,144,1);
+}
+
+/*#confirmationFavicon {
+	height: 100px;
+	width: auto;
+}*/
