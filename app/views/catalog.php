@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row mt-2">
 		<div class="col-lg-3 text-center">
-			<h4 id="catalog-category-selected">Collection</h4>
+			<h3 id="catalog-category-selected">Collection</h3>
 		</div>
 		<div class="col-lg-9">
 			<div class="input-group mb-3">
@@ -25,6 +25,7 @@
 
 	<div class="row mt-2">
 		<div class="col-lg-3">	
+			<h4>Categories</h4>
 			<div class="list-group">
 				
 		      		<ul class="list-group">
@@ -37,7 +38,7 @@
 			<!-- /.list-group -->
 			<hr>
 
-			<h4 class="mb-2">PRICE</h4>
+			<h4>Price</h4>
 				<select class="custom-select" id="price">
 					<option selected=""> ------ </option>
 					<option value="ASC">Lowest to Highest</option>

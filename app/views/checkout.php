@@ -4,14 +4,21 @@
 <?php                        
     if(!isset($_SESSION['email'])){ 
       header("Location: login.php");
-    }     
+    } 
+
+    if ($_SESSION["item_count"] == 0) {
+        header("location: ../views/catalog.php");
+    } elseif (!isset($_SESSION["item_count"])) {
+        header("location: ../views/catalog.php");
+    } 
+
 ?>
 
 
 <div class="container">
 	<div class='row mb-3'>
-    <div class='col-lg-10'>
-  		<h2>Please fill out the details below.</h2>
+    <div class='col-lg-12'>
+      <h1 class="text-center">Checkout</h1>
   	</div>
   </div>
 
@@ -27,7 +34,7 @@
     		<select class='custom-select' id='paymentMethod' name="paymentMethod">
           <option value=''>------</option>
     		  <option value='1'>COD</option>
-    		  <option value='2'>Paypal</option>					    		  
+    		  <option value='2'>PayPal</option>					    		  
     		</select>
         <p id='error_paymentMethod'></p>
     	</div>
@@ -35,21 +42,10 @@
   </form>
 
   <div class='row mb-4'>
-  	<div class='col-lg-10'>
+  	<div class='col-lg-12 text-center'>
     	<h3 id='#orderSummary'class='mb-3'>Order Summary</h3>
-      <h4 class='mb-3'>Total
-        <span id="totalWidth">
-         <?php echo "&#x20B1; " . $_SESSION["total"]; ?>
-        </span>
-      </h4>
-
-      <button class='btn btn-primary' id='btnPlaceOrder' type="submit">Place Order Now</button>
-    </div>
-  </div>
-
-
-  <div class='row mx-auto'>
-    <div class='col-lg-10'>
+      <div class="row">
+        <div class="col-lg-8">
 
 <?php
      
@@ -78,7 +74,7 @@
                              $data .=
                                "<tr>
                                    <td class='text-center'><img src='$row[img_path]' width='25%' height='25%'> $name</td>
-                                   <td class='text-center'>$price</td>
+                                   <td class='text-center'>&#x20B1; $price</td>
                                    <td class='text-center'>$quantity</td>
                                </tr>";
                          }
@@ -88,9 +84,31 @@
 
       echo $data;
 ?>
-  	</div>
-  </div>
+  	    </div>
 
+        <div class="col-lg-4">
+          <table class="table table-hover text-left">
+            <tr>
+              <td scope="row"><strong>SUBTOTAL</strong></td>
+              <td><?= "&#x20B1; " . $_SESSION["total"]; ?></td>
+            </tr>
+            <tr>
+              <td scope="row"><strong>SHIPPING (FREE*)</strong></td>
+              <td>&#x20B1; 0</td> 
+              <!-- ECHO MOBILE NUMBER -->
+            <tr>
+              <td scope="row"><strong>TOTAL</strong></td>
+              <td><?= "&#x20B1; " . $_SESSION["total"]; ?></td>
+            </tr>
+            </tr>
+          </table>
+          <p class="text-left"><small>*Until February 14, 2019 only!</small></p>
+          <button class='btn btn-info btnWider mt-3' id='btnPlaceOrder' type="button">PLACE ORDER</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 		
 

@@ -15,6 +15,7 @@
 	}
 
 	$address = $_POST["deliveryAddress"];
+	$_SESSION["address"] = $address;
 	$email = $_SESSION["email"];
 
 //Update the address in USERS table using the email
@@ -95,6 +96,7 @@
 		
 		//to avoid reuse
 		unset($_SESSION["order_id"]);
+		unset($_SESSION["total"]);
 
 		$_SESSION["item_count"] = array_sum($_SESSION["cart"]); //item count should be ZERO
 

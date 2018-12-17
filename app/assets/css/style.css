@@ -1,9 +1,36 @@
 * {
 	/*background-color: #F7F7F7;*/
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
+	/*font-family: 'Quicksand', sans-serif;*/
+	/*font-family: 'PT Sans Narrow', sans-serif;*/
 	/*color: rgba(43,195,122,1) !important;*/
+	/*fountain blue*/
+	/*color: #28aeb9; */
+	/*millbrook*/
+	/*color: #573e2a*/
 }
 
+h1, h2, h3, h4 {
+	font-family: 'Pacifico', cursive;
+	padding-top: 20px;
+	padding-bottom: 12px;
+	/*fountain blue*/
+	color: #28aeb9; 
+}
+
+.btn {
+	border-radius: 0;
+	color: #fff;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	/*font-family: 'PT Sans Narrow', sans-serif;*/
+	font-weight: 500px;
+	font-size: 1rem;
+	letter-spacing: 1.2px;
+}
+
+.btnWider {
+	width: 155px;
+}
 /*@font-face {
   font-family: Amithen;
   src: url(../font/Amithen.otf);
@@ -37,23 +64,23 @@ nav {
 }
 
 .nav-link:link {
-	color: rgba(43,195,144,1) !important;
+	color: #28aeb9 !important;
 }
 
 .nav-link:hover {
-	color: #2BC372 !important;
+	color: #28aeb9 !important;
 	font-size: 1rem;
 	border-color: #F7F7F7;
 }
 
 .nav-link:active {
-	color: #2BC372 !important;
+	color: #28aeb9 !important;
 	font-size: 1rem;
 	border-color: #F7F7F7;
 }
 
 .nav-link:visited {
-	color: #2BC372 !important;
+	color: #28aeb9 !important;
 	font-size: 1rem;
 	border-color: #F7F7F7;
 }
@@ -68,6 +95,13 @@ nav {
 	font-family: 'Pacifico', cursive;
 	font-size: 1.75rem;
 }
+
+.inputQuantity {
+	/*to add class to input fields for quantity*/
+}
+
+
+
 
 /*FOOTER*/
 
@@ -84,11 +118,18 @@ nav {
 /*CONFIRMATION PAGE*/
 
 #confirmationMessage {
-	padding: 20px;
-	border: 2px solid rgba(43,195,144,1);
+	padding: 40px 40px;
+	border: 2px solid #28aeb9;
 }
 
 /*#confirmationFavicon {
 	height: 100px;
 	width: auto;
+}*/
+
+
+/*PROFILE PAGE*/
+/*#btnEditProfile {
+	background-color: rgba(43,195,144,1);
+	border-color: rgba(43,195,144,1);
 }*/

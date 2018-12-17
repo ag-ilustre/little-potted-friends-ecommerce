@@ -9,6 +9,6 @@ $_SESSION["cart"][$id] = $quantity;
 
 $_SESSION["item_count"] = array_sum($_SESSION["cart"]);
 
-echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger itemCount'>". $_SESSION['item_count'] ."</span>";
+echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-info itemCount'>". $_SESSION['item_count'] ."</span>";
 
 ?>

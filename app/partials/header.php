@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     
     <!-- google font -->
-   <link href="https://fonts.googleapis.com/css?family=Quicksand|Pacifico" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Yanone+Kaffeesatz|Pacifico|PT+Sans+Narrow" rel="stylesheet">
 
     <!-- favicon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
@@ -48,9 +48,9 @@
               <!-- <i class="fas fa-shopping-cart"></i> CART  -->
               <?php 
                 if(isset($_SESSION["item_count"])){
-                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger itemCount'>". $_SESSION['item_count'] ."</span>";
+                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-info itemCount'>". $_SESSION['item_count'] ."</span>";
                 } else {
-                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger itemCount'>0</span>";
+                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-info itemCount'>0</span>";
                 }
               ?>               
               <span class="sr-only">(current)</span>
@@ -67,8 +67,8 @@
                 echo "<li class='nav-item dropdown'>
                       <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Hello, ".STRTOUPPER($_SESSION['firstname'])."<span class='sr-only'>(current)</span></a>
                       <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                        <a class='dropdown-item' href='#'><i class='fas fa-list-ul'></i>   Your Orders</a>
-                        <a class='dropdown-item' href='#'><i class='far fa-user'></i>   Your Profile</a>
+                        <a class='dropdown-item' href='profile.php'><i class='far fa-user'></i>   Your Profile</a>
+                        <a class='dropdown-item' href='orders.php'><i class='fas fa-list-ul'></i>   Your Orders</a>
                         <div class='dropdown-divider'></div>
                         <a class='dropdown-item' href='../controllers/process_logout.php'><i class='fas fa-sign-out-alt'></i>   LOGOUT</a>
                       </div>

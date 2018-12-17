@@ -13,7 +13,7 @@
 				VALUES('$firstname', '$lastname', '$email', '$password', '$address')";  
 	$result = mysqli_query($conn, $sql); // this is like clicking the "Go" in MySQL
 
-	header("Location: ../views/catalog.php");
+	header("location: ../views/catalog.php");
 	 
 
 ?>

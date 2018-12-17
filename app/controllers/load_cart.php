@@ -56,7 +56,7 @@
               <td colspan='5' class='text-center'><h5>TOTAL: &#x20B1; <span id='grandTotal'>$grand_total </span><h5></td>
             </tr>
             <tr>
-              <td colspan='5' class='text-center'><a class='btn btn-primary' id='btnCheckOut' href='../views/checkout.php'>Proceed to Checkout</a></td>
+              <td colspan='5' class='text-center'><a class='btn btn-info btnWider' id='btnCheckOut' href='../views/checkout.php'>CHECKOUT</a></td>
             </tr>
             </tbody></table>";
 
