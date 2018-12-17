@@ -25,13 +25,24 @@
 	$_SESSION["transaction_code"] = generate_trans_number();
 	$transaction_code = $_SESSION["transaction_code"];
 	date_default_timezone_set("Asia/Manila");
-	$purchase_date = date_default_timezone_get();
 	$purchase_date = date("Y/m/d H:i:s");
-	$status_id = 1; //The default is always 1 since it is a new order. (tbl_status)
+	$_SESSION["purchase_date"] = $purchase_date;
+	$status_id = 1; //The default is always 1 since it is a new order. (ref: tbl_status)
 	$payment_mode_id = $_POST["paymentMethod"];
+	
+	//this is for the email (body) to be sent to the user
+	switch($payment_mode_id){
+		case 1:
+			$_SESSION["paymentMode"] = "COD";
+			break;
+		case 2:
+			$_SESSION["paymentMode"] = "PayPal";
+			break;
+	}
 
-// to check
-	// echo $user_id ." ". $transaction_code ." ". $purchase_date ." ". $status_id ." ". $payment_mode_id . "<br>";
+
+
+	// echo $user_id ." ". $transaction_code ." ". $purchase_date ." ". $status_id ." ". $payment_mode_id . "<br>"; // to check
 
 	$sql1 = "INSERT INTO tbl_orders (transaction_code, purchase_date, user_id, status_id, payment_mode_id)
 				   VALUES ('$transaction_code', '$purchase_date', '$user_id', '$status_id', '$payment_mode_id')";
@@ -43,8 +54,8 @@
   }
 
 	
-//Insert items to ORDER_ITEMS table
-	//order_id, item_id, quantity, price
+//Insert order_id, item_id, quantity, price to ORDER_ITEMS table
+	
 	// $data = ""; //to check
 	
 	foreach($_SESSION["cart"] as $item_id => $quantity) {
@@ -54,7 +65,7 @@
 	      while($row = mysqli_fetch_assoc($result2)){
           $sql3 = "";
           $price = $row["price"];
-          $order_id = $_SESSION["order_id"];   
+          $order_id = $_SESSION["order_id"];   //assign value of $order_id here for visibility
 
           //$data .= $order_id ." ". $item_id ." ". $quantity ." ". $price; //to check
 
@@ -62,32 +73,36 @@
            				VALUES ('$order_id', '$item_id', '$quantity', '$price'); ";
 
           $result3 = mysqli_query($conn, $sql3);
+
+          	//remove item from "cart"
          	unset($_SESSION["cart"][$item_id]);
 
+         //to check
        		// if (mysqli_query($conn, $sql3)){
-       			
+       	//      echo "Success";		
        		// } else {
        	 //      echo "Error: " . $sql3 . "<br>" . mysqli_error($conn);
        	 //  }
-
-     			// 
        }
      }
 	}
 
-	//check if inserted to database
+	//to check if inserted to database
 	$sql4 = "SELECT * FROM tbl_orders WHERE id = '$order_id'";
 	$result4 = mysqli_query($conn, $sql4);
 
 	if (mysqli_num_rows($result4) == 1) {
-	
+		
+		//to avoid reuse
 		unset($_SESSION["order_id"]);
-		$_SESSION["item_count"] = array_sum($_SESSION["cart"]);
+
+		$_SESSION["item_count"] = array_sum($_SESSION["cart"]); //item count should be ZERO
 
 		echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-danger itemCount'>". $_SESSION['item_count'] ."</span>";
 
 		header("Location: ../views/confirmation.php");			
 	} 
 	
-
+	require '../../vendor/sample_mail.php';
+	
 ?>

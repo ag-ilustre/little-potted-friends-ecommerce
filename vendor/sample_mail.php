@@ -10,12 +10,34 @@ require 'autoload.php';
 
 // require 'phpmailer/phpmailer/src/PHPMailer.php';
 
+//get dateOfOrder
+$purchaseDate = $_SESSION["purchase_date"];
+$purchaseDate = date("D, M j, Y, g:i:s"); 
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
 $staff_email = "csp2ecommerce@gmail.com"; //where the email is coming from
-$users_email = $_SESSION["email"]; //where the email will go
-$email_subject = "Little Potted Friends: Order Confirmation";
-$email_body = "<h3>Reference Number: ". $_SESSION["transaction_code"] ."</h3>";
+$users_email = "csp2ecommerce@gmail.com"; //where the email will go -- TEST EMAIL!
+// $users_email = $_SESSION["email"]; //where the email will go
+$email_subject = "Order Being Processed: ". $_SESSION["transaction_code"];
+$email_body = "<p>Dear <strong>" . $_SESSION["firstname"] . "</strong>,<br>
+
+<p>Your Order <strong>" . $_SESSION["transaction_code"] . "</strong> has been placed on " . $purchaseDate .
+" via " . $_SESSION["paymentMode"] . ". You will receive another email after your item(s) has been shipped.</p>
+
+<p><strong>Note:</strong><br>
+<p>Make sure that the information you provided in your order follows the required format:</p>
+
+<p><strong>Name</strong> – First and Last Name</p>
+<p><strong>Shipping Address</strong> – House Number, Building and Street Name, Province, City/Municipality, and Barangay</p>
+<p>In the event that the information you provided is incomplete, you may place a new order with the correct and complete details and cancel the initial order, if still within the processing stage. Incorrect or incomplete details can result in the cancellation of order.</p>
+
+<p>We hope to see you again soon!</p>
+<h3><strong>LittlePottedFriends.com</strong><h3>";
+
+
+//echo ORDER SUMMARY, DELIVERY DATE, DELIVERY ADDRESS
+
+
 
 try{
 	$mail->isSMTP();

@@ -1,9 +1,5 @@
 <?php require_once '../partials/header.php'; ?>
 
-<?php
-
-?>
-
 <div class="container">
 			
 	<div class="row">
