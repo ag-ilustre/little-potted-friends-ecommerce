@@ -10,12 +10,16 @@
 	/*color: #573e2a*/
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
 	font-family: 'Pacifico', cursive;
 	padding-top: 20px;
 	padding-bottom: 12px;
 	/*fountain blue*/
 	color: #28aeb9; 
+}
+
+h4 {
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .btn {
