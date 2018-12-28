@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" class="form-control mb-1" name="email" id="email">
+                    <input type="email" class="form-control mb-1" name="email" id="email">
                     <p id="error_msg_email"> </p>
                 </div>
                 <div class="form-group">
