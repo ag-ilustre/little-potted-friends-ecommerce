@@ -2,7 +2,8 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="col-lg-2"></div>
+		<div class="col-sm-12 col-md-12 col-lg-8">
 			<h1 class="mb-4 text-center">Your Orders</h1>
 			<?php
 				//connect to the database
@@ -26,14 +27,14 @@
 						while($row = mysqli_fetch_assoc($result)){
 							// row: id | transaction_code | purchase_date | user_id | status_id | payment_mode |
 							$data1 = "";
-							$data1 = "<h5>Order ID: $row[transaction_code]</h5>
-									  <h5>Placed on: $row[purchase_date]</h5>
+							$data1 = "<div class='mb-4'>
+									<h6>ORDER ID: $row[transaction_code] | PLACED ON: $row[purchase_date]</h6>
 									<table class='table table-hover'>
 									  <thead>
 									    <tr>
-									      <th>Product</th>
-									      <th>Price</th>
-									      <th>Quantity</th>
+									      <th class='text-center'>Product</th>
+									      <th class='text-center'>Price</th>
+									      <th class='text-center'>Quantity</th>
 									    </tr>
 									  </thead>
 									  <tbody>";
@@ -47,8 +48,8 @@
 										while($row = mysqli_fetch_assoc($result1)){
 										// row: id | quantity | price | order_id | item_id
 											
-											$data3 ="<td>$row[price]</td>
-													 <td>$row[quantity]</td>";
+											$data3 ="<td class='text-center'>$row[price]</td>
+													 <td class='text-center'>$row[quantity]</td>";
 
 											$item_id ="";
 											$item_id = $row['item_id'];
@@ -58,7 +59,7 @@
 											$result2 = mysqli_query($conn, $sql2);
 													while($row = mysqli_fetch_assoc($result2)){
 														$data2 = "";
-														$data2 = "<td><img src='$row[img_path]' width='100px' height='100px'> $row[name]</td>";
+														$data2 = "<td class='text-center'><img src='$row[img_path]' width='100px' height='100px'>   $row[name]</td>";
 													}
 
 										$data23 .= "<tr>".$data2 . $data3."</tr>";
@@ -68,7 +69,7 @@
 										
 						    	}
 
-				  		$data .= $data1 . $data23 . "</tbody></table><hr>";
+				  		$data .= $data1 . $data23 . "</tbody></table></div><br>";
 				  		$data1 = "";
 				  		$data23 = "";
 
@@ -78,6 +79,7 @@
 			?>
 
 		</div>
+		<div class="col-lg-2"></div>
 	</div>
 </div>
 
