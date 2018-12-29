@@ -6,7 +6,7 @@
 
 	// Get vaues fromt the login form
 	$loginEmail = $_POST['loginEmail'];
-	$loginPassword = $_POST['loginPassword'];
+	$loginPassword = sha1($_POST['loginPassword']);
 	
 
 	$sql = "SELECT * FROM tbl_users WHERE email = '$loginEmail' AND password = '$loginPassword'";
@@ -20,6 +20,7 @@
 			$_SESSION["lastname"] = $row['lastname'];
 			$_SESSION["firstname"] = $row['firstname'];
 			$_SESSION["email"] = $row['email'];
+			$_SESSION["mobile"] = $row['mobile'];
 			$_SESSION["address"] = $row['address'];
 			$_SESSION["id"] = $row['id'];
 		}

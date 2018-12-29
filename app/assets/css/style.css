@@ -10,6 +10,7 @@
 	/*color: #573e2a*/
 }
 
+
 h1, h2, h3 {
 	font-family: 'Pacifico', cursive;
 	padding-top: 20px;
@@ -18,12 +19,14 @@ h1, h2, h3 {
 	color: #28aeb9; 
 }
 
-h4 {
+h4, label {
 	font-family: 'Source Sans Pro', sans-serif;
+	color: #28aeb9; 
+	font-weight: 600;
 }
 
-h6 {
-	font-weight: 600;
+h5, h6 {
+	font-weight: 500;
 }
 
 .btn {
@@ -31,7 +34,7 @@ h6 {
 	color: #fff;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 	/*font-family: 'PT Sans Narrow', sans-serif;*/
-	font-weight: 500px;
+	font-weight: 500;
 	font-size: 1rem;
 	letter-spacing: 1.2px;
 }
@@ -47,8 +50,13 @@ h6 {
 
 /*HEADER*/
 nav {
+	box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 	background-color: #fbfbfb;
 	border-bottom: rgb(0,0,0); 
+}
+
+.dropdown-item {
+	color: #28aeb9 !important;
 }
 
 #storeName {
@@ -113,6 +121,20 @@ nav {
 
 /*FOOTER*/
 
+/*LOGIN*/
+#forgotPassword {
+	color: #7b7b7b;
+}
+
+#forgotPassword:visited, #forgotPassword:active, #forgotPassword:link {
+	color: #7b7b7b;
+}
+
+#forgotPassword:hover {
+	text-decoration: none;
+	color: #7b7b7b;
+	font-weight: 600;	
+}
 
 /*CHECKOUT PAGE*/
 
@@ -140,7 +162,23 @@ nav {
 #profileSection {
 	padding-top: 100px;
 }
-/*#btnEditProfile {
-	background-color: rgba(43,195,144,1);
-	border-color: rgba(43,195,144,1);
-}*/
+
+#profileAlertMsg {
+	position: fixed; 
+	font-size: 1.2rem;
+	top: 10%; 
+	left: 50%; 
+	z-index: 999999; 
+	transform: translateX(-50%);
+}
+
+#profileAvatar {
+	border-radius: 100%;
+	width: 150px;
+	height: 150px;
+}
+
+.profileBtns, .profilePicAndName {
+	display: inline-block;
+}
+

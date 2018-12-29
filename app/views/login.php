@@ -20,25 +20,27 @@
         				</div> -->
       <div class="col-lg-3"></div>
       <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">Login Form</div>
+        <div class="text-center mb-4"><h3>Please log in for a better shopping experience</h3></div>
+        <div class="card">          
           <div class="card-body">
             <form action="catalog.php" method="POST" id="form_login">
               <div class="form-group">
-                <label>Email</label>
+                <label for="loginEmail">Email</label>
                 <input type="email" class="form-control" id="loginEmail">
                 <p class="validation"></p>            
               </div>
               <div class="form-group">
-                <label>Password</label>
+                <label for="loginPassword">Password <small><a href="#" id="forgotPassword">(Forgot Password?)</a></small></label>
                 <input type="password" class="form-control" id="loginPassword">    
                 <p class="validation"></p>          
               </div>
 
               <p id="error_message"></p>
 
-      				<button id="btnLogin" class="btn btn-dark" type="button">SUBMIT</button>
-      				<input class="btn btn-warning" type="reset" value="CLEAR">
+      				<div class="text-center">
+                <button id="btnLogin" class="btn btn-info btnWider" type="button">SUBMIT</button>
+        				<input class="btn btn-dark btnWider" type="reset" value="CLEAR">
+              </div>
         		</form>
       		</div>
         </div>

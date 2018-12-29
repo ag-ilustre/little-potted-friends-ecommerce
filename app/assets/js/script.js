@@ -196,25 +196,43 @@ $('#price').change(function(){
 // =================================== REGISTER A USER - INSERT TO DATABASE =================================== //
 
 //CHECK UNIQUENESS OF EMAIL ADDRESS + ENABLING/DISABLING REGISTER BUTTON
-// $("#email").keyup(function(){
+// $("#email").blur(function(){
 // 	let email = $(this).val();
+// 	$("#error_msg_email").html("");	
+
+// 	if (email != "") {
+// 		$.post("../controllers/process_email.php", {email:email}, function(data){
+// 				if(data == "Success"){
+// 					$("#displayBtnRegister").html("<button class='btn btn-dark btn-block' type='button' id='btnRegister'>SUBMIT</button>");
+// 				} else {
+// 					$("#error_msg_email").css("color","red");
+// 					$("#error_msg_email").html("Please enter a unique and valid email.");
+// 					$("#displayBtnRegister").html("<button class='btn btn-dark btn-block' type='button' id='btnRegister' disabled>SUBMIT</button>");
+// 				}
+// 		});			
+// 	} else {
+// 		$("#displayBtnRegister").html("<button class='btn btn-dark btn-block' type='button' id='btnRegister' disabled>SUBMIT</button>");
+// 	}
 
 // 	// $("#btn_submit").html("<input class='btn btn-dark btn-block' type='submit' value='SUBMIT' id='btnRegister' disabled>");
-
-// 	$("#error_msg_email").html("");
-
-// 	$.post("../controllers/process_email.php", {email:email}, function(data){
-// 			if(data == "Success"){
-// 				$("#btnRegister").removeAttr("disabled");
-// 			} else {
-// 				$("#error_msg_email").css("color","red");
-// 				$("#error_msg_email").html("Please enter a unique and valid email.");
-// 				$("#btnRegister").addAttr("disabled");
-// 			}
-// 	});
-
 // });
 
+function emailCheck() {
+	var email = $("#email").val(); 
+	var errorFlagEmail = 0;
+
+	$("#error_msg_email").html("");
+
+	$.post("../controllers/process_email.php", {email:email}, function(data){
+		if(data != "Success"){					
+			errorFlagEmail = 1;
+			$("#error_msg_email").css("color","red");
+			$("#error_msg_email").html("Please enter a unique and valid email.");
+		} else {
+			errorFlagEmail = 0;
+		}
+	});
+}
 
 // to submit the registration form and add the new user to the database
 $("#btnRegister").click(()=>{
@@ -223,6 +241,7 @@ $("#btnRegister").click(()=>{
 		let email = $("#email").val();
 		let password = $("#password").val();
 		let cpassword = $("#cpassword").val();
+		let mobile = $("#mobile").val();
 		let address = $("#address").val();
 
 		let error_flag = 0; //if any error is detected, the form should not be submitted
@@ -251,7 +270,8 @@ $("#btnRegister").click(()=>{
 			$("#error_msg_email").html("Email is required!");
 			error_flag = 1;
 		} else {
-			$("#error_msg_email").html("");
+			emailCheck ();
+			// error_flag = errorFlagEmail;
 		}
 
 		
@@ -271,6 +291,15 @@ $("#btnRegister").click(()=>{
 			error_flag = 1;
 		} else {
 			$("#error_cpassword").html("");
+		}
+
+		// validation for the mobile
+		if (mobile == "") {
+			$("#error_mobile").css("color","red");
+			$("#error_mobile").html("Mobile is required!");
+			error_flag = 1;
+		} else {
+			$("#error_mobile").html("");
 		}
 
 		// validation for the address

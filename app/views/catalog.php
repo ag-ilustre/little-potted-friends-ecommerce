@@ -9,9 +9,9 @@
 		<div class="col-lg-9">
 			<div class="input-group mb-3">
 			  <input type="text" class="form-control" placeholder="Search an item" aria-label="Search an item" aria-describedby="button-addon2" id="searchAnItem">
-			  <div class="input-group-append">
+			 <!--  <div class="input-group-append">
 			    <button class="btn btn-outline-secondary" type="button">      <i class="fas fa-search"></i>      </button>
-			  </div>
+			  </div> -->
 			</div>
 			<!-- <input type="text/number" name="searchItem" class="mx-0 px-0"></input><button><i class="fas fa-search"></i></button> -->
 		</div>

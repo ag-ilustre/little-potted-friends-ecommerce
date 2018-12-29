@@ -75,6 +75,9 @@
 
 					} 
 				echo $data;
+				} else {
+					echo "<p class='text-center'>You have no orders yet!</p>
+						  <p class='text-center'>Shop from our <a href='catalog.php'>CATALOG</a> now.</p>";
 				}
 			?>
 

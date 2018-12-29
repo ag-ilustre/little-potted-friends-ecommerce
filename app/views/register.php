@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control mb-1" name="email" id="email">
+                    <input type="email" class="form-control mb-1" name="email" id="email" onkeyup="emailCheck()">
                     <p id="error_msg_email"> </p>
                 </div>
                 <div class="form-group">
@@ -31,6 +31,11 @@
                     <input type="password" class="form-control mb-1" name="cpassword" id="cpassword">
                     <p id="error_cpassword"> </p>
                 </div>
+                <div class="form-group">
+                    <label>Mobile No.</label>
+                    <input type="number" class="form-control mb-1" name="mobile" id="mobile">
+                    <p id="error_mobile"> </p>
+                </div>
         		<div class="form-group">
                     <label>Address</label>
                     <input type="text" class="form-control mb-1" name="address" id="address">
@@ -38,7 +43,7 @@
                 </div>
                 <div class="text-center mt-2">
 
-                <button class='btn btn-dark btn-block' type='button' id='btnRegister'>SUBMIT</button>
+                <div id="displayBtnRegister"><button class='btn btn-info btn-block' type='button' id='btnRegister'>SUBMIT</button></div>
 
                 </div>
         	</form>
