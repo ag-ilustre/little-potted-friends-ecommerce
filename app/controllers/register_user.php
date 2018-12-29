@@ -5,8 +5,8 @@
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
 	$email = ($_POST['email']);
-	$password = sha1($_POST['password']);
-	// $password = $_POST['password'];
+	// $password = sha1($_POST['password']);
+	$password = $_POST['password'];
 	$address = $_POST['address'];
 
 	$sql = "INSERT INTO tbl_users (firstname, lastname, email, password, address)

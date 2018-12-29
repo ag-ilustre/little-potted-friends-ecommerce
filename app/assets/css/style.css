@@ -137,6 +137,9 @@ nav {
 
 
 /*PROFILE PAGE*/
+#profileSection {
+	padding-top: 100px;
+}
 /*#btnEditProfile {
 	background-color: rgba(43,195,144,1);
 	border-color: rgba(43,195,144,1);

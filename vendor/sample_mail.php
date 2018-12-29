@@ -32,7 +32,7 @@ $email_body = "<p>Dear <strong>" . $_SESSION["firstname"] . "</strong>,<br>
 <p>In the event that the information you provided is incomplete, you may place a new order with the correct and complete details and cancel the initial order, if still within the processing stage. Incorrect or incomplete details can result in the cancellation of order.</p>
 
 <p>We hope to see you again soon!</p>
-<h3><strong>LittlePottedFriends.com</strong><h3>";
+<p><strong>LittlePottedFriends.com</strong></p>";
 
 
 //echo ORDER SUMMARY, DELIVERY DATE, DELIVERY ADDRESS

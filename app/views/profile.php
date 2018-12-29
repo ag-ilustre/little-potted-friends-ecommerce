@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12">
-			<section style="padding-top: 100px;">
+			<section id="profileSection">
 				<div id="editProfAlertMsg"></div>
 				<div class="row p-3">
 					<div class="col-12 col-sm-12 col-md-4 col-lg-4">
