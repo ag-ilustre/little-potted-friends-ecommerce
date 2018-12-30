@@ -219,110 +219,112 @@ $('#price').change(function(){
 
 function emailCheck() {
 	var email = $("#email").val(); 
-	var errorFlagEmail = 0;
 
 	$("#error_msg_email").html("");
 
 	$.post("../controllers/process_email.php", {email:email}, function(data){
 		if(data != "Success"){					
-			errorFlagEmail = 1;
-			$("#error_msg_email").css("color","red");
-			$("#error_msg_email").html("Please enter a unique and valid email.");
+			$("#email").css({"border-color":"rgb(185, 74, 72)"});
+			$("#error_msg_email").css({"color":"rgb(185, 74, 72)"});
+			$("#error_msg_email").html("Valid but already in use, please enter a unique email");
+			$("#email").addClass("error");
+			$("#btnRegister").prop("disabled", true);
 		} else {
-			errorFlagEmail = 0;
+			$("#btnRegister").prop("disabled", false);
+			$("#email").removeClass("error");
 		}
 	});
 }
 
 // to submit the registration form and add the new user to the database
-$("#btnRegister").click(()=>{
-		let firstname = $("#firstname").val();
-		let lastname = $("#lastname").val();
-		let email = $("#email").val();
-		let password = $("#password").val();
-		let cpassword = $("#cpassword").val();
-		let mobile = $("#mobile").val();
-		let address = $("#address").val();
+// $("#btnRegister").click(()=>{
+// 		let firstname = $("#firstname").val();
+// 		let lastname = $("#lastname").val();
+// 		let email = $("#email").val();
+// 		let password = $("#password").val();
+// 		let cpassword = $("#cpassword").val();
+// 		let mobile = $("#mobile").val();
+// 		let address = $("#address").val();
 
-		let error_flag = 0; //if any error is detected, the form should not be submitted
+// 		let error_flag = 0; //if any error is detected, the form should not be submitted
 
-		// validation for the firstname
-		if (firstname == "") {
-			$("#error_firstname").css("color","red");
-			$("#error_firstname").html("First Name is required!");
-			error_flag = 1;
-		} else {
-			$("#error_firstname").html("");
-		}
+// 		// validation for the firstname
+// 		if (firstname == "") {
+// 			$("#error_firstname").css("color","red");
+// 			$("#error_firstname").html("First Name is required!");
+// 			error_flag = 1;
+// 		} else {
+// 			$("#error_firstname").html("");
+// 		}
 
-		// validation for the lastname
-		if (lastname == "") {
-			$("#error_lastname").css("color","red");
-			$("#error_lastname").html("Last Name is required!");
-			error_flag = 1;
-		} else {
-			$("#error_lastname").html("");
-		}
+// 		// validation for the lastname
+// 		if (lastname == "") {
+// 			$("#error_lastname").css("color","red");
+// 			$("#error_lastname").html("Last Name is required!");
+// 			error_flag = 1;
+// 		} else {
+// 			$("#error_lastname").html("");
+// 		}
 
-		// validation for the email
-		if (email == "") {
-			$("#error_msg_email").css("color","red");
-			$("#error_msg_email").html("Email is required!");
-			error_flag = 1;
-		} else {
-			emailCheck ();
-			// error_flag = errorFlagEmail;
-		}
+// 		// validation for the email
+// 		if (email == "") {
+// 			$("#error_msg_email").css("color","red");
+// 			$("#error_msg_email").html("Email is required!");
+// 			error_flag = 1;
+// 		} else {
+// 			emailCheck ();
+// 			// error_flag = errorFlagEmail;
+// 		}
 
 		
-		// validation for the password
-		if (password == "" ) {
-			$("#error_password").css("color","red");
-			$("#error_password").html("Password is required!");
-			error_flag = 1;
-		} else {
-			$("#error_password").html("");
-		}
+// 		// validation for the password
+// 		if (password == "" ) {
+// 			$("#error_password").css("color","red");
+// 			$("#error_password").html("Password is required!");
+// 			error_flag = 1;
+// 		} else {
+// 			$("#error_password").html("");
+// 		}
 
-		// validation for the cpassword
-		if ((password != cpassword) || (cpassword == "")) {
-			$("#error_cpassword").css("color","red");
-			$("#error_cpassword").html("Password and Confirm Password do not match!");
-			error_flag = 1;
-		} else {
-			$("#error_cpassword").html("");
-		}
+// 		// validation for the cpassword
+// 		if ((password != cpassword) || (cpassword == "")) {
+// 			$("#error_cpassword").css("color","red");
+// 			$("#error_cpassword").html("Password and Confirm Password do not match!");
+// 			error_flag = 1;
+// 		} else {
+// 			$("#error_cpassword").html("");
+// 		}
 
-		// validation for the mobile
-		if (mobile == "") {
-			$("#error_mobile").css("color","red");
-			$("#error_mobile").html("Mobile is required!");
-			error_flag = 1;
-		} else {
-			$("#error_mobile").html("");
-		}
+// 		// validation for the mobile
+// 		if (mobile == "") {
+// 			$("#error_mobile").css("color","red");
+// 			$("#error_mobile").html("Mobile is required!");
+// 			error_flag = 1;
+// 		} else {
+// 			$("#error_mobile").html("");
+// 		}
 
-		// validation for the address
-		if (address == "") {
-			$("#error_address").css("color","red");
-			$("#error_address").html("Address is required!");
-			error_flag = 1;
-		} else {
-			$("#error_address").html("");
-		}
+// 		// validation for the address
+// 		if (address == "") {
+// 			$("#error_address").css("color","red");
+// 			$("#error_address").html("Address is required!");
+// 			error_flag = 1;
+// 		} else {
+// 			$("#error_address").html("");
+// 		}
 
-		if(error_flag == 0){
-		// then we can submit the form			
-			$("#form_register").submit();				
-		}
-	});
+// 		if(error_flag == 0){
+// 		// then we can submit the form			
+// 			$("#form_register").submit();				
+// 		}
+// 	});
 
 
 // =================================== LOGIN =================================== //
 
 //stretch goal: on keypress ENTER
 $("#btnLogin").click(()=>{
-		$("#error_message").html("");
+		$("#error_login").html("");
 		let loginEmail = $("#loginEmail").val();
 		let loginPassword = $("#loginPassword").val();
 
@@ -333,38 +335,48 @@ $("#btnLogin").click(()=>{
 
 		// validation for the email
 		if (loginEmail == "") {
-			$("#loginEmail").next().css("color","red");
-			$("#loginEmail").next().html("This field is required");
+			$("#error_loginEmail").css("color","red");
+			$("#error_loginEmail").html("This field is required");
 			error_flag2 = 1;
 		} else {
-			$("#loginEmail").next().html("");
+			$("#error_loginEmail").html("");
 		}
 
 		// validation for the password
 		if (loginPassword == "") {
-			$("#loginPassword").next().css("color","red");
-			$("#loginPassword").next().html("This field is required");
+			$("#error_loginPassword").css("color","red");
+			$("#error_loginPassword").html("This field is required");
 			error_flag2 = 1;
 		} else {
-			$("#loginPassword").next().html("");
+			$("#error_loginPassword").html("");
 		}
 
 		if(error_flag2 == 0){
 			// then we can submit the form
-			$.ajax({
-				"url" : "../controllers/process_login.php",
-				"data" : {"loginEmail" : loginEmail,    
-						"loginPassword" : loginPassword},
-				"type" : "POST",
-				"success" : (data) => {						
-					if(data == "Invalid") {	
-						$("#error_message").css("color", "red");
-						$("#error_message").html("Invalid email/password");
-					}else{					
-						$("#form_login").submit();									
-					}
+			$.post("../controllers/process_login.php", {loginEmail:loginEmail, loginPassword:loginPassword}, function(data){
+				if(data) {	
+					$("#error_login").css({"color":"rgb(185, 74, 72)"});
+					$("#error_login").html(data);
+				}else{					
+					$("#form_login").submit();	
 				}
-			});
+
+			 });
+
+			// $.ajax({
+			// 	"url" : "../controllers/process_login.php",
+			// 	"data" : {"loginEmail" : loginEmail,    
+			// 			"loginPassword" : loginPassword},
+			// 	"type" : "POST",
+			// 	"success" : (data) => {						
+			// 		if(data == "Invalid") {	
+			// 			$("#error_login").css("color", "red");
+			// 			$("#error_login").html("Invalid email/password");
+			// 		}else{					
+			// 			$("#form_login").submit();									
+			// 		}
+			// 	}
+			// });
 		}
 	});
 

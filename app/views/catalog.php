@@ -24,7 +24,7 @@
 	</div>
 
 	<div class="row mt-2">
-		<div class="col-lg-3">	
+		<div class="col-lg-2 mb-4">	
 			<h4>Categories</h4>
 			<div class="list-group">
 				
@@ -60,7 +60,7 @@
 		</div>
 		<!-- /.col-lg-3 -->
 		
-		<div class="col-lg-9">
+		<div class="col-lg-10">
 			<div class="row" id="products">
 				<?php include '../controllers/show_catalog.php'; ?>
 			</div>

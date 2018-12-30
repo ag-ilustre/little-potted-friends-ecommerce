@@ -8,42 +8,36 @@
         		<!-- in the meantime, use "required" in input filed -->
         		<div class="form-group">
                     <label>First Name</label>
-                    <input type="text" class="form-control mb-1" name="firstname" id="firstname">
-                    <p id="error_firstname"> </p>
+                    <input type="text" class="form-control mb-1" name="firstname" id="firstname" data-validation="length required" data-validation-length="min2">
                 </div>
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" class="form-control mb-1" name="lastname" id="lastname">
-                    <p id="error_lastname"> </p>
+                    <input type="text" class="form-control mb-1" name="lastname" id="lastname" data-validation="length required" data-validation-length="min2">
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control mb-1" name="email" id="email" onkeyup="emailCheck()">
-                    <p id="error_msg_email"> </p>
+                    <input type="text" class="form-control mb-1" name="email" id="email" onkeyup="emailCheck()" data-validation="email required">        
+                    <span id="error_msg_email">      
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control mb-1" name="password" id="password">
-                    <p id="error_password"> </p>
+                    <label>Password (at least 8 characters)</label>
+                    <input type="password" class="form-control mb-1" name="password_confirmation" id="password" data-validation="length required" data-validation-length="min8">
                 </div>
                  <div class="form-group">
                     <label>Confirm Password</label>
-                    <input type="password" class="form-control mb-1" name="cpassword" id="cpassword">
-                    <p id="error_cpassword"> </p>
+                    <input type="password" class="form-control mb-1" name="password" id="cpassword" data-validation="confirmation">
                 </div>
                 <div class="form-group">
                     <label>Mobile No.</label>
-                    <input type="number" class="form-control mb-1" name="mobile" id="mobile">
-                    <p id="error_mobile"> </p>
+                    <input type="number" class="form-control mb-1" name="mobile" id="mobile" data-validation="length required" data-validation-length="min11">
                 </div>
         		<div class="form-group">
                     <label>Address</label>
-                    <input type="text" class="form-control mb-1" name="address" id="address">
-                    <p id="error_address"> </p>
+                    <input type="text" class="form-control mb-1" name="address" id="address" data-validation="length required" data-validation-length="min20">
                 </div>
                 <div class="text-center mt-2">
 
-                <div id="displayBtnRegister"><button class='btn btn-info btn-block' type='button' id='btnRegister'>SUBMIT</button></div>
+                <button class='btn btn-info btn-block' type='submit' id='btnRegister' disabled>SUBMIT</button>
 
                 </div>
         	</form>
@@ -58,3 +52,12 @@
 
 <!-- footer -->
 <?php require '../partials/footer.php'; ?>
+
+<script>
+    $.validate({
+        lang: 'en',
+        form: 'form_register',
+        modules: 'security'
+    });
+
+</script>

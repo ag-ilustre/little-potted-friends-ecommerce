@@ -1,5 +1,6 @@
 <?php require '../partials/header.php'; ?>
 
+
 	<div class="container">
     <div class="row">
         <!-- <div class="col-lg-3"></div>
@@ -27,23 +28,25 @@
               <div class="form-group">
                 <label for="loginEmail">Email</label>
                 <input type="email" class="form-control" id="loginEmail">
-                <p class="validation"></p>            
+                <p id="error_loginEmail"></p>            
               </div>
               <div class="form-group">
-                <label for="loginPassword">Password <small><a href="#" id="forgotPassword">(Forgot Password?)</a></small></label>
-                <input type="password" class="form-control" id="loginPassword">    
-                <p class="validation"></p>          
+                <label for="loginPassword">Password</label>
+                <input type="text" class="form-control" id="loginPassword">    
+                <p id="error_loginPassword"></p>          
               </div>
-
-              <p id="error_message"></p>
+             
 
       				<div class="text-center">
-                <button id="btnLogin" class="btn btn-info btnWider" type="button">SUBMIT</button>
+                <p id="error_login"></p>
+                <button id="btnLogin" class="btn btn-info btnWider mr-2" type="button">LOGIN</button>
         				<input class="btn btn-dark btnWider" type="reset" value="CLEAR">
               </div>
         		</form>
-      		</div>
+          </div>
         </div>
+        <p class="text-center mt-1"><a href="#" id="forgotPassword">Forgot Password?</a></p>
+
     	</div>
     </div>
   </div>
@@ -66,3 +69,12 @@
 	</div> -->
 
 <?php require '../partials/footer.php'; ?>
+
+
+<!-- <script>
+    $.validate({
+        lang: 'en',
+        modules: 'security'
+    });
+
+</script> -->

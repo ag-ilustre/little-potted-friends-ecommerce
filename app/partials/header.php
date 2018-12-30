@@ -3,12 +3,20 @@
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <!-- required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <title>Little Potted Friends</title>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- jquery form validator css -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -19,11 +27,10 @@
     <!-- favicon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
 
-    <!-- external stylesheet -->
+    <!-- external css -->
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 
-    <title>Little Potted Friends</title>
-
+    <!-- jquery -->
     <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1.min.js"></script>
   </head>
   <body>
@@ -64,16 +71,33 @@
             <!-- LOGIN / LOGOUT -->
            <?php 
               if(isset($_SESSION['email'])){ 
-                echo "<li class='nav-item dropdown'>
-                      <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Hello, ".STRTOUPPER($_SESSION['firstname'])."<span class='sr-only'>(current)</span></a>
-                      <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                        <a class='dropdown-item' href='profile.php'><i class='far fa-user'></i>   Your Profile</a>
-                        <a class='dropdown-item' href='orders.php'><i class='fas fa-list-ul'></i>   Your Orders</a>
-                        <div class='dropdown-divider'></div>
-                        <a class='dropdown-item' href='../controllers/process_logout.php'><i class='fas fa-sign-out-alt'></i>   LOGOUT</a>
-                      </div>
-                    </li>
-                      ";
+                // for ADMIN dropdown-menu
+                if ($_SESSION['email'] === "csp2ecommerce@gmail.com") {
+                  echo "<li class='nav-item dropdown'>
+                        <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Hello, ".STRTOUPPER($_SESSION['firstname'])."<span class='sr-only'>(current)</span></a>
+                        <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                          <a class='dropdown-item' href='profile.php'><i class='far fa-user'></i>   Profile </a>
+                          <a class='dropdown-item' href='manageUsers.php'><i class='fas fa-list-ul'></i>   Manage Users</a>
+                          <a class='dropdown-item' href='manageProducts.php'><i class='fas fa-list-ul'></i>   Manage Products</a>
+                          <a class='dropdown-item' href='orderHistory.php'><i class='fas fa-list-ul'></i>   Order History</a>
+                          <div class='dropdown-divider'></div>
+                          <a class='dropdown-item' href='../controllers/process_logout.php'><i class='fas fa-sign-out-alt'></i>   LOGOUT</a>
+                        </div>
+                      </li>
+                        ";
+                } else {      
+                 // for CUSTOMER dropdown-menu            
+                  echo "<li class='nav-item dropdown'>
+                        <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Hello, ".STRTOUPPER($_SESSION['firstname'])."<span class='sr-only'>(current)</span></a>
+                        <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                          <a class='dropdown-item' href='profile.php'><i class='far fa-user'></i>   Your Profile</a>
+                          <a class='dropdown-item' href='orders.php'><i class='fas fa-list-ul'></i>   Your Orders</a>
+                          <div class='dropdown-divider'></div>
+                          <a class='dropdown-item' href='../controllers/process_logout.php'><i class='fas fa-sign-out-alt'></i>   LOGOUT</a>
+                        </div>
+                      </li>
+                        ";
+                }
               } else {
                 echo "<a class='nav-link' href='login.php'>LOGIN <span class='sr-only'>(current)</span></a>
                       </li>          
