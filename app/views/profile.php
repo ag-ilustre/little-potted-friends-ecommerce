@@ -1,5 +1,17 @@
 <?php require_once '../partials/header.php'; ?>
 
+<?php                        
+    if(!isset($_SESSION['email'])){ 
+      header("Location: login.php");
+    }
+
+    // else {
+    // 	$id = $_SESSION["id"];
+    // 	$sql = "SELECT * FROM tbl_users WHERE id = '$id'";
+    // 	$result =mysqli_query($conn, $sql);
+    // }
+?>
+
 <div class="container">
 	<div class="row">
 		<div class="col-lg-2"></div>
@@ -40,7 +52,7 @@
 				<div class="row p-1">
 					<div class="col-lg-12 text-center">
 						<button class="btn btn-info px-1 m-1 btnWider profileBtns" data-toggle="modal" data-target="#editProfileModal">EDIT PROFILE</button>
-						<button class="btn btn-secondary px-1 m-1 btnWider profileBtns" data-toggle="modal" data-target="#deleteAcctModal">DELETE</button>
+						<button class="btn btn-secondary px-1 m-1 btnWider profileBtns" data-toggle="modal" data-target="#deactivateAcctModal">DELETE</button>
 					</div>
 				</div>
 				
@@ -80,7 +92,7 @@
 						</div>
 						<div class="col-4">
 							<label for="editPhone">Mobile Number:</label>
-							<input id="editPhone" type="number" name="editPhone1" class="form-control bg-light text-dark" value='<?= $_SESSION["mobile"]; ?>'/>
+							<input id="editPhone" type="number" name="editPhone1" class="form-control bg-light text-dark" value='<?= $_SESSION["mobile"]; ?>'>
 						</div>
 					</div>
 				</div>
@@ -98,7 +110,7 @@
 </div> <!-- end of modal -->
 
 <!-- DEACTIVATE PROFILE MODAL -->
-<div class="modal fade" id="deleteAcctModal" tabindex="-1" role="dialog" aria-labelledby="deleteAcctModalTitle" aria-hidden="true">
+<div class="modal fade" id="deactivateAcctModal" tabindex="-1" role="dialog" aria-labelledby="deactivateAcctModalTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 	    <div class="modal-content bg-light">
 	      	<div class="modal-body">
@@ -107,15 +119,15 @@
 			      		<i class="fas fa-exclamation-triangle fa-7x text-warning"></i>
 	      			</div>
 	      			<div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-4" style="line-height: 500px;">
-			      		<h5 class="text-dark">Are you sure you want to delete your account?</h5>
-			      		<h5 class="text-dark">You will no longer be able to log in once your account has been deleted.</h5>
+			      		<h5 class="text-dark">Are you sure you want to deactivate your account?</h5>
+			      		<h5 class="text-dark">You will no longer be able to log in once your account has been deactivated.</h5>
 	      			</div>
 	      			
 	      		</div>
 	      		<div class="row">
 	      			<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-	      				<button type="button" name="yesDelete" class="btn btn-warning btnWider mr-2" onclick="deleteAcct(<?= $_SESSION["id"]; ?>)">YES</button>
-      					<button type="button" name="noDelete" class="btn btn-info btnWider" data-dismiss="modal">NO</button>
+	      				<button type="button" name="yesDeactivate" class="btn btn-warning btnWider mr-2" onclick="deactivateAcct(<?= $_SESSION["id"]; ?>)">YES</button>
+      					<button type="button" name="noDeactivate" class="btn btn-info btnWider" data-dismiss="modal">NO</button>
 	      			</div>
 	      		</div>
 	      	</div> <!-- end of modal-body -->

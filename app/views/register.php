@@ -56,7 +56,7 @@
 <script>
     $.validate({
         lang: 'en',
-        form: 'form_register',
+        form: '#form_register',
         modules: 'security'
     });
 

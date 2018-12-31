@@ -7,12 +7,11 @@
 	// Get vaues fromt the login form
 	$loginEmail = $_POST['loginEmail'];
 	$loginPassword = sha1($_POST['loginPassword']);
-	$data = "";
 
 	$sql = "SELECT * FROM tbl_users WHERE email = '$loginEmail' AND password = '$loginPassword'";
 	$result = mysqli_query($conn, $sql);
 
-	if (mysqli_num_rows($result) > 0) {
+	if (mysqli_num_rows($result) == 1) {
 		while ($row = mysqli_fetch_assoc($result)) {
 			// echo $row['lastname'];
 			// echo "<br>";
@@ -25,9 +24,6 @@
 			$_SESSION["id"] = $row['id'];
 		}
 	} else {
-		echo "Invalid email/password";
+		echo "Invalid";
 	}
-
 ?>
-
-<!-- header("Location: ../views/catalog.php");	 -->

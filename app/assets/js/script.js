@@ -324,18 +324,17 @@ function emailCheck() {
 
 //stretch goal: on keypress ENTER
 $("#btnLogin").click(()=>{
-		$("#error_login").html("");
 		let loginEmail = $("#loginEmail").val();
 		let loginPassword = $("#loginPassword").val();
 
 		let error_flag2 = 0; //if any error is detected, the form should not be submitted
 
 		// to debug
-		// alert(email + " " + password);
+		// alert(loginEmail + " " + loginPassword);
 
 		// validation for the email
 		if (loginEmail == "") {
-			$("#error_loginEmail").css("color","red");
+			$("#error_loginEmail").css("color","rgb(185, 74, 72)");
 			$("#error_loginEmail").html("This field is required");
 			error_flag2 = 1;
 		} else {
@@ -344,48 +343,43 @@ $("#btnLogin").click(()=>{
 
 		// validation for the password
 		if (loginPassword == "") {
-			$("#error_loginPassword").css("color","red");
+			$("#error_loginPassword").css("color","rgb(185, 74, 72)");
 			$("#error_loginPassword").html("This field is required");
 			error_flag2 = 1;
 		} else {
 			$("#error_loginPassword").html("");
 		}
 
-		if(error_flag2 == 0){
-			// then we can submit the form
-			$.post("../controllers/process_login.php", {loginEmail:loginEmail, loginPassword:loginPassword}, function(data){
-				if(data) {	
-					$("#error_login").css({"color":"rgb(185, 74, 72)"});
-					$("#error_login").html(data);
-				}else{					
-					$("#form_login").submit();	
+		if (error_flag2 == 0) {
+
+			$.ajax({
+				"url" : "../controllers/process_login.php",
+				"data" : {"loginEmail" : loginEmail,    
+						"loginPassword" : loginPassword},
+				"type" : "POST",
+				"success" : (data) => {						
+						if (data == "Invalid") {
+							$("#error_message").html("");
+							$("#error_message").css("color","red");
+							$("#error_message").html("Invalid email/password");		
+							// setTimeout("location.reload(true);",1500);										
+						} else {
+							$("#error_message").html("");
+							$("#form_login").submit();								
+							// $("#loginPassword").html("");
+						}
 				}
-
-			 });
-
-			// $.ajax({
-			// 	"url" : "../controllers/process_login.php",
-			// 	"data" : {"loginEmail" : loginEmail,    
-			// 			"loginPassword" : loginPassword},
-			// 	"type" : "POST",
-			// 	"success" : (data) => {						
-			// 		if(data == "Invalid") {	
-			// 			$("#error_login").css("color", "red");
-			// 			$("#error_login").html("Invalid email/password");
-			// 		}else{					
-			// 			$("#form_login").submit();									
-			// 		}
-			// 	}
-			// });
+			});
 		}
 	});
 
 
 
 
-// =================================== CART =================================== //
 
+// =================================== CART =================================== //
 $(document).ready(function(){
+
 	loadCart();
 });
 
@@ -419,6 +413,110 @@ $("#btnPlaceOrder").click(()=>{
 		}
 
 });
+
+// =================================== EDIT PROFILE =================================== //
+function editProfile(id) {
+	// let userId = $(this).val();
+	
+	let editFirstName = $("#editFirstName").val();
+	let editLastName = $("#editLastName").val();
+	let editEmail = $("#editEmail").val();
+	let editMobile = $("#editMobile").val();
+	let editAddress = $("#editAddress").val();
+
+	let error_flag = 0; //if any error is detected, the form should not be submitted
+
+	// validation for the firstname
+	if (editFirstName == "") {
+		$("#error_editFirstName").css("color","red");
+		$("#error_editFirstName").html("First Name is required!");
+		error_flag = 1;
+	} else {
+		$("#error_editFirstName").html("");
+	}
+
+	// validation for the lastname
+	if (editLastName == "") {
+		$("#error_editLastName").css("color","red");
+		$("#error_editLastName").html("Last Name is required!");
+		error_flag = 1;
+	} else {
+		$("#error_editLastName").html("");
+	}
+
+	// validation for the email
+	if (editEmail == "") {
+		$("#error_editEmail").css("color","red");
+		$("#error_editEmail").html("Email is required!");
+		error_flag = 1;
+	} else {
+		// emailCheckSame();
+		// error_flag = errorFlagEmail;
+		$("#error_editEmail").html("");
+	}
+
+
+	// validation for the mobile
+	if (editMobile == "") {
+		$("#error_mobile").css("color","red");
+		$("#error_mobile").html("Mobile is required!");
+		error_flag = 1;
+	} else {
+		$("#error_mobile").html("");
+	}
+
+	// validation for the address
+	if (editAddress == "") {
+		$("#error_address").css("color","red");
+		$("#error_address").html("Address is required!");
+		error_flag = 1;
+	} else {
+		$("#error_address").html("");
+	}
+
+	if(error_flag == 0){
+		$("#profileAlertMsg").html("");
+	// then we can submit the form			
+		$.ajax({
+			"url" : "../controllers/edit_profile.php",
+			"data" : {"userId" : id,    
+					"editFirstName" : editFirstName,
+					"editLastName" : editLastName, 
+					"editEmail" : editEmail, 
+					"editMobile" : editMobile, 
+					"editAddress" : editAddress},
+			"type" : "POST",
+			"success" : (data) => {						
+				if(data) {	
+					$("#profileAlertMsg").html("Updates saved!");
+					setTimeout(function(){
+						$('#profileAlertMsg').fadeOut("slow");
+					}, 600);
+					setTimeout(function(){
+						location.reload();
+					}, 1300);
+					window.location.reload(true);
+				}
+			}
+		});
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function pageRedirect() {
 //     window.location.href("confirmation.php");

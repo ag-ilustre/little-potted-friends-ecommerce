@@ -4,8 +4,7 @@
 
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
-	$email = ($_POST['email']);
-	// $password = sha1($_POST['password']);
+	$email = $_POST['email'];
 	$password = sha1($_POST['password']);
 	$mobile = $_POST['mobile'];
 	$address = $_POST['address'];

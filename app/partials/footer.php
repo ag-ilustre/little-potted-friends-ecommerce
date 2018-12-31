@@ -7,6 +7,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
     <script type="text/javascript" src="../assets/js/script.js"></script>
 
     <!-- data tables -->
