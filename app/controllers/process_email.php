@@ -5,6 +5,7 @@
 	$email = $_POST['email'];
 
 	$data = "";
+	$status = "";
 
 	// Remove all illegal characters from email
 	// $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -16,9 +17,19 @@
 
 	$result = mysqli_query($conn, $sql);
 
-	if(mysqli_num_rows($result) == 0){
+	if (mysqli_num_rows($result) == 0) {
 		$data = "Success";
-	} 
+	} else if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)) {
+			$status = $row['status'];
+
+			//check to reuse deactivated email
+			if ($status == "Inactive") {
+				$data = "Success";
+			}
+		}
+	}
+
 	echo $data;
 	
 	// $data = "";

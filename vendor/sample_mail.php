@@ -39,6 +39,8 @@ $email_body = "<p>Dear <strong>" . $_SESSION["firstname"] . "</strong>,<br>
 
 
 
+
+
 try{
 	$mail->isSMTP();
 	$mail->Host = "smtp.gmail.com";

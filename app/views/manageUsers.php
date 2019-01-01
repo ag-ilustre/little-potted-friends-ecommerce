@@ -24,7 +24,7 @@
     
     		<h4 class="text-center p-2">MANAGE USERS</h4>
     		
-    			<table  id="tableManageUsers" class="display">
+    			<table  id="tableManageUsers" class="table table-hover">
                     <thead>
                         <tr>
                             <th>ID </th>
@@ -32,9 +32,10 @@
                             <th>Email </th>
                             <th>Mobile </th>
                             <th>Address </th>
+                            <th>Status </th>
                             <th>Access </th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Action</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -45,14 +46,12 @@
                             <td><?= $row['email'] ?></td>
                             <td><?= $row['mobile'] ?></td>
                             <td><?= $row['address'] ?></td>
+                            <td><?= $row['status'] ?></td>
                             <td><?= $row['access'] ?></td>
                             <td>
-                                <a href="editUser.php?id=<?= $row['id'] ?>">Edit</a>
+                                <a href="editUser.php?id=<?= $row['id'] ?>" class="btn btn-info"><i class="far fa-edit"></i></a>
                             </td>
-                            <td>
-                                <a href="deleteUser.php?id=<?= $row['id'] ?>" onclick="return confirm('Delete?')">Delete</a> 
-                                <!-- confirm will alert if we want to delete -->
-                            </td>
+                            
                         </tr>
                     <?php } ?>
                     </tbody>

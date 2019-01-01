@@ -9,13 +9,13 @@ function showCategories(categoryId){
 	$('#catalog-category-selected').html("");
 	switch(categoryId) {
 	  case 1:
-	    $('#catalog-category-selected').html("Sassy Singles");		
+	    $('#catalog-category-selected').html("Single Pots");		
 	    break;
 	  case 2:
-	    $('#catalog-category-selected').html("Stylish Sets");		
+	    $('#catalog-category-selected').html("Sets in Style");		
 	    break;
 	  case 3:
-	    $('#catalog-category-selected').html("Super Supplies");		
+	    $('#catalog-category-selected').html("Care Supplies");		
 	}
 	// alert(categoryId);
 	$.ajax({
@@ -435,6 +435,22 @@ $("#btnPlaceOrder").click(()=>{
 });
 
 // =================================== EDIT PROFILE =================================== //
+function deactivateAcct(id) {
+	$.post("../controllers/deactivate_account.php", 
+				{"deactivateId" : id},
+				function(data){
+					if(data == 1){
+						// alert("DEACTIVATED!");
+						$("#profileAlertMsg").html("Goodbye <i class='far fa-frown fa-lg'></i>");
+						$("#profileAlertMsg").fadeOut(1000, function() {
+						    // Animation complete.
+						    document.location = 'catalog.php'; 
+						 });	
+					} 
+
+	});
+}
+
 function editProfile(id) {
 	
 	let editFirstName = $("#editFirstName").val();
@@ -558,6 +574,13 @@ $("#btnEditUserAccess").click(()=>{
 	}
 });
 
+function updateStatus(transactionCode, statusName) {
+	$("#updateStatusMessage").html("Current status of " + transactionCode + " is <strong>" + statusName + "</strong>");
+}
+
+function viewOrder(transactionCode) {
+	$("#showTransactionCode").html(transactionCode);
+}
 
 
 

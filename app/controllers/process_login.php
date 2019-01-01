@@ -9,7 +9,7 @@
 	$loginPassword = sha1($_POST['loginPassword']);
 	$data = "";
 
-	$sql = "SELECT * FROM tbl_users WHERE email = '$loginEmail' AND password = '$loginPassword'";
+	$sql = "SELECT * FROM tbl_users WHERE email = '$loginEmail' AND password = '$loginPassword' AND status = 'Active'";
 	$result = mysqli_query($conn, $sql);
 
 	if (mysqli_num_rows($result) == 1) {

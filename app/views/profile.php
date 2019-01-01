@@ -45,7 +45,7 @@
 				<div class="row p-1">
 					<div class="col-lg-12 text-center">
 						<button class="btn btn-info px-1 m-1 btnWider profileBtns" data-toggle="modal" data-target="#editProfileModal">EDIT PROFILE</button>
-						<button class="btn btn-secondary px-1 m-1 btnWider profileBtns" data-toggle="modal" data-target="#deactivateAcctModal">DELETE</button>
+						<button class="btn btn-secondary px-1 m-1 btnWider profileBtns" data-toggle="modal" data-target="#deactivateAcctModal">DEACTIVATE</button>
 					</div>
 				</div>
 				
@@ -59,7 +59,7 @@
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 	    <div class="modal-content bg-light">
 	      	<div class="modal-header">
-	        	<h5 class="modal-title text-dark text-center" id="editProfileModalTitle">EDIT PROFILE</h5>
+	        	<h5 class="modal-title" id="editProfileModalTitle">EDIT PROFILE</h5>
 	        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          		<span class="text-dark" aria-hidden="true">&times;</span>
 		        </button>
@@ -111,7 +111,7 @@
 	      			<div class="col-3 col-sm-3 col-md-3 col-lg-3 text-center py-4">
 			      		<i class="fas fa-exclamation-triangle fa-7x text-warning"></i>
 	      			</div>
-	      			<div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-4" style="line-height: 500px;">
+	      			<div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-4"">
 			      		<h5 class="text-dark">Are you sure you want to deactivate your account?</h5>
 			      		<h5 class="text-dark">You will no longer be able to log in once your account has been deactivated.</h5>
 	      			</div>
@@ -119,8 +119,8 @@
 	      		</div>
 	      		<div class="row">
 	      			<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-	      				<button type="button" name="yesDeactivate" class="btn btn-warning btnWider mr-2" onclick="deactivateAcct(<?= $_SESSION["id"]; ?>)">YES</button>
-      					<button type="button" name="noDeactivate" class="btn btn-info btnWider" data-dismiss="modal">NO</button>
+	      				<button type="button" class="btn btn-warning btnWider mr-2" onclick="deactivateAcct(<?= $_SESSION["id"]; ?>)" data-dismiss="modal">YES</button>
+      					<button type="button" class="btn btn-info btnWider" data-dismiss="modal">NO</button>
 	      			</div>
 	      		</div>
 	      	</div> <!-- end of modal-body -->
