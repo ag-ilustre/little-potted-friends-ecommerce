@@ -16,7 +16,7 @@ $purchaseDate = date("D, M j, Y, g:i:s");
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
 $staff_email = "csp2ecommerce@gmail.com"; //where the email is coming from
-$users_email = "csp2ecommerce@gmail.com"; //where the email will go -- TEST EMAIL!
+$users_email = $_SESSION["email"]; //where the email will go -- TEST EMAIL!
 // $users_email = $_SESSION["email"]; //where the email will go
 $email_subject = "Order Being Processed: ". $_SESSION["transaction_code"];
 $email_body = "<p>Dear <strong>" . $_SESSION["firstname"] . "</strong>,<br>

@@ -322,6 +322,7 @@ function emailCheck() {
 
 // =================================== LOGIN =================================== //
 
+
 //stretch goal: on keypress ENTER
 $("#btnLogin").click(()=>{
 		let loginEmail = $("#loginEmail").val();
@@ -350,27 +351,45 @@ $("#btnLogin").click(()=>{
 			$("#error_loginPassword").html("");
 		}
 
-		if (error_flag2 == 0) {
-
-			$.ajax({
-				"url" : "../controllers/process_login.php",
-				"data" : {"loginEmail" : loginEmail,    
-						"loginPassword" : loginPassword},
-				"type" : "POST",
-				"success" : (data) => {						
-						if (data == "Invalid") {
-							$("#error_message").html("");
-							$("#error_message").css("color","red");
-							$("#error_message").html("Invalid email/password");		
-							// setTimeout("location.reload(true);",1500);										
-						} else {
-							$("#error_message").html("");
-							$("#form_login").submit();								
-							// $("#loginPassword").html("");
-						}
+		if (error_flag2 == 0) { 
+			$.post("../controllers/process_login.php", {"loginEmail" : loginEmail, "loginPassword" : loginPassword}, function(data){
+				if(data == 1){					
+					document.location = 'catalog.php'; 
+					// alert("SUCCESS");
+					
+				} else {
+					// alert("Invalid Email/Password");
+					$("#errorLoginMsg").css("color","rgb(185, 74, 72)");
+					$("#errorLoginMsg").html("*Invalid email/password");	
 				}
+
 			});
+
+			// $.ajax({
+			// 	"type" : "POST",
+			// 	"url" : "../controllers/process_login.php",
+			// 	"data" : {"loginEmail" : loginEmail,    
+			// 			"loginPassword" : loginPassword},
+			// 	"dataType": "text",
+			// 	"success" : (data) => {						
+			// 			if (data == "Invalid") {
+								
+			// 				// $("#form_login").submit();	
+			// 				// $("#loginPassword").html("");
+			// 				// alert(data);
+			// 			} 
+
+			// 			// if (!data) {		
+			// 			// 	// document.location = 'login.php'; 							
+			// 			// 	// setTimeout("location.reload(true);",1500);		
+			// 			// 	alert(data);								
+			// 			// } 
+
+			// 	}
+			// });
 		}
+
+		$("#errorLoginMsg").html("");
 	});
 
 
@@ -381,6 +400,7 @@ $("#btnLogin").click(()=>{
 $(document).ready(function(){
 
 	loadCart();
+	 // $("#tableManageUsers").DataTable();
 });
 
 
@@ -416,7 +436,6 @@ $("#btnPlaceOrder").click(()=>{
 
 // =================================== EDIT PROFILE =================================== //
 function editProfile(id) {
-	// let userId = $(this).val();
 	
 	let editFirstName = $("#editFirstName").val();
 	let editLastName = $("#editLastName").val();
@@ -476,35 +495,68 @@ function editProfile(id) {
 
 	if(error_flag == 0){
 		$("#profileAlertMsg").html("");
-	// then we can submit the form			
-		$.ajax({
-			"url" : "../controllers/edit_profile.php",
-			"data" : {"userId" : id,    
+	// then we can submit the form		
+
+		$.post("../controllers/edit_profile.php", 
+					{"userId" : id,    
 					"editFirstName" : editFirstName,
 					"editLastName" : editLastName, 
 					"editEmail" : editEmail, 
 					"editMobile" : editMobile, 
 					"editAddress" : editAddress},
-			"type" : "POST",
-			"success" : (data) => {						
-				if(data) {	
-					$("#profileAlertMsg").html("Updates saved!");
-					setTimeout(function(){
-						$('#profileAlertMsg').fadeOut("slow");
-					}, 600);
-					setTimeout(function(){
-						location.reload();
-					}, 1300);
-					window.location.reload(true);
-				}
-			}
+					function(data){
+						if(data == 1){
+							// alert("Updates saved!");
+							$("#profileAlertMsg").html("<i class='far fa-check-square fa-lg'></i> Updates saved!");
+							$("#profileAlertMsg").fadeOut(1000, function() {
+							    // Animation complete.
+							    document.location = 'profile.php'; 
+							 });	
+						} 
+
 		});
 	}
 }
 
+$("#btnEditUserAccess").click(()=>{
+	let editUserId = $("#editUserId").val();
+	let editUserAccess = $("#editUserAccess").val();
+	// alert(editUserId + editUserAccess);
 
+	let error_flag4 = 0; 
 
+	if (editUserAccess == "ADMIN" || editUserAccess == "NONE") {
+		$("#error_editUserAccess").html("");
+		error_flag4 = 0;
+	} else if (editUserAccess == "") {
+		$("#error_editUserAccess").css("color","rgb(185, 74, 72)");
+		$("#error_editUserAccess").html("This field cannot be empty");
+		error_flag4 = 1;
+	} else {
+		$("#error_editUserAccess").css("color","rgb(185, 74, 72)");
+		$("#error_editUserAccess").html("Please enter a valid input");
+		error_flag4 = 1;
+	}
 
+	if(error_flag4 == 0){
+		$("#editUserAlertMsg").html("");
+	// then we can submit the form		
+		// alert("NO ERROR");
+		$.post("../controllers/change_access.php",
+				{"editUserId" : editUserId,
+				"editUserAccess" : editUserAccess},
+				function(data){
+					if(data == 1){
+						// alert("Updates saved!");
+						$("#editUserAlertMsg").html("<i class='far fa-check-square fa-lg'></i> Updates saved!");
+						$("#editUserAlertMsg").fadeOut(1000, function() {
+						    // Animation complete.
+						    document.location = 'manageUsers.php'; 
+						 });	
+					} 
+		});
+	}
+});
 
 
 

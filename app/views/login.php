@@ -5,10 +5,13 @@
     <div class="row">
       <div class="col-lg-3"></div>
       <div class="col-lg-6">
+
+
         <h3 class="text-center mb-4">Please log in for a better shopping experience</h3>        
+        <p class="text-center" id="errorLoginMsg"></p>
           <div class="card">          
             <div class="card-body">   
-              <form action="catalog.php" method="post" id="form_login"> 
+              <form action="" method="post"> 
                   <div class="form-group">
                     <label for="loginEmail">Email</label>
                     <input type="text" class="form-control" id="loginEmail">
@@ -20,7 +23,7 @@
                     <p id="error_loginPassword"></p>          
                   </div>    
 
-                  <p id="error_message"></p>
+                 
 
                   <div class="text-center">
                     <button id="btnLogin" class="btn btn-info btnWider mr-2" type="button">LOGIN</button>

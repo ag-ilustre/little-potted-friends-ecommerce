@@ -4,12 +4,6 @@
     if(!isset($_SESSION['email'])){ 
       header("Location: login.php");
     }
-
-    // else {
-    // 	$id = $_SESSION["id"];
-    // 	$sql = "SELECT * FROM tbl_users WHERE id = '$id'";
-    // 	$result =mysqli_query($conn, $sql);
-    // }
 ?>
 
 <div class="container">
@@ -17,10 +11,10 @@
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8 col-md-12 col-sm-12">
 			<section id="profileSection">
-				<div id="profileAlertMsg"></div>
+				<div class="text-center"><h2 id="profileAlertMsg"></h2></div>
 				
 				<!-- avatar | name | buttons -->
-				<div class="row p-1">
+				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 text-center m-0">
 						<img src="../assets/images/favicon.png" class="img-fluid profilePicAndName" id="profileAvatar">
 						<p class="display-4 my-2 profilePicAndName"><?= $_SESSION["firstname"]." ".$_SESSION["lastname"]; ?></p>
@@ -29,19 +23,18 @@
 				</div>
 				<hr>
 				<!-- info table -->
-				<div class="row p-1">
+				<div class="row p-1 mx-auto">
 					<div class="col-lg-12 col-md-12 col-sm-12">
 						<table class="table table-borderless">
 							<tr>
-								<td scope="row">Email</td>
+								<th scope="row">Email</th>
 								<td><?= $_SESSION["email"]; ?></td>
 							</tr>
 							<tr>
-								<td scope="row">Mobile Number</td>
+								<th scope="row">Mobile Number</th>
 								<td><?= $_SESSION["mobile"]; ?></td> 
-								<!-- ECHO MOBILE NUMBER -->
 							<tr>
-								<td scope="row">Delivery Address</td>
+								<th scope="row">Delivery Address</th>
 								<td><?= $_SESSION["address"]; ?></td>
 							</tr>
 							</tr>
@@ -91,8 +84,8 @@
 							<input id="editEmail" type="email" name="editEmail1" class="form-control bg-light text-dark" value='<?= $_SESSION["email"]; ?>'/>
 						</div>
 						<div class="col-4">
-							<label for="editPhone">Mobile Number:</label>
-							<input id="editPhone" type="number" name="editPhone1" class="form-control bg-light text-dark" value='<?= $_SESSION["mobile"]; ?>'>
+							<label for="editMobile">Mobile Number:</label>
+							<input id="editMobile" type="number" name="editMobile1" class="form-control bg-light text-dark" value='<?= $_SESSION["mobile"]; ?>'>
 						</div>
 					</div>
 				</div>
@@ -101,7 +94,7 @@
 					<input id="editAddress" type="text" name="editAddress1" class="form-control bg-light text-dark" value='<?= $_SESSION["address"]; ?>'>
 				</div>
 				<div class="text-center mt-3">
-					<button id="btnEditProfile" type="submit" class="btn btn-info btnWider mr-2" onclick="editProfile(<?= $_SESSION["id"]; ?>)" data-dismiss="modal">SAVE</button>
+					<button type="submit" class="btn btn-info btnWider mr-2" onclick="editProfile(<?= $_SESSION["id"]; ?>)" data-dismiss="modal">SAVE</button>
 					<button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
 				</div>
 	      	</div> <!-- end of modal-body -->

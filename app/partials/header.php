@@ -12,11 +12,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+    <!-- datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+
     <!-- jquery form validator css -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- datatables -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
 
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -32,6 +32,10 @@
 
     <!-- jquery -->
     <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1.min.js"></script>
+
+    <!-- data tables -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light mb-4 sticky-top">
@@ -72,7 +76,8 @@
            <?php 
               if(isset($_SESSION['email'])){ 
                 // for ADMIN dropdown-menu
-                if ($_SESSION['email'] === "csp2ecommerce@gmail.com") {
+                if ($_SESSION['access'] === "ADMIN") {
+                // if ($_SESSION['email'] === "csp2ecommerce@gmail.com" AND $_SESSION['access'] === "ADMIN") { //for testing
                   echo "<li class='nav-item dropdown'>
                         <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Hello, ".STRTOUPPER($_SESSION['firstname'])."<span class='sr-only'>(current)</span></a>
                         <div class='dropdown-menu' aria-labelledby='navbarDropdown'>

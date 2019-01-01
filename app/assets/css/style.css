@@ -19,14 +19,17 @@ h1, h2, h3 {
 	color: #28aeb9; 
 }
 
-h4, label {
+h4 {
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #28aeb9; 
 	font-weight: 600;
 }
 
 h5, h6 {
-	font-weight: 500;
+	font-family: 'Source Sans Pro', sans-serif; 
+	color: #28aeb9; 
+	/*added font-family and color;verify if no bad hits*/
+	font-weight: 600;
 }
 
 .btn {
@@ -163,13 +166,13 @@ nav {
 	padding-top: 100px;
 }
 
-#profileAlertMsg {
+#profileAlertMsg, #editUserAlertMsg {
 	position: fixed; 
-	font-size: 1.2rem;
-	top: 10%; 
+	top: 20%; 
 	left: 50%; 
 	z-index: 999999; 
 	transform: translateX(-50%);
+	border-radius: 2px;
 }
 
 #profileAvatar {
@@ -181,4 +184,3 @@ nav {
 .profileBtns, .profilePicAndName {
 	display: inline-block;
 }
-

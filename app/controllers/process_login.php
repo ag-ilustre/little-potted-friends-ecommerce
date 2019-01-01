@@ -7,6 +7,7 @@
 	// Get vaues fromt the login form
 	$loginEmail = $_POST['loginEmail'];
 	$loginPassword = sha1($_POST['loginPassword']);
+	$data = "";
 
 	$sql = "SELECT * FROM tbl_users WHERE email = '$loginEmail' AND password = '$loginPassword'";
 	$result = mysqli_query($conn, $sql);
@@ -22,8 +23,13 @@
 			$_SESSION["mobile"] = $row['mobile'];
 			$_SESSION["address"] = $row['address'];
 			$_SESSION["id"] = $row['id'];
+			$_SESSION["access"] = $row['access'];
 		}
+
+		$data = 1;
 	} else {
-		echo "Invalid";
+		$data = 0;
 	}
+
+	echo $data;
 ?>
