@@ -41,6 +41,7 @@
     <nav class="navbar navbar-expand-lg navbar-light mb-4 sticky-top">
     <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 sticky-top"> -->
       <a class="navbar-brand px-5" href="index.php" id="storeName"><img src="../assets/images/company-name.png" id="companyLogo"></a>
+      <a href="#" class="scrollup"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

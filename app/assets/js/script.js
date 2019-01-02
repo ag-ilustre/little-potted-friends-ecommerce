@@ -1,4 +1,8 @@
-// =================================== VARIABLE DECLARATIONS =================================== //
+
+ 
+
+ 
+
 
 
 
@@ -67,7 +71,7 @@ function newAddToCart(id){
 	    success: function(data){
 	      $('a[href="cart.php"]').html(data);
 	    }
-	})
+	});
 }
 
 
@@ -100,21 +104,22 @@ function changeNoItems(id){
 	
 	$("#grandTotal").html(sum);
 
-
-	$.ajax({
-	  url: "../controllers/add_to_cart.php",
-	  method: "POST",
-	  data: 
-	    {
-	      productId: id,
-	      quantity: items
-	    },
-	  dataType: "text",
-	    success: function(data){
-	    	$('a[href="cart.php"]').html(data);
-				loadCart();
-	    }
-	});
+	
+		$.ajax({
+		  url: "../controllers/add_to_cart.php",
+		  method: "POST",
+		  data: 
+		    {
+		      productId: id,
+		      quantity: items
+		    },
+		  dataType: "text",
+		    success: function(data){
+		    	$('a[href="cart.php"]').html(data);
+					loadCart();
+		    }
+		});
+	
 
 }
 
@@ -398,6 +403,20 @@ $("#btnLogin").click(()=>{
 
 // =================================== CART =================================== //
 $(document).ready(function(){
+	//scroll to top
+	$(window).scroll(function(){
+	    if ($(this).scrollTop() > 20) {
+	        $('.scrollup').fadeIn();
+	    } else {
+	        $('.scrollup').fadeOut();
+	    }
+	}); 
+	
+	$('.scrollup').click(function(){
+	    $("html, body").animate({ scrollTop: 0 }, 600);
+	    return false;
+	});
+
 
 	loadCart();
 	 // $("#tableManageUsers").DataTable();

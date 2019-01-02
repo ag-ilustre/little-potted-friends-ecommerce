@@ -4,6 +4,11 @@
 <div class="container">
 			
 	<div class="row">
+		<div class="col-lg-12 text-center">
+			<h4 class="display-4">PRODUCT INFORMATION</h4><hr>
+		</div>
+	</div>
+	<div class="row">
 		<?php
 			//connect to the database
 			include '../controllers/connect.php';
@@ -16,17 +21,21 @@
 			$result = mysqli_query($conn, $sql);
 
 			while($row = mysqli_fetch_assoc($result)){
-			echo "<div class='col-lg-4 col-md-6 col-sm-6 mb-5'>
+			echo "<div class='col-lg-1'></div>
+			<div class='col-lg-4 col-md-6 mb-5 m-0 p-0'>
 			    <img src='$row[img_path]'>       	              
 			  </div>
 			    
-			  <div class='col-lg-8 col-md-6 col-sm-6 mb-5'>
-			    <h3>PRODUCT INFORMATION<h3><hr>
-			    <h4 class='card-title'>$row[name]</h4>
+			  <div class='col-lg-5 col-md-6 mb-5 m-0 p-0'>
+			    
+			    <h5>$row[name]</h5>
 		      <p>$row[description]</p>       
-			    <h5>&#8369 $row[price]</h5>			   
-		      <input type='number' class='mb-3' min='1' value='1' id='quantity$row[id]'>
-		      <button class='btn btn-dark' id='addToCart' data-id='$row[id]' onclick='newAddToCart($row[id])'><i class='fas fa-shopping-cart'></i>  Add to Cart</button>
+			    <h5>&#8369 $row[price]</h5>
+			  <div>
+				  <div>   
+				      <input type='number' class='text center btnWider mr-2 p-0' min='1' value='1' id='quantity$row[id]'>
+				      <button class='btn btn-info btnWider p-0' id='addToCart' data-id='$row[id]' onclick='newAddToCart($row[id])'><i class='fas fa-shopping-cart'></i>  ADD TO CART</button>
+			      </div>
 			  </div>";
 			 }
 		?>		

@@ -75,6 +75,15 @@
 <!-- footer -->
 <?php require '../partials/footer.php'; ?>
 
+<script>
+    $.validate({
+        lang: 'en',
+        form: '#form_register',
+        modules: 'security'
+    });
+
+</script>
+
 <!-- <script type="text/javascript">
 	function showCategories(categoryId){
 		// alert(categoryId);

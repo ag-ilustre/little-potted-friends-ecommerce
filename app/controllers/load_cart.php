@@ -39,12 +39,12 @@
                            $grand_total += $subTotal;
 
                             $_SESSION["total"] = $grand_total;
-
+                            //<input type="text" data-validation="number" data-validation-allowing="range[1;100]">
                            $data .=
                              "<tr>
                                  <td><img src='$row[img_path]' width='25%' height='25%'> $name</td>
                                  <td id='price$id'> $price</td>
-                                 <td><input type='number' class ='form-control' value ='$quantity' id='quantity$id'  min='1' onchange = changeNoItems($id)></td>
+                                 <td><input type='number' class='form-control' value='$quantity' id='quantity$id'  min='1' onchange='changeNoItems($id)'></td>
                                  <td class='sub-total' id='subTotal$id'>$subTotal</td>
                                  <td><button class='btn btn-danger' onclick='removeFromCart($id)'><i class='fas fa-trash-alt'></i></button></td>
                              </tr>";

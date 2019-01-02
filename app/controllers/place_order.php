@@ -17,6 +17,7 @@
 	$address = $_POST["deliveryAddress"];
 	$_SESSION["address"] = $address;
 	$email = $_SESSION["email"];
+	$total = $_SESSION["total"];
 
 //Update the address in USERS table using the email
 	$sql = "UPDATE tbl_users SET address = '$address' WHERE email = '$email'";
@@ -45,8 +46,8 @@
 
 	// echo $user_id ." ". $transaction_code ." ". $purchase_date ." ". $status_id ." ". $payment_mode_id . "<br>"; // to check
 
-	$sql1 = "INSERT INTO tbl_orders (transaction_code, purchase_date, user_id, status_id, payment_mode_id)
-				   VALUES ('$transaction_code', '$purchase_date', '$user_id', '$status_id', '$payment_mode_id')";
+	$sql1 = "INSERT INTO tbl_orders (transaction_code, purchase_date, user_id, status_id, payment_mode_id, total)
+				   VALUES ('$transaction_code', '$purchase_date', '$user_id', '$status_id', '$payment_mode_id', '$total')";
 	
 	if (mysqli_query($conn, $sql1)){
 		$_SESSION["order_id"] = mysqli_insert_id($conn);
