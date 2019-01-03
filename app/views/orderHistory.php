@@ -24,8 +24,6 @@
             "; 
 
     $result = mysqli_query($conn, $sql);
-
-
 ?>
 
 <div class="container">
@@ -40,7 +38,7 @@
                             <th>Customer Name</th>
                             <th>Reference Number</th>
                             <th>Order Date</th>
-                            <th>Total</th>
+                            <th>Total (&#8369;)</th>
                             <th>Payment Mode</th>
                             <th>Status</th>
                             <th>Action</th>                           
@@ -54,7 +52,7 @@
                             <td><?= $row['firstname']." ".$row['lastname'] ?></td>
                             <td><?= $row['transaction_code'] ?></td>
                             <td><?= $row['purchase_date'] ?></td>
-                            <td>&#8369 <?= $row['total'] ?></td>
+                            <td class="text-right"><?= number_format($row['total'], 2, '.', ','); ?></td> 
                             <td><?= $row['payment_mode'] ?></td>
                             <td><?= $row['status_name'] ?></td>
                             <td>

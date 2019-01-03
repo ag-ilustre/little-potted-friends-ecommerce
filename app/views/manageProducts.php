@@ -30,7 +30,7 @@
     		<h4 class="text-center p-2 mb-2">MANAGE PRODUCTS</h4>
 
           <!-- ADD AN ITEM -->
-          <button type="button" class="btn btn-info my-3" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['transaction_code'] ?>','<?= $row['status_name'] ?>')">ADD A NEW ITEM</button>
+          <button type="button" class="btn btn-info my-3" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['transaction_code'] ?>','<?= $row['status_name'] ?>')"><i class="fas fa-plus-circle fa-sm"></i>   NEW PRODUCT</button>
 
     			<table  id="tableManageProducts" class="table table-hover">
                     <thead>
@@ -38,7 +38,7 @@
                             <th width="5%">Product ID</th>
                             <th width="10%">Product Name</th>                            
                             <th width="20%">Image</th>
-                            <th width="10%">Price</th>
+                            <th width="10%">Price (&#8369;)</th>
                             <th width="25%">Description</th>
                             <th width="15%">Catergory</th>
                             <th width="15%">Action</th>                           
@@ -52,8 +52,8 @@
                             <td class="text-center"><?= $row['product_id'] ?></td>
                             <td><?= $row['name'] ?></td>
                             <td class="text-center"><img src="<?= $row['img_path'] ?>" width="25%" height="auto"></td>
-                            <td>&#8369 <?= $row['price'] ?></td>
-                            <td><?= $row['description'] ?></td>
+                            <td class="text-right"><?= $row['price'] ?></td>
+                            <td class="text-justify"><?= $row['description'] ?></td>
                             <td><?= $row['category_name'] ?></td>
                             <td class="text-center">
                                 <!-- EDIT -->
@@ -75,29 +75,26 @@
 <!-- end of container -->
 
 <!-- UPDATE STATUS MODAL -->
-<div class="modal fade" id="updateStatusModal">
-  <div class="modal-dialog">
+<div class="modal fade" id="updateStatusModal" tabindex="-1" role="dialog" aria-labelledby="updateStatusModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-
-      <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Update Status</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title" id="exampleModalLongTitle">Update Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-
-      <!-- Modal body -->
       <div class="modal-body">
         <p id="updateStatusMessage"></p>
       </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-info btnWider">SAVE</button>
         <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CLOSE</button>
       </div>
-
     </div>
   </div>
 </div>
+<!-- end of UPDATE STATUS MODAL -->
 
 <!-- VIEW ORDER MODAL -->
 <div class="modal fade" id="viewOrderModal">

@@ -71,12 +71,14 @@
                            $description = $row["description"];
                            $price = $row["price"];                             
 
-                             $data .=
-                               "<tr>
-                                   <td class='text-center'>$name<br><img src='$row[img_path]' width='30%' height='auto'></td>
-                                   <td class='text-center'>&#x20B1; $price</td>
-                                   <td class='text-center'>$quantity</td>
-                               </tr>";
+                              if ($quantity != 0) {
+                               $data .=
+                                 "<tr>
+                                     <td class='text-center'>$name<br><img src='$row[img_path]' width='30%' height='auto'></td>
+                                     <td class='text-center'>&#x20B1; $price</td>
+                                     <td class='text-center'>$quantity</td>
+                                 </tr>";
+                              }
                          }
                      }
       }

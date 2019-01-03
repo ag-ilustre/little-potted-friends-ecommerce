@@ -125,7 +125,7 @@ function changeNoItems(id){
 
 //CART
 function removeFromCart(id){
-	var ans = confirm("Are you sure?");
+	var ans = confirm("Are you sure you want to remove this from the cart?");
 	if(ans){
 		// alert("You answere YES!");
 		$.ajax({
@@ -141,7 +141,24 @@ function removeFromCart(id){
 	}
 }
 
+//CART
 
+function emptyCart(value) {
+	var ans1 = confirm("Are you sure you want to remove ALL items?");
+	if(ans1){
+		// alert("You answere YES!");
+		$.ajax({
+			url: "../controllers/empty_cart.php",
+			method: "POST",
+			data: {value:value},
+			dataType: "text",
+			success: function(data){
+				$('a[href="cart.php"]').html(data);
+				loadCart();
+			}
+		});
+	}
+}
 // =================================== CATALOG BUTTONS AND LINKS =================================== //
 
 $("#searchAnItem").keyup(function(){

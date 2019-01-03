@@ -40,7 +40,7 @@
 
 			<h4>Price</h4>
 				<select class="custom-select" id="price">
-					<option selected=""> ------ </option>
+					<option selected="" value=""> ------ </option>
 					<option value="ASC">Lowest to Highest</option>
 					<option value="DESC">Highest to Lowest</option>
 				</select>
@@ -87,7 +87,7 @@
        	  	<span id="displayProductInfo"></span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-dismiss="modal">CLOSE</button>
+        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CLOSE</button>
       </div>
     </div>
   </div>

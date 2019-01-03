@@ -79,11 +79,11 @@
 				</div>
 				<div class="form-group">
 					<div class="row">						
-						<div class="col-4">
+						<div class="col-6">
 							<label for="editEmail">Email:</label>
 							<input id="editEmail" type="email" name="editEmail1" class="form-control bg-light text-dark" value='<?= $_SESSION["email"]; ?>'/>
 						</div>
-						<div class="col-4">
+						<div class="col-6">
 							<label for="editMobile">Mobile Number:</label>
 							<input id="editMobile" type="number" name="editMobile1" class="form-control bg-light text-dark" value='<?= $_SESSION["mobile"]; ?>'>
 						</div>

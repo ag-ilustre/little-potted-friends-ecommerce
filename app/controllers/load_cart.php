@@ -7,19 +7,22 @@
 
   if(!isset($_SESSION["item_count"])) {
     $grand_total = 0;
-    $data = "Your cart is empty! Go back to <a href='../views/catalog.php'>CATALOG</a>";
+    $data = "<p>Your cart is empty!</p><a href='../views/catalog.php' class='btn btn-info btnWider mt-5 text-center'>BROWSE CATALOG</a>";
   } elseif ($_SESSION["item_count"] == 0) {
     $grand_total = 0;
-    $data = "Your cart is empty! Go back to <a href='../views/catalog.php'>CATALOG</a>";
+    $data = "<p>Your cart is empty!</p><a href='../views/catalog.php' class='btn btn-info btnWider mt-5 text-center'>BROWSE CATALOG</a>";
   } else {
-    $data = "<table class='table table-hover'>
+    $data = "
+    <div class='text-right mb-2'><button class='btn btn-danger btnWider' onclick='emptyCart(1)'><i class='fas fa-trash-alt'></i>   EMPTY CART</button></div>
+
+    <table class='table table-hover'>
       <thead>
         <tr>
           <th width='30%'>Product</th>
           <th width='15%'>Price</th>
           <th width='20%'>Quantity</th>
           <th width='25%'>Sub-total</th>
-          <th width='10%'> </th>
+          <th width='10%'>Action</th>
         </tr>
       </thead>
       <tbody>";

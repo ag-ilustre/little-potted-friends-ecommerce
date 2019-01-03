@@ -26,3 +26,8 @@
     }
     echo $data;
 ?>
+
+<!-- negative quantity checks -->
+<!-- added <form> tags outside of input field -->
+<!-- oninput='this.value = Math.abs(this.value)' -->
+
