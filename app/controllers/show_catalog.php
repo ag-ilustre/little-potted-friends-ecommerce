@@ -12,7 +12,7 @@
 		$data .= "
             <div class='col-lg-4 col-md-6 mb-5'>
               <div class='card h-100 p-1'>
-              <img src='$row[img_path]' class='productImageInModal mb-2'>
+              <img src='$row[img_path]' class='productImage mb-2'>
                 <div class='card-body text-center  m-0 p-1'>
                     <button type='button' class='btn btn-link p-0' data-toggle='modal' data-target='#displayProductInfoModal' onclick='displayProductInfo($row[id])'><h5 class='card-title productName'>$row[name]</h5></button>
                     <p class='my-0 productPrice'>&#8369 $row[price]</p>

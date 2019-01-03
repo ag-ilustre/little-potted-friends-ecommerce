@@ -73,7 +73,7 @@
 
                              $data .=
                                "<tr>
-                                   <td class='text-center'><img src='$row[img_path]' width='25%' height='25%'> $name</td>
+                                   <td class='text-center'>$name<br><img src='$row[img_path]' width='30%' height='auto'></td>
                                    <td class='text-center'>&#x20B1; $price</td>
                                    <td class='text-center'>$quantity</td>
                                </tr>";

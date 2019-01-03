@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 03, 2019 at 06:25 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Host: localhost
+-- Generation Time: Dec 13, 2018 at 02:41 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `demonewstore`
+-- Database: `demoNewStore`
 --
 
 -- --------------------------------------------------------
@@ -38,9 +38,9 @@ CREATE TABLE `tbl_categories` (
 --
 
 INSERT INTO `tbl_categories` (`id`, `name`) VALUES
-(1, 'Single Pots'),
-(2, 'Sets in Style'),
-(3, 'Care Supplies');
+(1, 'Sassy Single Pots'),
+(2, 'So Sytlish Sets'),
+(3, 'Super Supplies');
 
 -- --------------------------------------------------------
 
@@ -62,12 +62,12 @@ CREATE TABLE `tbl_items` (
 --
 
 INSERT INTO `tbl_items` (`id`, `name`, `price`, `description`, `img_path`, `category_id`) VALUES
-(1, 'Product 1', '600.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 1),
-(2, 'Product 2', '850.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 1),
-(3, 'Product 3', '456.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 2),
-(4, 'Product 4', '897.90', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 2),
-(5, 'Product 5', '542.80', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 3),
-(6, 'Product 6', '227.90', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 3);
+(4, 'Product 1', '600.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'https://via.placeholder.com/350x250', 1),
+(5, 'Product 2', '850.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'https://via.placeholder.com/350x250', 1),
+(6, 'Product 3', '456.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'https://via.placeholder.com/350x250', 2),
+(7, 'Product 4', '897.90', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'https://via.placeholder.com/350x250', 2),
+(8, 'Product 5', '542.80', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'https://via.placeholder.com/350x250', 3),
+(9, 'Product 6', '227.90', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', 'https://via.placeholder.com/350x250', 3);
 
 -- --------------------------------------------------------
 
@@ -81,20 +81,8 @@ CREATE TABLE `tbl_orders` (
   `purchase_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) DEFAULT NULL,
   `status_id` int(11) DEFAULT NULL,
-  `payment_mode_id` int(11) DEFAULT NULL,
-  `total` int(11) NOT NULL
+  `payment_mode_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_orders`
---
-
-INSERT INTO `tbl_orders` (`id`, `transaction_code`, `purchase_date`, `user_id`, `status_id`, `payment_mode_id`, `total`) VALUES
-(1, 'DEB7A7BE8235CABB', '2018-12-31 08:14:32', 55, 1, 1, 1906),
-(2, '9D9391A809F9D1FF', '2019-01-01 10:15:29', 67, 1, 1, 3812),
-(3, '13511A8ADE2E02CF', '2019-01-02 13:25:23', 55, 1, 1, 1906),
-(4, 'ACE640AD053C690E', '2019-01-02 13:46:41', 55, 1, 1, 2269),
-(5, '4F95BD388DFD257A', '2019-01-02 15:28:20', 55, 1, 2, 1700);
 
 -- --------------------------------------------------------
 
@@ -109,26 +97,6 @@ CREATE TABLE `tbl_order_items` (
   `order_id` int(11) DEFAULT NULL,
   `item_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tbl_order_items`
---
-
-INSERT INTO `tbl_order_items` (`id`, `quantity`, `price`, `order_id`, `item_id`) VALUES
-(1, 1, '600.00', 1, 1),
-(2, 1, '850.00', 1, 2),
-(3, 1, '456.00', 1, 3),
-(4, 2, '600.00', 2, 1),
-(5, 2, '850.00', 2, 2),
-(6, 2, '456.00', 2, 3),
-(7, 1, '456.00', 3, 3),
-(8, 1, '600.00', 3, 1),
-(9, 1, '850.00', 3, 2),
-(10, 1, '600.00', 4, 1),
-(11, 1, '897.90', 4, 4),
-(12, 1, '542.80', 4, 5),
-(13, 1, '227.90', 4, 6),
-(14, 2, '850.00', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -181,33 +149,20 @@ CREATE TABLE `tbl_users` (
   `lastname` varchar(150) NOT NULL,
   `email` varchar(150) NOT NULL,
   `password` varchar(150) NOT NULL,
-  `mobile` varchar(11) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `status` varchar(8) NOT NULL DEFAULT 'Active',
-  `access` varchar(5) NOT NULL DEFAULT 'NONE'
+  `address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`id`, `firstname`, `lastname`, `email`, `password`, `mobile`, `address`, `status`, `access`) VALUES
-(51, 'Anne Gerly', 'Ilustre', 'gerly.ilustre@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(52, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(53, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(54, 'Anne Gerly', 'Ilustre', '1', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(55, 'ADMIN', 'ONE', 'csp2ecommerce@gmail.com', '84e87fa20792bccf4178abea96460f888aabf775', '09778148407', '2029-E Agusto Francisco St., Sta. Ana, Manila', 'Active', 'ADMIN'),
-(56, 'Anne Gerly', 'Ilustre', 'ag@mail.com', '7c222fb2927d828af22f592134e8932480637c0d', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(57, 'AG', 'Ilustre', 'ag.ilustre@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', '09171234567', '123 ABC Street, Brgy. 456, Manila 1001', 'Active', 'NONE'),
-(58, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(59, 'Anne Gerly', 'Ilustre', 'agil@mail.com', 'a642a77abd7d4f51bf9226ceaf891fcbb5b299b8', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(60, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', '97781484070', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(61, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.co', 'e38ad214943daad1d64c102faec29de4afe9da3d', '09171234567', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(63, 'Anne Gerly', 'Ilustre', 'ag@gmail.com', 'b49eb82469ac2f7c6c7ea9612d8101ac3c5dd6bb', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(64, 'Anne', 'Ilustre', 'ilustre.ag@gmail.com', '84e87fa20792bccf4178abea96460f888aabf775', '09171234567', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(65, 'Anne Gerly', 'Ilustre', 'nosha1@mail.com', 'ecommerce1', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(66, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '111', '', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(67, 'Iggie', 'Ilustre', 'ilustreiggie@gmail.com', '73e815e86ff76c9b9a693faa1b1455c424fa80ce', '09055021080', 'Vinzons, Camarines Norte 4603 ', 'Active', 'NONE');
+INSERT INTO `tbl_users` (`id`, `firstname`, `lastname`, `email`, `password`, `address`) VALUES
+(16, 'Anne ', 'Ilustre', 'ag.ilustre@gmail.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 'Manila'),
+(18, 'Natasha ', 'Romanoff', 'blackwidow@avengers.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 'Moscow'),
+(19, 'Rachel ', 'Greene', 'rachelgreene@mail.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 'New York'),
+(20, 'Joyce ', 'Perez', 'japerez.ph@gmail.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', 'Pasay City'),
+(23, 'Peter ', 'Parker', 'spiderman@marvel.com', 'spiderman1', 'New York'),
+(24, 'Tony ', 'Stark', 'ironman@marvel.com', 'ironman1', 'New York');
 
 --
 -- Indexes for dumped tables
@@ -284,13 +239,13 @@ ALTER TABLE `tbl_items`
 -- AUTO_INCREMENT for table `tbl_orders`
 --
 ALTER TABLE `tbl_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_items`
 --
 ALTER TABLE `tbl_order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment_modes`
@@ -308,7 +263,7 @@ ALTER TABLE `tbl_status`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables

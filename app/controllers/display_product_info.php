@@ -18,7 +18,7 @@
    		<div class='col-md-6 mb-2'>
    	   	<img src='$row[img_path]' class='productImageInModal'>       	              
    	  	</div>
-  		  	<div class='col-md-6 ml-auto mb-2'>					    
+  		  	<div class='col-md-6 mb-2'>					    
   		  		<h5 class='productName'>$row[name]</h5>
   		   	<p>$row[description]</p>       
   		    	<p class='my-0 productPrice'>&#8369 $row[price]</p>

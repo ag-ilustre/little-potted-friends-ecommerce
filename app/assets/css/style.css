@@ -189,10 +189,11 @@ nav {
 }
 
 /*DISPLAYS ON CATALOG*/
-.productImageInModal {
-/*	width: 100%;
-	height: auto;*/
-	border: 1px solid rgba(0,0,0,.125);
+.productImageInModal, .productImage {
+	width: 100%;
+	height: auto;
+	/*border: 1px solid rgba(0,0,0,.125);*/
+	padding: 5px;
 	border-radius: 2px;
 }
 
@@ -204,6 +205,7 @@ nav {
 .alignQuantity {
 	text-align: center;
 }
+
 
 .productName {
 	font-size: 1.3rem;
@@ -218,6 +220,10 @@ nav {
 	font-weight: 600;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
 	letter-spacing: 2px;
+}
+
+.card {
+	box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
 }
 
 .card-footer {

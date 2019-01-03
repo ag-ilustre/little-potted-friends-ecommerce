@@ -46,7 +46,7 @@
                             //$english_format_number = number_format($number, 2, '.', '');
                            $data .=
                              "<tr>
-                                 <td><img src='$row[img_path]' width='25%' height='25%'> $name</td>
+                                 <td>$name<br><img src='$row[img_path]' width='30%' height='auto'></td>
                                  <td id='price$id'>&#x20B1; $price</td>
                                  <td><input type='number' class='form-control alignQuantity' value='$quantity' id='quantity$id'  min='1' onchange='changeNoItems($id)' oninput='this.value = Math.abs(this.value)'></td>
                                  <td class='sub-total' id='subTotal$id'>&#x20B1; $formatted_subTotal </td>

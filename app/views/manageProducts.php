@@ -12,16 +12,11 @@
 	require '../controllers/connect.php';
 
 //join tables to show
-//    Customer Name | Reference Number | Order Date | Total | Status | <i class="fas fa-search"></i>
-    $sql = "SELECT o.transaction_code, o.purchase_date, o.total, p.name AS payment_mode, s.name AS status_name, u.firstname, u.lastname
-            FROM tbl_orders AS o
-            INNER JOIN tbl_users AS u 
-                ON o.user_id = u.id
-            INNER JOIN tbl_status AS s
-                ON o.status_id = s.id
-            INNER JOIN tbl_payment_modes as p
-                ON o.payment_mode_id = p.id
-            "; 
+    $sql = "SELECT i.id AS product_id, i.name, i.price, i.description, i.img_path, i.category_id, c.id, c.name AS category_name
+          FROM tbl_items AS i
+          INNER JOIN tbl_categories AS c 
+            ON i.category_id = c.id
+          ";
 
     $result = mysqli_query($conn, $sql);
 
@@ -32,18 +27,21 @@
   <div class="row">
     <div class="col-lg-12">
     
-    		<h4 class="text-center p-2 mb-2">ORDER HISTORY</h4>
-    		
-    			<table  id="tableOrderHistory" class="table table-hover">
+    		<h4 class="text-center p-2 mb-2">MANAGE PRODUCTS</h4>
+
+          <!-- ADD AN ITEM -->
+          <button type="button" class="btn btn-info my-3" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['transaction_code'] ?>','<?= $row['status_name'] ?>')">ADD A NEW ITEM</button>
+
+    			<table  id="tableManageProducts" class="table table-hover">
                     <thead>
-                        <tr>
-                            <th>Customer Name</th>
-                            <th>Reference Number</th>
-                            <th>Order Date</th>
-                            <th>Total</th>
-                            <th>Payment Mode</th>
-                            <th>Status</th>
-                            <th>Action</th>                           
+                        <tr class="text-center">
+                            <th width="5%">Product ID</th>
+                            <th width="10%">Product Name</th>                            
+                            <th width="20%">Image</th>
+                            <th width="10%">Price</th>
+                            <th width="25%">Description</th>
+                            <th width="15%">Catergory</th>
+                            <th width="15%">Action</th>                           
                         </tr>
                     </thead>
                     <tbody>
@@ -51,16 +49,17 @@
                         if (mysqli_num_rows($result) > 0) {
                             while($row = mysqli_fetch_assoc($result)){ ?>
                         <tr>
-                            <td><?= $row['firstname']." ".$row['lastname'] ?></td>
-                            <td><?= $row['transaction_code'] ?></td>
-                            <td><?= $row['purchase_date'] ?></td>
-                            <td>&#8369 <?= $row['total'] ?></td>
-                            <td><?= $row['payment_mode'] ?></td>
-                            <td><?= $row['status_name'] ?></td>
-                            <td>
+                            <td class="text-center"><?= $row['product_id'] ?></td>
+                            <td><?= $row['name'] ?></td>
+                            <td class="text-center"><img src="<?= $row['img_path'] ?>" width="25%" height="auto"></td>
+                            <td>&#8369 <?= $row['price'] ?></td>
+                            <td><?= $row['description'] ?></td>
+                            <td><?= $row['category_name'] ?></td>
+                            <td class="text-center">
+                                <!-- EDIT -->
                                 <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['transaction_code'] ?>','<?= $row['status_name'] ?>')"><i class="far fa-edit"></i></button>
-                               
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['transaction_code'] ?>')"><i class="fas fa-search"></i></a>
+                               <!-- DELETE -->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['transaction_code'] ?>')"><i class='fas fa-trash-alt'></i></i></a>
                                 
                             </td>
                         </tr>
@@ -130,6 +129,6 @@
 
 <script>
 $(document).ready( function () {
-    $('#tableOrderHistory').DataTable();
+    $('#tableManageProducts').DataTable();
 } );
 </script>
