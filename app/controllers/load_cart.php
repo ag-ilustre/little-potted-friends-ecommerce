@@ -36,24 +36,30 @@
 
                            //For computing the sub total and grand total
                            $subTotal = $quantity * $price;
+                           $formatted_subTotal = number_format($subTotal, 2, '.', ',');
+
                            $grand_total += $subTotal;
 
-                            $_SESSION["total"] = $grand_total;
+                            $_SESSION["total"] = number_format($grand_total, 2, '.', ',');
                             //<input type="text" data-validation="number" data-validation-allowing="range[1;100]">
+
+                            //$english_format_number = number_format($number, 2, '.', '');
                            $data .=
                              "<tr>
                                  <td><img src='$row[img_path]' width='25%' height='25%'> $name</td>
-                                 <td id='price$id'> $price</td>
-                                 <td><input type='number' class='form-control' value='$quantity' id='quantity$id'  min='1' onchange='changeNoItems($id)'></td>
-                                 <td class='sub-total' id='subTotal$id'>$subTotal</td>
+                                 <td id='price$id'>&#x20B1; $price</td>
+                                 <td><input type='number' class='form-control alignQuantity' value='$quantity' id='quantity$id'  min='1' onchange='changeNoItems($id)' oninput='this.value = Math.abs(this.value)'></td>
+                                 <td class='sub-total' id='subTotal$id'>&#x20B1; $formatted_subTotal </td>
                                  <td><button class='btn btn-danger' onclick='removeFromCart($id)'><i class='fas fa-trash-alt'></i></button></td>
                              </tr>";
                        }
                    }
     }
 
+    $formatted_grand_total = number_format($grand_total, 2, '.', ',');
+
     $data .="<tr>
-              <td colspan='5' class='text-center'><h5>TOTAL: &#x20B1; <span id='grandTotal'>$grand_total </span><h5></td>
+              <td colspan='5' class='text-center'><h5>TOTAL: &#x20B1; <span id='grandTotal'> $formatted_grand_total </span><h5></td>
             </tr>
             <tr>
               <td colspan='5' class='text-center'><a class='btn btn-info btnWider' id='btnCheckOut' href='../views/checkout.php'>CHECKOUT</a></td>

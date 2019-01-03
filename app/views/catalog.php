@@ -60,7 +60,7 @@
 		</div>
 		<!-- /.col-lg-3 -->
 		
-		<div class="col-lg-10">
+		<div class="col-lg-10 mx-0">
 			<div class="row" id="products">
 				<?php include '../controllers/show_catalog.php'; ?>
 			</div>
@@ -71,6 +71,28 @@
 
 </div>
 <!-- /.container -->
+
+<!-- DISPLAY PRODUCT INFO MODAL -->
+<div class="modal fade" id="displayProductInfoModal" tabindex="-1" role="dialog" aria-labelledby="displayProductInfoModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="displayProductInfoModalTitle">Product Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       	  	<!-- display echoed product info -->
+       	  	<span id="displayProductInfo"></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- footer -->
 <?php require '../partials/footer.php'; ?>

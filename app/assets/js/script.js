@@ -601,7 +601,16 @@ function viewOrder(transactionCode) {
 	$("#showTransactionCode").html(transactionCode);
 }
 
-
+function displayProductInfo(id) {
+	$("#displayProductInfo").html("");
+	$.post("../controllers/display_product_info.php",
+		{"id" : id},
+		function(data){
+			// console.log(data);
+		//display to Product Modal
+		$("#displayProductInfo").html(data);
+	});
+}
 
 
 

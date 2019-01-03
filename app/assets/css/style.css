@@ -1,6 +1,6 @@
 * {
 	/*background-color: #F7F7F7;*/
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Lato', sans-serif;
 	/*font-family: 'Quicksand', sans-serif;*/
 	/*font-family: 'PT Sans Narrow', sans-serif;*/
 	/*color: rgba(43,195,122,1) !important;*/
@@ -20,13 +20,15 @@ h1, h2, h3 {
 }
 
 h4 {
-	font-family: 'Source Sans Pro', sans-serif;
+	/*font-family: 'Source Sans Pro', sans-serif;*/
+	font-family: 'Lato', sans-serif;
 	color: #28aeb9; 
 	font-weight: 600;
 }
 
 h5, h6 {
-	font-family: 'Source Sans Pro', sans-serif; 
+	/*font-family: 'Source Sans Pro', sans-serif; */
+	font-family: 'Lato', sans-serif;
 	color: #28aeb9; 
 	/*added font-family and color;verify if no bad hits*/
 	font-weight: 600;
@@ -43,7 +45,7 @@ h5, h6 {
 }
 
 .btnWider {
-	width: 155px;
+	width: 150px;
 	height: 38px;
 }
 /*@font-face {
@@ -186,6 +188,42 @@ nav {
 	display: inline-block;
 }
 
+/*DISPLAYS ON CATALOG*/
+.productImageInModal {
+/*	width: 100%;
+	height: auto;*/
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: 2px;
+}
+
+.btn-link:hover {
+    color: #573e2a
+}
+
+
+.alignQuantity {
+	text-align: center;
+}
+
+.productName {
+	font-size: 1.3rem;
+	color: #573e2a;
+	font-weight: 700;
+	font-family: 'Lato', sans-serif;
+}
+
+.productPrice {
+	font-size: 1.3rem;
+	color: #28aeb9;
+	font-weight: 600;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	letter-spacing: 2px;
+}
+
+.card-footer {
+	background-color: #fff;
+	border: 0px;
+}
 
 /*scroll to top*/
 .scrollup{
