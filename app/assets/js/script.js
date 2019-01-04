@@ -610,36 +610,38 @@ $("#btnEditUserAccess").click(()=>{
 	}
 });
 
-function updateStatus(transactionCode, statusId, statusName) {
+function updateStatus(orderId, transactionCode, statusId, statusName) {
 	
-	$("#transactionCode").html("Update Status of " + transactionCode);
+	$("#transactionCode").html("Reference Number: " + transactionCode + "<br><input type='hidden' id='orderId' value='" + orderId + "'>");
 	// alert(statusId);
-	$
+	
 	//use switch-case to display order status (statusName) as Pending/Completed/Cancelled; display "selected" radio buttons
-	if (statusId ==1) {
-		$("#updateStatusMessage").html("The current status is " + statusName + ".<br<br><p>Select status:<br><label><input type='radio' name='orderStatusId' value='1' checked>Pending</label><br><label class='radio'><input type='radio' name='orderStatusId' value='2'>Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId'>Cancelled</label>");
+	if (statusId == 1) {
+		$("#updateStatusMessage").html("Status: " + statusName + "<br><p class='mt-1 mb-0'>Select a status:</p><div class='pl-3'><label class='radio'><input type='radio' name='orderStatusId' value='1' checked>  Pending</label><br><label class='radio'><input type='radio' name='orderStatusId' value='2'>  Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId' value='3'>  Cancelled</label></div>");
 	} else if (statusId == 2){
-	  	$("#updateStatusMessage").html("The current status is " + statusName + ".<br><br><p>Select status:<br><label><input type='radio' name='orderStatusId' value='1'>Pending</label><br><label class='radio'><input type='radio' name='orderStatusId' value='2' checked>Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId'>Cancelled</label>");
+	  	$("#updateStatusMessage").html("Status: " + statusName + "<br><p class='mt-1 mb-0'>Select a status:</p><div class='pl-3'><label class='radio'><input type='radio' name='orderStatusId' value='1'>  Pending</label><br><label class='radio'><input type='radio' name='orderStatusId' value='2' checked>  Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId' value='3'>  Cancelled</label></div>");
 	} else if (statusId == 3) {
-	    $("#updateStatusMessage").html("The current status is " + statusName + ".<br><br><p>Select status:<br><label><input type='radio' name='orderStatusId' value='1'>Pending</label><br><label class='radio'><input type='radio' name='orderStatusId' value='2'>Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId' checked>Cancelled</label>");
+	    $("#updateStatusMessage").html("Status: " + statusName + "<br><p class='mt-1 mb-0'>Select a status:</p><div class='pl-3'><label class='radio'><input type='radio' name='orderStatusId' value='1'>  Pending</label><br><label class='radio'><input type='radio' name='orderStatusId' value='2'>  Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId'  value='3' checked>  Cancelled</label></div>");
 	}
 		
 }
 
 
 function changeOrderStatus() {
-
-	//how to get value of transcation code and status_id
-	// pattern : <input type="hidden" id="editUserId" value="<?= $row['id'] ?>">
+	let orderStatusId = $("input[name='orderStatusId']:checked").val();
+	let orderId = $("#orderId").val();
+	
+	// console.log(orderStatusId + " " + orderId);
 
 	$.post("../controllers/change_order_status.php",
-				{"transactionCode" : transactionCode,
-				"statusId" : statusId},
+				{"orderStatusId" : orderStatusId,
+				"orderId" : orderId},
 				function(data){
 					if(data == 1){
 						// alert("Updates saved!");
 						$("#orderHistoryAlertMsg").html("<i class='far fa-check-square fa-lg'></i> Updates saved!");
-						$("#orderHistoryAlertMsg").fadeOut(1000, function() {
+						$("#orderHistoryAlertMsg").fadeOut(1100, 
+							function() {
 						    // Animation complete.
 						    document.location = 'orderHistory.php'; 
 						 });	
@@ -647,8 +649,16 @@ function changeOrderStatus() {
 		});
 }
 
-function viewOrder(transactionCode) {
+function viewOrder(id, transactionCode) {
 	$("#showTransactionCode").html(transactionCode);
+	// console.log(id + " " + transactionCode);
+	$.post("../controllers/view_order_details.php",
+				{"id" : id},
+				function(data){
+					if(data){
+						$("#viewOrderMessage").html(data);	
+					} 
+		});
 }
 
 function displayProductInfo(id) {

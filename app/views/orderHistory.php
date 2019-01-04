@@ -13,7 +13,7 @@
 
 //join tables to show
 //    Customer Name | Reference Number | Order Date | Total | Status | <i class="fas fa-search"></i>
-    $sql = "SELECT o.transaction_code, o.purchase_date, o.total, p.name AS paymentMode, o.status_id AS statusId, s.name AS statusName, u.firstname, u.lastname
+    $sql = "SELECT o.id, o.transaction_code, o.purchase_date, o.total, p.name AS paymentMode, o.status_id AS statusId, s.name AS statusName, u.firstname, u.lastname
             FROM tbl_orders AS o
             INNER JOIN tbl_users AS u 
                 ON o.user_id = u.id
@@ -28,8 +28,8 @@
 
 <div class="container">
   <div class="row">
-    <div class="text-center p-2"><h2 id="orderHistoryAlertMsg" class="p-2"></h2></div>
     <div class="col-lg-12">
+    <div class="text-center"><h2 id="orderHistoryAlertMsg"></h2></div>
     
     		<h4 class="text-center p-2 mb-2">ORDER HISTORY</h4>
     		
@@ -57,9 +57,9 @@
                             <td><?= $row['paymentMode'] ?></td>
                             <td><?= $row['statusName'] ?></td>
                             <td>
-                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['transaction_code'] ?>','<?= $row['statusId'] ?>','<?= $row['statusName'] ?>')"><i class="far fa-edit"></i></button>
+                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>','<?= $row['statusId'] ?>','<?= $row['statusName'] ?>')"><i class="far fa-edit"></i></button>
                                
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['transaction_code'] ?>')"><i class="fas fa-search"></i></a>
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>')"><i class="fas fa-search"></i></a>
                                 
                             </td>
                         </tr>
@@ -75,19 +75,20 @@
 <!-- end of container -->
 
 <!-- UPDATE STATUS MODAL -->
-<div class="modal fade" id="updateStatusModal">
-  <div class="modal-dialog">
+<div class="modal fade" id="updateStatusModal" tabindex="-1" role="dialog" aria-labelledby="updateStatusModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title"><span id="transactionCode"></span></h4>
+        <h5 class="modal-title" id="updateStatusModalTitle">Update Order Status</h5>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
-      <div class="modal-body">
-        <span id="updateStatusMessage"></span>
+      <div class="modal-body ml-3">
+          <p class="m-1" id="transactionCode"></p>
+          <p class="m-1" id="updateStatusMessage"></p>
       </div>
 
       <!-- Modal footer -->
@@ -101,8 +102,8 @@
 </div>
 
 <!-- VIEW ORDER MODAL -->
-<div class="modal fade" id="viewOrderModal">
-  <div class="modal-dialog modal-lg">
+<div class="modal fade" id="viewOrderModal" tabindex="-1" role="dialog" aria-labelledby="viewOrderModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
 
       <!-- Modal Header -->

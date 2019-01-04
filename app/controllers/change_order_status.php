@@ -4,20 +4,19 @@
 
 	require 'connect.php';
 
-	$transactionCode = $_POST['transactionCode'];
-	$statusId = $_POST['statusId']; //change to status_id
-	$data = "";
+	$orderId = $_POST['orderId'];
+	$orderStatusId = $_POST['orderStatusId'];
+	$data="";
 
 	$sql = "UPDATE tbl_orders
-			SET status_id = '$statusId' 
-			WHERE id = '$transactionCode'";
+			SET status_id = '$orderStatusId' 
+			WHERE id = '$orderId'";
 
 	if (mysqli_query($conn, $sql)) { 
 		$data = 1;
 	} else {
-		$data = 0;
-	}
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
 
 	echo $data;
-
 ?>

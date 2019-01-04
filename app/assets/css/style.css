@@ -176,7 +176,8 @@ nav {
 	padding-top: 100px;
 }
 
-#profileAlertMsg, #editUserAlertMsg {
+/*ALERT MESSAGES FOR UPDATES SAVED*/
+#profileAlertMsg, #editUserAlertMsg, #orderHistoryAlertMsg {
 	position: fixed; 
 	top: 20%; 
 	left: 50%; 
