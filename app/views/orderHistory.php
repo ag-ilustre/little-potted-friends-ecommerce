@@ -13,7 +13,7 @@
 
 //join tables to show
 //    Customer Name | Reference Number | Order Date | Total | Status | <i class="fas fa-search"></i>
-    $sql = "SELECT o.transaction_code, o.purchase_date, o.total, p.name AS payment_mode, s.name AS status_name, u.firstname, u.lastname
+    $sql = "SELECT o.transaction_code, o.purchase_date, o.total, p.name AS paymentMode, o.status_id AS statusId, s.name AS statusName, u.firstname, u.lastname
             FROM tbl_orders AS o
             INNER JOIN tbl_users AS u 
                 ON o.user_id = u.id
@@ -28,6 +28,7 @@
 
 <div class="container">
   <div class="row">
+    <div class="text-center p-2"><h2 id="orderHistoryAlertMsg" class="p-2"></h2></div>
     <div class="col-lg-12">
     
     		<h4 class="text-center p-2 mb-2">ORDER HISTORY</h4>
@@ -53,10 +54,10 @@
                             <td><?= $row['transaction_code'] ?></td>
                             <td><?= $row['purchase_date'] ?></td>
                             <td class="text-right"><?= number_format($row['total'], 2, '.', ','); ?></td> 
-                            <td><?= $row['payment_mode'] ?></td>
-                            <td><?= $row['status_name'] ?></td>
+                            <td><?= $row['paymentMode'] ?></td>
+                            <td><?= $row['statusName'] ?></td>
                             <td>
-                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['transaction_code'] ?>','<?= $row['status_name'] ?>')"><i class="far fa-edit"></i></button>
+                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['transaction_code'] ?>','<?= $row['statusId'] ?>','<?= $row['statusName'] ?>')"><i class="far fa-edit"></i></button>
                                
                                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['transaction_code'] ?>')"><i class="fas fa-search"></i></a>
                                 
@@ -80,18 +81,19 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Update Status</h4>
+        <h4 class="modal-title"><span id="transactionCode"></span></h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <p id="updateStatusMessage"></p>
+        <span id="updateStatusMessage"></span>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CLOSE</button>
+        <button type="submit" class="btn btn-info btnWider mr-2" onclick="changeOrderStatus()" data-dismiss="modal">SAVE</button>
+        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
       </div>
 
     </div>

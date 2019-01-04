@@ -27,7 +27,7 @@
 				        </div>";
 			}
 		} else {
-			$data = "No record found!";
+			$data = "<h3 class='text-center'>No record found!</h3>";
 		}
 	echo $data;
 ?>

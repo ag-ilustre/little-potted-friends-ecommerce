@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2019 at 06:25 AM
+-- Generation Time: Jan 04, 2019 at 06:45 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -91,10 +91,10 @@ CREATE TABLE `tbl_orders` (
 
 INSERT INTO `tbl_orders` (`id`, `transaction_code`, `purchase_date`, `user_id`, `status_id`, `payment_mode_id`, `total`) VALUES
 (1, 'DEB7A7BE8235CABB', '2018-12-31 08:14:32', 55, 1, 1, 1906),
-(2, '9D9391A809F9D1FF', '2019-01-01 10:15:29', 67, 1, 1, 3812),
-(3, '13511A8ADE2E02CF', '2019-01-02 13:25:23', 55, 1, 1, 1906),
-(4, 'ACE640AD053C690E', '2019-01-02 13:46:41', 55, 1, 1, 2269),
-(5, '4F95BD388DFD257A', '2019-01-02 15:28:20', 55, 1, 2, 1700);
+(2, '9D9391A809F9D1FF', '2019-01-01 10:15:29', 67, 2, 1, 3812),
+(3, '13511A8ADE2E02CF', '2019-01-02 13:25:23', 55, 3, 1, 1906),
+(4, 'ACE640AD053C690E', '2019-01-02 13:46:41', 55, 2, 1, 2269),
+(5, '4F95BD388DFD257A', '2019-01-02 15:28:20', 55, 3, 2, 1700);
 
 -- --------------------------------------------------------
 
@@ -192,7 +192,7 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `firstname`, `lastname`, `email`, `password`, `mobile`, `address`, `status`, `access`) VALUES
-(51, 'Anne Gerly', 'Ilustre', 'gerly.ilustre@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
+(51, 'Anne Gerly', 'Ilustre', 'gerly.ilustre@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'ADMIN'),
 (52, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
 (53, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
 (54, 'Anne Gerly', 'Ilustre', '1', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
@@ -278,19 +278,19 @@ ALTER TABLE `tbl_categories`
 -- AUTO_INCREMENT for table `tbl_items`
 --
 ALTER TABLE `tbl_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_orders`
 --
 ALTER TABLE `tbl_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_items`
 --
 ALTER TABLE `tbl_order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment_modes`

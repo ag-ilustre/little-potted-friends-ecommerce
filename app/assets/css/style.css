@@ -63,7 +63,7 @@ h5, h6 {
 
 /*HEADER*/
 nav {
-	box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+	box-shadow: 0 2px 6px -2px rgba(0,0,0,.3);
 	background-color: #fbfbfb;
 	border-bottom: rgb(0,0,0); 
 }
@@ -255,4 +255,28 @@ nav {
 	position: relative;
 	bottom: 0;
 	height: 40px;
+}
+
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 600px) { 
+	#companyLogo {
+		width: 175px;
+		height: auto;
+		
+	}
+
+	#storeName {
+		padding-left: 10px !important;
+	}
+
+	.nav-cart {
+		z-index: 9999999;
+	}
+
+}
+
+
+@media screen and (min-width: 600px) and (max-width: 768px) {
+
 }
