@@ -84,7 +84,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addProductModalTitle">Add edit Product</h5>
+        <h5 class="modal-title" id="addProductModalTitle">Add New Product</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -126,7 +126,7 @@
     <?php 
       if (mysqli_num_rows($result) > 0) {
           while($row = mysqli_fetch_assoc($result)){ ?>
-            <option selected="" value=""> ------ </option>
+            <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
     <?php } } ?>
           </select>
           <p id="error_addProductCategory"></p>
@@ -192,11 +192,9 @@
           <select class="custom-select" id="editProductCategoryId" name="editProductCategoryId"  class="form-control bg-light text-dark">
     <?php 
       if (mysqli_num_rows($result) > 0) {
-          while($row = mysqli_fetch_assoc($result)){ 
-            $categoryId = $row['id'];
-           ?>
+          while($row = mysqli_fetch_assoc($result)){ ?>
 
-            <option id="optionEditProductCatergoryId<?= $categoryId ?>" value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+            <option id="optionEditProductCatergoryId<?= $row['id'] ?>" value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
     <?php } } ?>
           </select>
           <p id="error_editProductCategory"></p>

@@ -43,7 +43,7 @@
                         <td>$name</td>
                         <td>$formatted_price</td>
                         <td class='text-center'>$quantity</td>
-                        <td>$formatted_subTotal</td>
+                        <td class='text-right mr-2'>$formatted_subTotal</td>
                     </tr>";
               }
               $data .="</tbody></table>";

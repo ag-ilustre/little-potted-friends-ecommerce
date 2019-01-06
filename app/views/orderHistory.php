@@ -53,8 +53,8 @@
                             <td><?= $row['firstname']." ".$row['lastname'] ?></td>
                             <td><?= $row['transaction_code'] ?></td>
                             <td><?= $row['purchase_date'] ?></td>
-                            <td class="text-right"><?= number_format($row['total'], 2, '.', ','); ?></td> 
-                            <td><?= $row['paymentMode'] ?></td>
+                            <td class="text-right"><?= $row['total']; ?></td> 
+                            <td class="text-center"><?= $row['paymentMode'] ?></td>
                             <td><?= $row['statusName'] ?></td>
                             <td>
                                 <span title="Update Status"><button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>','<?= $row['statusId'] ?>','<?= $row['statusName'] ?>')"><i class="far fa-edit"></i></button></span>
@@ -114,7 +114,12 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <p id="viewOrderMessage"></p>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-10">
+            <p id="viewOrderMessage"></p>
+          </div>
+        </div>
       </div>
 
       <!-- Modal footer -->

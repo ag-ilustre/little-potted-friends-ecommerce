@@ -1,11 +1,3 @@
-
- 
-
- 
-
-
-
-
 // =================================== FUNCTIONS =================================== //
 
 //CATALOG
@@ -706,7 +698,7 @@ function editProductDetails() {
 		$("#error_editProductName").html("This field is required!");
 		error_flag6 = 1;
 	} else {
-		$("#error_addProductName").html("");
+		$("#error_editProductName").html("");
 	}
 
 	if (editProductPrice == "") {
