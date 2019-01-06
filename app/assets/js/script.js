@@ -60,19 +60,24 @@ function newAddToCart(id){
 	console.log("Quantity: " + quantity);
 	console.log("ProductId: " + id);
 
-	$.ajax({
-	  url: "../controllers/add_to_cart.php",
-	  method: "POST",
-	  data: 
-	    {
-	      productId: id,
-	      quantity: quantity
-	    },
-	  dataType: "text",
-	    success: function(data){
-	      $('a[href="cart.php"]').html(data);
-	    }
-	});
+	if (quantity > 0) {
+		$.ajax({
+		  url: "../controllers/add_to_cart.php",
+		  method: "POST",
+		  data: 
+		    {
+		      productId: id,
+		      quantity: quantity
+		    },
+		  dataType: "text",
+		    success: function(data){
+		      $('a[href="cart.php"]').html(data);
+		    }
+		});
+	} else {
+		$("#error_quantity" + id).css("color","rgb(185, 74, 72)");
+		$("#error_quantity" + id).html("*Quantity must be at least 1");
+	}
 }
 
 

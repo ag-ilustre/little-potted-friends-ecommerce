@@ -18,6 +18,7 @@
                     <p class='my-0 productPrice'>&#8369 $row[price]</p>
                   </div>
                 <div class='card-footer'>
+                    <span id='error_quantity$row[id]'></span>
                     <input type='number' class='form-control mb-2 alignQuantity' min='1' value='1' id='quantity$row[id]' oninput='this.value = Math.abs(this.value)'>
                     <button class='btn btn-block btn-info' id='addToCart' data-id='$row[id]' onclick='newAddToCart($row[id])'><i class='fas fa-shopping-cart'></i>  ADD TO CART</button>
                 </div>

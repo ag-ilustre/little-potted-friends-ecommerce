@@ -59,7 +59,7 @@
 //Insert order_id, item_id, quantity, price to ORDER_ITEMS table
 	
 	// $data = ""; //to check
-	
+	$subtotal = "";
 	foreach($_SESSION["cart"] as $item_id => $quantity) {
 	  $sql2= "SELECT * FROM tbl_items where id = '$item_id'";
 	  $result2 = mysqli_query($conn, $sql2);
@@ -68,11 +68,11 @@
           $sql3 = "";
           $price = $row["price"];
           $order_id = $_SESSION["order_id"];   //assign value of $order_id here for visibility
+          $subtotal = $price * $quantity;
+                    //$data .= $order_id ." ". $item_id ." ". $quantity ." ". $price; //to check
 
-          //$data .= $order_id ." ". $item_id ." ". $quantity ." ". $price; //to check
-
-          $sql3 = "INSERT INTO tbl_order_items (order_id, item_id, quantity, price)
-           				VALUES ('$order_id', '$item_id', '$quantity', '$price'); ";
+          $sql3 = "INSERT INTO tbl_order_items (order_id, item_id, quantity, price, subtotal)
+           				VALUES ('$order_id', '$item_id', '$quantity', '$price', '$subtotal'); ";
 
           $result3 = mysqli_query($conn, $sql3);
 

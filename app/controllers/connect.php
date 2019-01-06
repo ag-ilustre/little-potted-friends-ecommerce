@@ -5,9 +5,9 @@
 	// $db_name = "demoNewStore";
 	
 	$host = "db4free.net"; 
-	$db_username = "ai_csp2ecommerce";
+	$db_username = "agilustre";
 	$db_password = "csp2ecommerce";
-	$db_name = "db_csp2ecommerce";
+	$db_name = "db_csp2_agci";
 
 	// Create connection
 	$conn = mysqli_connect($host, $db_username, $db_password, $db_name);
