@@ -29,11 +29,9 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-    <div class="text-center"><h2 id="orderHistoryAlertMsg"></h2></div>
-    
-    		<h4 class="text-center p-2 mb-2">ORDER HISTORY</h4>
-    		
-    			<table  id="tableOrderHistory" class="table table-hover">
+      <div class="text-center"><h2 id="orderHistoryAlertMsg"></h2></div>    
+    		<h4 class="text-center p-2 mb-2 display-4">ORDER HISTORY</h4>    		
+    			<table  id="tableOrderHistory" class="table table-hover mb-4">
                     <thead>
                         <tr>
                             <th>Customer Name</th>

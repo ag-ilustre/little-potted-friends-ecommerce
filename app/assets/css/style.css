@@ -177,7 +177,7 @@ nav {
 }
 
 /*ALERT MESSAGES FOR UPDATES SAVED*/
-#profileAlertMsg, #editUserAlertMsg, #orderHistoryAlertMsg {
+#profileAlertMsg, #editUserAlertMsg, #orderHistoryAlertMsg, #manageProductsAlertMsg {
 	position: fixed; 
 	top: 20%; 
 	left: 50%; 

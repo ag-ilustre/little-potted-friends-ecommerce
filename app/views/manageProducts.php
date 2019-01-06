@@ -25,12 +25,12 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 table-resposive">
-      <div class="text-center"><h2 id="manageProductsAlertMsg"></h2></div>
-    		<h4 class="text-center p-2 mb-2">MANAGE PRODUCTS</h4>
+    <div class="col-lg-12">
+      <div class="text-center p-0"><h2 id="manageProductsAlertMsg" class="p-0"></h2></div>
+    		<h4 class="text-center p-2 mb-2 display-4">MANAGE PRODUCTS</h4>
 
           <!-- ADD A PRODUCT -->
-          <button type="button" class="btn btn-info my-3" data-toggle="modal" data-target="#addProductModal"><i class="fas fa-plus-circle fa-sm"></i>   NEW PRODUCT</button>
+          <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#addProductModal"><i class="fas fa-plus-circle fa-sm"></i>   NEW PRODUCT</button>
 
     			<table  id="tableManageProducts" class="table table-hover mb-4">
                     <thead>
