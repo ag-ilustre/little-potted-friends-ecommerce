@@ -1,6 +1,6 @@
 	<!-- footer -->
 
-    <footer id="footer" class="bg-dark">
+    <footer id="footer" class="bg-dark mt-4">
         <p class="text-center text-light mb-0 p-1"><small>Copyright &copy; 2018 Little Potted Friends</small></p>
     </footer>
 

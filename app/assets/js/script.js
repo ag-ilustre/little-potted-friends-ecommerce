@@ -19,7 +19,8 @@ function showCategories(categoryId){
 	    $('#catalog-category-selected').html("Sets in Style");		
 	    break;
 	  case 3:
-	    $('#catalog-category-selected').html("Care Supplies");		
+	    $('#catalog-category-selected').html("Care Supplies");
+	    break;	
 	}
 	// alert(categoryId);
 	$.ajax({
@@ -675,6 +676,79 @@ function displayProductInfo(id) {
 }
 
 // =================================== MANAGE PRODUCTS (ADMIN) =================================== //
+function displayEditProductDetails(editProductId, editProductName, editProductPrice, editProductDescription, categoryId) {	
+	$("#getEditProductId").html("<input type='hidden' id='editProductId' name='editProductId' value='" + editProductId + "'>");
+	$("#editProductName").attr("value", editProductName);
+	$("#editProductPrice").attr("value", editProductPrice);
+	$("#getEditProductDescription").html("<textarea tyep='text' name='editProductDescription' id='editProductDescription' class='form-control bg-light text-dark'>" + editProductDescription + "</textarea>");
+	$("#optionEditProductCatergoryId" + categoryId).attr("selected","selected");
+
+	// console.log(editProductId + " " + editProductName + " " + editProductPrice + " " + editProductDescription + " " + editProductCategoryId);
+		
+}
+
+function editProductDetails() {
+	let editProductId = $("#editProductId").val();
+	let editProductName = $("#editProductName").val();
+	let editProductPrice = $("#editProductPrice").val();
+	let editProductDescription = $("#editProductDescription").val();
+	let editProductCategoryId = $("#editProductCategoryId").val();
+
+	let error_flag6 = 0; //if any error is detected, the form should not be submitted
+
+	if (editProductName == "") {
+		$("#error_editProductName").css("color","red");
+		$("#error_editProductName").html("This field is required!");
+		error_flag6 = 1;
+	} else {
+		$("#error_addProductName").html("");
+	}
+
+	if (editProductPrice == "") {
+		$("#error_editProductPrice").css("color","red");
+		$("#error_editProductPrice").html("This field is required!");
+		error_flag6 = 1;
+	} else if (editProductPrice < 0) {
+		$("#error_editProductPrice").css("color","red");
+		$("#error_editProductPrice").html("Please enter a valid amount");
+		error_flag6 = 1;
+	} else {
+		$("#error_editProductPrice").html("");
+	}
+
+	if (editProductDescription == "") {
+		$("#error_editProductDescription").css("color","red");
+		$("#error_editProductDescription").html("This field is required!");
+		error_flag6 = 1;
+	} else {
+		$("#error_editProductDescription").html("");
+	}
+
+	if(error_flag6 == 0){
+		$("#manageProductsAlertMsg").html("");	
+		console.log(editProductId + " " + editProductName + " " + editProductPrice + " " + editProductDescription + " " + editProductCategoryId);
+
+		$.post("../controllers/edit_product.php", 
+					{"editProductId" : editProductId,    
+					"editProductName" : editProductName,    
+					"editProductPrice" : editProductPrice,
+					"editProductDescription" : editProductDescription, 
+					"editProductCategoryId" : editProductCategoryId},
+					function(data){
+						if(data == 1){
+							console.log("Updates saved!");
+							$("#manageProductsAlertMsg").html("<i class='far fa-check-square fa-lg'></i> New Product Added!");
+							$("#manageProductsAlertMsg").fadeOut(1100, function() {
+							    // Animation complete.
+							    document.location = 'manageProducts.php'; 
+							 });	
+						}
+
+		});
+	}
+} 
+
+
 
 function deleteProduct(id){
 	var ans2 = confirm("Are you sure you want to remove this product from the catalog?");
@@ -718,7 +792,6 @@ function addProduct() {
 
 	let error_flag5 = 0; //if any error is detected, the form should not be submitted
 
-	// validation for the firstname
 	if (addProductName == "") {
 		$("#error_addProductName").css("color","red");
 		$("#error_addProductName").html("This field is required!");
@@ -727,7 +800,6 @@ function addProduct() {
 		$("#error_addProductName").html("");
 	}
 
-	// validation for the lastname
 	if (addProductPrice == "") {
 		$("#error_addProductPrice").css("color","red");
 		$("#error_addProductPrice").html("This field is required!");
@@ -740,19 +812,14 @@ function addProduct() {
 		$("#error_addProductPrice").html("");
 	}
 
-	// validation for the email
 	if (addProductDescription == "") {
 		$("#error_addProductDescription").css("color","red");
 		$("#error_addProductDescription").html("This field is required!");
 		error_flag5 = 1;
 	} else {
-		// emailCheckSame();
-		// error_flag = errorFlagEmail;
 		$("#error_addProductDescription").html("");
 	}
 
-
-	// validation for the mobile
 	if (addProductCategory == "") {
 		$("#error_addProductCategory").css("color","red");
 		$("#error_addProductCategory").html("This field is required!");

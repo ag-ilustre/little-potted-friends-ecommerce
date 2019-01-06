@@ -25,14 +25,14 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 table-resposive">
       <div class="text-center"><h2 id="manageProductsAlertMsg"></h2></div>
     		<h4 class="text-center p-2 mb-2">MANAGE PRODUCTS</h4>
 
           <!-- ADD A PRODUCT -->
           <button type="button" class="btn btn-info my-3" data-toggle="modal" data-target="#addProductModal"><i class="fas fa-plus-circle fa-sm"></i>   NEW PRODUCT</button>
 
-    			<table  id="tableManageProducts" class="table table-hover table-resposive">
+    			<table  id="tableManageProducts" class="table table-hover mb-4">
                     <thead>
                         <tr class="text-center">
                             <th width="5%">Product ID</th>
@@ -58,7 +58,7 @@
                             <td class="text-center">
                                 <!-- EDIT -->
                                 <!-- VARIABLEs: product_id, product_name, img_path, price, description, category_id, category_name-->
-                                <span title="Edit Product Details"><button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#editProductModal" onclick="editProduct('<?= $row['product_id'] ?>','<?= $row['product_name'] ?>',,'<?= $row['img_path'] ?>','<?= $row['price'] ?>','<?= $row['description'] ?>','<?= $row['category_id'] ?>','<?= $row['category_name'] ?>')"><i class="fas fa-edit"></i></button></span>
+                                <span title="Edit Product Details"><button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#editProductModal" onclick="displayEditProductDetails('<?= $row['product_id'] ?>','<?= $row['product_name'] ?>','<?= $row['price'] ?>','<?= $row['description'] ?>','<?= $row['category_id'] ?>')"><i class="fas fa-edit"></i></button></span>
 
                                 <!-- UPLOAD IMAGE -->                                
                                 <span title="Upload Image"><button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#uploadImageModal" onclick="displayUploadImage('<?= $row['product_id'] ?>', '<?= $row['product_name'] ?>')"><i class="fas fa-image"></i></button></span>
@@ -84,7 +84,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addProductModalTitle">Edit Product</h5>
+        <h5 class="modal-title" id="addProductModalTitle">Add edit Product</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -126,7 +126,7 @@
     <?php 
       if (mysqli_num_rows($result) > 0) {
           while($row = mysqli_fetch_assoc($result)){ ?>
-            <option value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+            <option selected="" value=""> ------ </option>
     <?php } } ?>
           </select>
           <p id="error_addProductCategory"></p>
@@ -156,12 +156,60 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <!-- modal-body -->
       <div class="modal-body">
-        <p id="editProductMessage"></p>
+        <span id="getEditProductId"></span>
+        <!-- <form action="../controllers/add_product.php" method="post" id="formAddProduct"> -->
+        <div class="form-group">
+          <div class="row">
+            <div class="col-8">
+              <label for="editProductName">Product Name:</label>
+              <input id="editProductName" type="text" name="editProductName" class="form-control bg-light text-dark">
+              <p id="error_editProductName"></p>
+            </div>
+            <div class="col-4">
+              <label for="editProductPrice">Price:</label>
+              <input id="editProductPrice" type="number" name="editProductPrice" class="form-control bg-light text-dark">
+              <p id="error_editProductPrice"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="editProductDescription">Description</label>
+          <span id="getEditProductDescription"></span>
+          <p id="error_editProductDescription"></p>
+        </div>
+        <div class="form-group">
+<!-- dynamically generate categories -->
+<?php
+  require_once '../controllers/connect.php';
+
+    $sql = "SELECT * FROM tbl_categories";
+
+    $result = mysqli_query($conn, $sql);
+?>
+          <label for="editProductCategoryId">Catergories</label>
+          <select class="custom-select" id="editProductCategoryId" name="editProductCategoryId"  class="form-control bg-light text-dark">
+    <?php 
+      if (mysqli_num_rows($result) > 0) {
+          while($row = mysqli_fetch_assoc($result)){ 
+            $categoryId = $row['id'];
+           ?>
+
+            <option id="optionEditProductCatergoryId<?= $categoryId ?>" value="<?= $row['id'] ?>"><?= $row['name'] ?></option>
+    <?php } } ?>
+          </select>
+          <p id="error_editProductCategory"></p>
+        </div>
+        <!-- </form> -->
       </div>
+
+      <!-- end of modal-body -->
       <div class="modal-footer text-center">
-        <button type="button" class="btn btn-info btnWider" data-dismiss="modal">SAVE</button>
-        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CLOSE</button>
+        <div class="text-center mt-3">
+          <button type="button" class="btn btn-info btnWider mr-2" data-dismiss="modal" onclick="editProductDetails()">SAVE</button>
+          <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
+        </div>
       </div>
     </div>
   </div>
