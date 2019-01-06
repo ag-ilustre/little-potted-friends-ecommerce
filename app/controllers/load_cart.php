@@ -53,7 +53,7 @@
                                  <td id='price$id'>&#x20B1; $price</td>
                                  <td><input type='number' class='form-control alignQuantity' value='$quantity' id='quantity$id'  min='1' onchange='changeNoItems($id)' oninput='this.value = Math.abs(this.value)'></td>
                                  <td class='sub-total' id='subTotal$id'>&#x20B1; $formatted_subTotal </td>
-                                 <td><button class='btn btn-danger' onclick='removeFromCart($id)'><i class='fas fa-trash-alt'></i></button></td>
+                                 <td><span title='Remove Item'><button class='btn btn-danger' onclick='removeFromCart($id)'><i class='fas fa-trash-alt'></i></button></span></td>
                              </tr>";
                        }
                    }

@@ -1,6 +1,6 @@
 <?php
 	//connect to the database
-	require 'connect.php';
+	require_once 'connect.php';
 
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
@@ -37,17 +37,6 @@
 
 			}
 		}
-	}
-
-
-
-	//add using deaactivated email
-
-
-	//add using new email
-	
-
-	
-	 
+	}	 
 
 ?>

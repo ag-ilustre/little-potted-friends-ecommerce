@@ -1,6 +1,6 @@
 <?php
      
-  require 'connect.php';
+  require_once 'connect.php';
 
   $id = $_POST['id'];
   $subTotal = 0;
@@ -9,10 +9,10 @@
     <table class='table table-hover'>
       <thead>
         <tr>
-          <th width='30%'>Product</th>
-          <th width='20%'>Price</th>
+          <th width='40%'>Product</th>
+          <th width='20%'>Price (&#8369;)</th>
           <th width='20%'>Quantity</th>
-          <th width='20%'>Sub-total</th>         
+          <th width='20%'>Sub-total (&#8369;)</th>         
         </tr>
       </thead>
       <tbody>";
@@ -41,9 +41,9 @@
                   $data .=
                     "<tr>
                         <td>$name</td>
-                        <td>&#x20B1; $formatted_price</td>
+                        <td>$formatted_price</td>
                         <td class='text-center'>$quantity</td>
-                        <td>&#x20B1; $formatted_subTotal</td>
+                        <td>$formatted_subTotal</td>
                     </tr>";
               }
               $data .="</tbody></table>";

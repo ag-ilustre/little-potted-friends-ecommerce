@@ -470,7 +470,7 @@ $("#btnPlaceOrder").click(()=>{
 
 });
 
-// =================================== EDIT PROFILE =================================== //
+// =================================== EDIT PROFILE (USER/ADMIN) =================================== //
 function deactivateAcct(id) {
 	$.post("../controllers/deactivate_account.php", 
 				{"deactivateId" : id},
@@ -570,6 +570,7 @@ function editProfile(id) {
 	}
 }
 
+// =================================== MANAGE USERS (ADMIN) =================================== //
 $("#btnEditUserAccess").click(()=>{
 	let editUserId = $("#editUserId").val();
 	let editUserAccess = $("#editUserAccess").val();
@@ -610,6 +611,8 @@ $("#btnEditUserAccess").click(()=>{
 	}
 });
 
+// =================================== ORDER HISTORY (ADMIN) =================================== //
+//to display on Modal
 function updateStatus(orderId, transactionCode, statusId, statusName) {
 	
 	$("#transactionCode").html("Reference Number: " + transactionCode + "<br><input type='hidden' id='orderId' value='" + orderId + "'>");
@@ -625,7 +628,6 @@ function updateStatus(orderId, transactionCode, statusId, statusName) {
 	}
 		
 }
-
 
 function changeOrderStatus() {
 	let orderStatusId = $("input[name='orderStatusId']:checked").val();
@@ -672,12 +674,171 @@ function displayProductInfo(id) {
 	});
 }
 
+// =================================== MANAGE PRODUCTS (ADMIN) =================================== //
+
+function deleteProduct(id){
+	var ans2 = confirm("Are you sure you want to remove this product from the catalog?");
+	if(ans2){
+		// alert("You answere YES!");
+		$.post("../controllers/delete_product.php",
+					{"id" : id},
+					function(data){
+						if(data == 1){
+							// alert("Updates saved!");
+							$("#manageProductsAlertMsg").html("<i class='far fa-check-square fa-lg'></i> Product Removed!");
+							$("#manageProductsAlertMsg").fadeOut(1100, 
+								function() {
+							    // Animation complete.
+							    document.location = 'manageProducts.php'; 
+							 });	
+						} 
+			});
+	}
+}
+
+//get value of category id in Add Product (Admin/mManage Products)
+$('#addProductCategory').on('change',function(){
+       var addProductCategory = $(this).val();
+      
+       console.log("category id: " + addProductCategory);
+   });
+
+//get value of product description in Add Product (Admin/mManage Products)
+$('#addProductDescription').on('change',function(){
+       var addProductDescription = $(this).val();
+      
+       console.log("product description: " + addProductDescription);
+   });
+
+function addProduct() {
+	let addProductName = $("#addProductName").val();
+	let addProductPrice = $("#addProductPrice").val();
+	let addProductDescription = $("#addProductDescription").val();
+	let addProductCategory = $("#addProductCategory").val();
+
+	let error_flag5 = 0; //if any error is detected, the form should not be submitted
+
+	// validation for the firstname
+	if (addProductName == "") {
+		$("#error_addProductName").css("color","red");
+		$("#error_addProductName").html("This field is required!");
+		error_flag5 = 1;
+	} else {
+		$("#error_addProductName").html("");
+	}
+
+	// validation for the lastname
+	if (addProductPrice == "") {
+		$("#error_addProductPrice").css("color","red");
+		$("#error_addProductPrice").html("This field is required!");
+		error_flag5 = 1;
+	} else if (addProductPrice < 0) {
+		$("#error_addProductPrice").css("color","red");
+		$("#error_addProductPrice").html("Please enter a valid amount");
+		error_flag5 = 1;
+	} else {
+		$("#error_addProductPrice").html("");
+	}
+
+	// validation for the email
+	if (addProductDescription == "") {
+		$("#error_addProductDescription").css("color","red");
+		$("#error_addProductDescription").html("This field is required!");
+		error_flag5 = 1;
+	} else {
+		// emailCheckSame();
+		// error_flag = errorFlagEmail;
+		$("#error_addProductDescription").html("");
+	}
+
+
+	// validation for the mobile
+	if (addProductCategory == "") {
+		$("#error_addProductCategory").css("color","red");
+		$("#error_addProductCategory").html("This field is required!");
+		error_flag5 = 1;
+	} else {
+		$("#error_addProductCategory").html("");
+	}
+
+	if(error_flag5 == 0){
+		$("#manageProductsAlertMsg").html("");	
+		// console.log(addProductName + addProductPrice + addProductDescription + addProductCategory);
+		// $("#formAddProduct").submit();
+
+
+		$.post("../controllers/add_product.php", 
+					{"addProductName" : addProductName,    
+					"addProductPrice" : addProductPrice,
+					"addProductDescription" : addProductDescription, 
+					"addProductCategory" : addProductCategory},
+					function(data){
+						if(data == 1){
+							// alert("Updates saved!");
+							$("#manageProductsAlertMsg").html("<i class='far fa-check-square fa-lg'></i> New Product Added!");
+							$("#manageProductsAlertMsg").fadeOut(1100, function() {
+							    // Animation complete.
+							    document.location = 'manageProducts.php'; 
+							 });	
+						}
+
+		});
+	}
+
+}
+
+function displayUploadImage(productId,productName) {
+	$("#displayProductName").html("Product Name: " + productName + "<br>Product ID: " + productId);
+
+	$("#getProductId").html("<input type='hidden' id='uploadImageProductId' name='uploadImageProductId' value='" + productId + "'>");
+}
 
 
 
+// function uploadImage() {
+// 	let uploadImageProductId = $("#uploadImageProductId").val();
+// 	let upload = $("#upload").val();
+
+// <form id="uploadimage39" class="uploadimage" data-id="39" action="test.php" method="post" enctype="multipart/form-data">
+    												
+// 	<div id="selectImage">
+// 		<label>Select Your Image</label><br/>
+// 		<input class="form-control" type="file" name="file" id="file39" required />
+// 		<input class="btn btn-success w-100" type="submit" value="Upload" class="submit" />
+// 	</div>
+// </form>		
+
+		// let uploadImageProductId = $("#uploadImageProductId").val();
 
 
+		// let data = new FormData(this);
+		// data.append("uploadImageProductId", uploadImageProductId);
+		// console.log(uploadImageProductId);
+		
+		// e.preventDefault();
+		// $.ajax({
+	 //    	url: "../controllers/upload_image.php", // Url to which the request is send
+	 //    	type: "POST",             // Type of request to be send, called as method
+	 //    	data: data, // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+	 //    	contentType: false,       // The content type used when sending data to the server.
+	 //    	cache: false,             // To unable request pages to be cached
+	 //    	processData:false,        // To send DOMDocument or non processed data file it is set to false
+	 //    	success: function()  // A function to be called if request succeeds
+	 //    	{
+	 //    		if(data == 1) {
+		// 	    	$("#manageProductsAlertMsg").html("<i class='far fa-check-square fa-lg'></i> New Product Added!");
+		// 	    	$("#manageProductsAlertMsg").fadeOut(1100, function() {
+		// 	    	    // Animation complete.
+		// 	    	    document.location = 'manageProducts.php'; 
+		// 	    	 });	
+		//     	} else {
+		//     		 $("#error_uploadImage").css("color","red");
+		//     		 $("#error_uploadImage").html(data);
 
+		//     	}
+	 //    	}
+		// });
+	//}));
 
 
 

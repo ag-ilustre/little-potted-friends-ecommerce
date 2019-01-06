@@ -57,9 +57,9 @@
                             <td><?= $row['paymentMode'] ?></td>
                             <td><?= $row['statusName'] ?></td>
                             <td>
-                                <button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>','<?= $row['statusId'] ?>','<?= $row['statusName'] ?>')"><i class="far fa-edit"></i></button>
+                                <span title="Update Status"><button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>','<?= $row['statusId'] ?>','<?= $row['statusName'] ?>')"><i class="far fa-edit"></i></button></span>
                                
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>')"><i class="fas fa-search"></i></a>
+                                <span title="View Order Details"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>')"><i class="fas fa-search"></i></button></span>
                                 
                             </td>
                         </tr>
@@ -93,7 +93,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info btnWider mr-2" onclick="changeOrderStatus()" data-dismiss="modal">SAVE</button>
+        <button type="button" class="btn btn-info btnWider mr-2" onclick="changeOrderStatus()" data-dismiss="modal">SAVE</button>
         <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
       </div>
 

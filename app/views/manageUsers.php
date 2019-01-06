@@ -49,7 +49,7 @@
                             <td><?= $row['status'] ?></td>
                             <td><?= $row['access'] ?></td>
                             <td>
-                                <a href="editUser.php?id=<?= $row['id'] ?>" class="btn btn-info"><i class="far fa-edit"></i></a>
+                                <span title="Change Access"><a href="editUser.php?id=<?= $row['id'] ?>" class="btn btn-info"><i class="far fa-edit"></i></a></span>
                             </td>
                             
                         </tr>
