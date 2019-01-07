@@ -68,6 +68,12 @@
   </div>
   <!-- /.row -->
 
+  <div class="row text-center">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10 col-md-12 text-center">
+      <h3 class="text-center p-2 mb-3">Our Featured Collections</h3>
+    </div>
+  </div>
 
   <div class="row text-center">
 
@@ -75,7 +81,7 @@
       <div class="card">
         <img class="card-img-top p-1" src="../assets/images/minimalistpot.png" alt="">
         <div class="card-body">
-          <h5 class="card-title">Hedgehog Cactus</h5>
+          <h5 class="card-title productName">Hedgehog Cactus</h5>
         </div>
         <div class="card-footer">
           <a href="catalog.php" class="btn btn-info btnWider">VIEW CATALOG</a>
@@ -87,7 +93,7 @@
       <div class="card">
         <img class="card-img-top p-1" src="../assets/images/designerpot.png" alt="">
         <div class="card-body">
-          <h5 class="card-title">Designer Pot</h5>
+          <h5 class="card-title productName">Designer Pot</h5>
         </div>
         <div class="card-footer">
           <a href="catalog.php" class="btn btn-info btnWider">VIEW CATALOG<a>
@@ -99,7 +105,7 @@
       <div class="card">
         <img class="card-img-top p-1" src="../assets/images/rusticpot.png" alt="">
         <div class="card-body">
-          <h5 class="card-title">Schlumbergera</h5>
+          <h5 class="card-title productName">Schlumbergera</h5>
         </div>
         <div class="card-footer">
           <a href="catalog.php" class="btn btn-info btnWider">VIEW CATALOG</a>
@@ -111,7 +117,7 @@
       <div class="card">
         <img class="card-img-top p-1" src="../assets/images/triplepots.png" alt="">
         <div class="card-body">
-          <h5 class="card-title">Fairy Washboards</h5>
+          <h5 class="card-title productName">Fairy Washboards</h5>
         </div>
         <div class="card-footer">
           <a href="catalog.php" class="btn btn-info btnWider">VIEW CATALOG</a>
