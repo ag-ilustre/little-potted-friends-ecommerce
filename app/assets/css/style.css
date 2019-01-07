@@ -214,6 +214,10 @@ nav {
 	text-align: center;
 }
 
+.quantityProductInfo {
+	width: 150px;
+	height: 38px;
+}
 
 .productName {
 	font-size: 1.3rem;
