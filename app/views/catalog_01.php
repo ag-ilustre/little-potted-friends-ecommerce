@@ -2,64 +2,51 @@
 
 <!-- Page Content -->
 <div class="container">
-	<div class="row mt-2">
-		<div class="col-lg-3 text-center">
-			<h3 id="catalog-category-selected">Collection</h3>
-		</div>
-		<div class="col-lg-9">
-			<div class="input-group mb-3">
-			  <input type="text" class="form-control" placeholder="Search an item" aria-label="Search an item" aria-describedby="button-addon2" id="searchAnItem">
-			 <!--  <div class="input-group-append">
-			    <button class="btn btn-outline-secondary" type="button">      <i class="fas fa-search"></i>      </button>
-			  </div> -->
-			</div>
-			<!-- <input type="text/number" name="searchItem" class="mx-0 px-0"></input><button><i class="fas fa-search"></i></button> -->
-		</div>
-	</div>
-
-	<div class="row mt-1">
+	<div class="row">
 		<div class="col-lg-12">
-		</div>
-	</div>
-
-	<div class="row mt-2">
-		<div class="col-lg-2 mb-4">	
-			<h5>Categories</h5>
-			<div class="list-group mb-2">
+			<div class="row">
+				<!-- selected category -->
+				<div class="col-lg-5 text-center mb-2">
+					<h3 id="catalog-category-selected">Collection</h3>
+					<div class="list-group  form-inline">
+						
+				      		<ul class="list-group favicon-list-style">
+				      				      				
+				      			<?php include "../controllers/show_categories.php"; ?>
+				      							      			
+				      		</ul>
+				     	
+					</div>
+				</div>
 				
-		      		<ul class="list-group favicon-list-style">
-		      				      				
-		      			<?php include "../controllers/show_categories.php"; ?>
-		      							      			
-		      		</ul>
-	      	
-			</div>
-			<!-- /.list-group -->
 
-			<h5>Price</h5>
-				<select class="custom-select" id="price">
-					<option selected="" value=""> ------ </option>
-					<option value="ASC">Lowest to Highest</option>
-					<option value="DESC">Highest to Lowest</option>
-				</select>
+				<!-- price -->
+				<div class="col-lg-3 mb-2">
+					<h5>Price</h5>
+						<select class="custom-select" id="price">
+							<option selected="" value=""> ------ </option>
+							<option value="ASC">Lowest to Highest</option>
+							<option value="DESC">Highest to Lowest</option>
+						</select>
+				</div>
 
-			<!-- <div class="dropdown">
-			  <button class="btn btn-outline-secondary btn-block dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select a price range
-			  </button>
-			  <div class="dropdown-menu btn-block dropdown-menu-right" aria-labelledby="dropdownMenu2" class="text-left">
-			    <a class="dropdown-item" href="#" id="click-priceRange1">&#8369 0 - &#8369 499</a>
-			    <a class="dropdown-item" href="#" id="click-priceRange2">&#8369 500 - &#8369 749</a>
-			    <a class="dropdown-item" href="#" id="click-priceRange3">&#8369 750 - &#8369 999</a>
-			    <a class="dropdown-item" href="#" id="click-priceLowToHigh">Lowest to Highest</a>
-			    <a class="dropdown-item" href="#" id="click-priceHighToLow">Highest to Lowest</a>
-			  </div>
-			</div> -->
-			
+				<!-- searchbar -->
+				<div class="col-lg-3 mb-2">
+					<h5>Search</h5>
+					<div class="input-group">
+					  <h5><input type="text" class="form-control" placeholder="Type here" aria-label="Search an item" aria-describedby="button-addon2" id="searchAnItem"></h5>
+					 <!--  <div class="input-group-append">
+					    <button class="btn btn-outline-secondary" type="button">      <i class="fas fa-search"></i>      </button>
+					  </div> -->
+					</div>
+					<!-- <input type="text/number" name="searchItem" class="mx-0 px-0"></input><button><i class="fas fa-search"></i></button> -->
+				</div>
 		</div>
-		<!-- /.col-lg-3 -->
-		
-		<div class="col-lg-10 mx-0">
-			<div class="row" id="products">
+		<!-- end of row -->
+
+	<div class="row">		
+		<div class="col-lg-12">
+			<div class="row text-center" id="products">
 				<?php include '../controllers/show_catalog.php'; ?>
 			</div>
 		</div>

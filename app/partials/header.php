@@ -69,9 +69,9 @@
               
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="aboutus.php" id="nav-about_us">ABOUT US <span class="sr-only">(current)</span></a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <!-- LOGIN / LOGOUT -->
            <?php 

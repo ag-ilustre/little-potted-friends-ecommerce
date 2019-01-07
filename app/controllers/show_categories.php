@@ -7,7 +7,7 @@
 	if (mysqli_num_rows($result) > 0) {
 		while ($row = mysqli_fetch_assoc($result)) {
 			echo "
-			<li class='list-group-item px-0'>
+			<li class='list-group-item p-0'>
 				<a class='dropdown-item' onclick='showCategories($row[id])'>$row[name]</a>
 			</li>";
 		}

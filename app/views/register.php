@@ -2,8 +2,9 @@
 
 <div class="container">
     <div class="row">
-        
-        <div class="col-lg-12">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 col-md-12 col-sm-12">
+            <h3 class="text-center mb-4">Register and Get Started</h3>
         	<form method="POST" action="../controllers/register_user.php" id="form_register">
         		<!-- in the meantime, use "required" in input filed -->
         		<div class="form-group">
