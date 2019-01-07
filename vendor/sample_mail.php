@@ -31,8 +31,10 @@ $email_body = "<p>Dear <strong>" . $_SESSION["firstname"] . "</strong>,<br>
 <p><strong>Shipping Address</strong> – House Number, Building and Street Name, Province, City/Municipality, and Barangay</p>
 <p>In the event that the information you provided is incomplete, you may place a new order with the correct and complete details and cancel the initial order, if still within the processing stage. Incorrect or incomplete details can result in the cancellation of order.</p>
 
+<p>To view your order details, please <a href='https://mighty-mesa-84319.herokuapp.com/app/views/login.php'>log in</a> to your account.</p>
+
 <p>We hope to see you again soon!</p>
-<p><strong>LittlePottedFriends.com</strong></p>";
+<a href='https://tinyurl.com/LittlePottedFriends'><p><strong>LittlePottedFriends.com</strong></p></a>";
 
 
 //echo ORDER SUMMARY, DELIVERY DATE, DELIVERY ADDRESS
