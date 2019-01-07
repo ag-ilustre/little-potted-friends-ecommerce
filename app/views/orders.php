@@ -31,7 +31,7 @@
 						while($row = mysqli_fetch_assoc($result)){
 							// row: id | transaction_code | purchase_date | user_id | status_id | payment_mode |
 							$data1 = "";
-							$data1 = "<div class='mb-4'>
+							$data1 = "<div class='mb-4 table-responsive'>
 									<h5>Order ID: <span class='customerOrderDetails'>$row[transaction_code]</span> | Placed on: <span class='customerOrderDetails'>$row[purchase_date]</span> | Total: <span class='customerOrderDetails'>&#x20B1; $row[total]</span> | Status: <span class='customerOrderDetails'>$row[status_name]</span></h5>
 									<table class='table table-hover'>
 									  <thead>

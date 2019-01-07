@@ -24,28 +24,7 @@
 
 
 
-/*for absolute position of text*/
-.image-container {
-    height: 450px;
-	width: 900px;
-    overflow: hidden;
-    position: relative; 
-}
-
-.image-inner-container {
-    position: absolute;
-}
-
-.overlay {
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    margin-top: 25px;
-    /*margin-top: 100px;*/
-}
-/*end*/
-
-.slide3 {
+.slide3text {
 	color: #FFF;
 }
 
@@ -300,8 +279,65 @@ ul.favicon-list-style {
 }
 
 
+
+/*for absolute position of text*/
+.image-container {
+    height: 450px;
+	width: 900px;
+    overflow: hidden;
+    position: relative; 
+}
+
+.image-inner-container {
+    position: absolute;
+}
+
+.overlay {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    margin-top: 100px;
+    /*margin-top: 100px;*/
+}
+/*end*/
+
+.h1ofindex {
+		/*padding-top: 10px;*/
+	}
+
 /* MEDIA QUERIES */
 @media screen and (max-width: 600px) { 
+
+	.h1ofindex {
+		font-size: 1.2rem;
+	}
+
+	.home-background {
+		width: 320px;
+	    height: 160px;
+	}
+
+	/*for absolute position of text*/
+	.image-container {
+		width: 320px;
+	    height: 160px;
+	    overflow: hidden;
+	    position: relative; 
+	}
+
+	.image-inner-container {
+	    position: absolute;
+	}
+
+	.overlay {
+	    position: absolute;
+	    text-align: center;
+	    width: 100%;
+	    margin-top: 15px !important;
+	    /*margin-top: 100px;*/
+	}
+	/*end*/
+
 	#companyLogo {
 		width: 175px;
 		height: auto;
@@ -321,4 +357,39 @@ ul.favicon-list-style {
 
 @media screen and (min-width: 600px) and (max-width: 768px) {
 
+	
+
+	.home-background {
+		width: 700px;
+	    height: 350px;
+	}
+
+	/*for absolute position of text*/
+	.image-container {
+		width: 700px;
+	    height: 350px;
+	    overflow: hidden;
+	    position: relative; 
+	}
+
+	.image-inner-container {
+	    position: absolute;
+	}
+
+	.overlay {
+	    position: absolute;
+	    text-align: center;
+	    width: 100%;
+	    margin-top: 25px;
+	    /*margin-top: 100px;*/
+	}
+	/*end*/
 }
+
+/*
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);*/

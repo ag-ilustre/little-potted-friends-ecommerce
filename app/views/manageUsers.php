@@ -20,7 +20,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">    
+    <div class="col-lg-12 table-responsive">    
     		<h4 class="text-center p-2 display-4">MANAGE USERS</h4>    		
     			<table  id="tableManageUsers" class="table table-hover">
                     <thead>

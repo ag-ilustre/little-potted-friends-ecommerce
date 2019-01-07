@@ -27,7 +27,7 @@
 
   <div class="row text-center mb-4">
     <div class="col-lg-1"></div>
-    <div class="col-lg-10 col-md-12 text-center">
+    <div class="col-lg-10 col-md-12 mx-auto">
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -37,19 +37,19 @@
         <div class="carousel-inner" role="listbox">
           <div class="carousel-item active image-container">
             <div class="image-inner-container">
-              <h1 class="overlay mt-5 p-5">Welcome to Our Shop</h1>
+              <h1 class="overlay mt-5 p-5 h1ofindex">Welcome to Our Shop</h1>
               <img class="d-block img-fluid home-background" src="../assets/images/bg1.jpeg.jpeg" alt="First slide">
             </div>
           </div>
           <div class="carousel-item image-container">
             <div class="image-inner-container">
-               <div class="overlay mt-5 px-5 text-left"><h1 class="m-0">Free Shipping</h1><h1 class="m-0">up to Feb. 14 2019*!</h1><br><small>*Terms & Conditions Apply</small></div>
+               <div class="overlay mt-5 px-3 ml-1 text-left"><h1 class="m-0 p-1 h1ofindex">Free Shipping</h1><h1 class="m-0 p-1 h1ofindex">up to Feb. 14 2019*!</h1><br><small>*Terms & Conditions Apply</small></div>
               <img class="d-block img-fluid home-background" src="../assets/images/bg2.jpeg.jpeg" alt="Second slide">
             </div>
           </div>
           <div class="carousel-item image-container">
             <div class="image-inner-container">
-              <h1 class="overlay mt-5 p-3 slide3">Start Your Collection</h1>
+              <h1 class="overlay mt-5 p-3 slide3text h1ofindex">Start Your Collection</h1>
               <img class="d-block img-fluid home-background" src="../assets/images/bg3.jpg.jpg" alt="Third slide">
             </div>
           </div>

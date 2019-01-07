@@ -44,7 +44,7 @@
   	<div class='col-lg-12 text-center'>
     	<h3 id='#orderSummary'class='mb-3'>Order Summary</h3>
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 table-responsive">
 
 <?php
      

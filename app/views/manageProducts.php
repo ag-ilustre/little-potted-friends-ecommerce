@@ -25,9 +25,9 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <div class="text-center p-0"><h2 id="manageProductsAlertMsg" class="p-0"></h2></div>
-    		<h4 class="text-center p-2 mb-2 display-4">MANAGE PRODUCTS</h4>
+    <div class="col-lg-12 table-responsive">
+          <div class="text-center p-0"><h2 id="manageProductsAlertMsg" class="p-0"></h2></div>
+    		  <h4 class="text-center p-2 mb-2 display-4">MANAGE PRODUCTS</h4>
 
           <!-- ADD A PRODUCT -->
           <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#addProductModal"><i class="fas fa-plus-circle fa-sm"></i>   NEW PRODUCT</button>
@@ -37,11 +37,11 @@
                         <tr class="text-center">
                             <th width="5%">Product ID</th>
                             <th width="10%">Product Name</th>                            
-                            <th width="20%">Image</th>
+                            <th width="15%">Image</th>
                             <th width="10%">Price (&#8369;)</th>
                             <th width="25%">Description</th>
                             <th width="10%">Catergory</th>
-                            <th width="20%">Action</th>                           
+                            <th width="25%">Action</th>                           
                         </tr>
                     </thead>
                     <tbody>
@@ -58,13 +58,13 @@
                             <td class="text-center">
                                 <!-- EDIT -->
                                 <!-- VARIABLEs: product_id, product_name, img_path, price, description, category_id, category_name-->
-                                <span title="Edit Product Details"><button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#editProductModal" onclick="displayEditProductDetails('<?= $row['product_id'] ?>','<?= $row['product_name'] ?>','<?= $row['price'] ?>','<?= $row['description'] ?>','<?= $row['category_id'] ?>')"><i class="fas fa-edit"></i></button></span>
+                                <span title="Edit Product Details"><button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#editProductModal" onclick="displayEditProductDetails('<?= $row['product_id'] ?>','<?= $row['product_name'] ?>','<?= $row['price'] ?>','<?= $row['description'] ?>','<?= $row['category_id'] ?>')"><i class="fas fa-edit"></i></button></span>
 
                                 <!-- UPLOAD IMAGE -->                                
-                                <span title="Upload Image"><button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#uploadImageModal" onclick="displayUploadImage('<?= $row['product_id'] ?>', '<?= $row['product_name'] ?>')"><i class="fas fa-image"></i></button></span>
+                                <span title="Upload Image"><button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#uploadImageModal" onclick="displayUploadImage('<?= $row['product_id'] ?>', '<?= $row['product_name'] ?>')"><i class="fas fa-image"></i></button></span>
 
                                 <!-- DELETE -->
-                                <span title="Delete Product"><button type="button" class="btn btn-danger" onclick="deleteProduct('<?= $row['product_id'] ?>')"><i class='fas fa-trash-alt'></i></button></span>
+                                <span title="Delete Product"><button type="button" class="btn btn-danger m-1" onclick="deleteProduct('<?= $row['product_id'] ?>')"><i class='fas fa-trash-alt'></i></button></span>
                                 
                             </td>
                         </tr>
