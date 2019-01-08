@@ -2,9 +2,9 @@
 
 <?php 
 
-	require 'connect.php';
+	require_once 'connect.php';
 
-	$orderId = $_POST['orderId'];
+	$orderId = $_POST['modalOrderId'];
 	$orderStatusId = $_POST['orderStatusId'];
 	$data="";
 
@@ -13,10 +13,17 @@
 			WHERE id = '$orderId'";
 
 	if (mysqli_query($conn, $sql)) { 
-		$data = 1;
-	} else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
+		if ($orderStatusId = 2) {
+			$data = "Completed";
+		} else if ($orderStatusId = 3) {
+			$data = "Cancelled";
+		}
+
+	} 
+	// to check for errors
+	// else {
+ //      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+ //    }
 
 	echo $data;
 ?>

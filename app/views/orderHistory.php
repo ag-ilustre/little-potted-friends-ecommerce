@@ -9,7 +9,7 @@
 ?>
 
 <?php
-	require '../controllers/connect.php';
+	require_once '../controllers/connect.php';
 
 //join tables to show
 //    Customer Name | Reference Number | Order Date | Total | Status | <i class="fas fa-search"></i>
@@ -53,10 +53,11 @@
                             <td><?= $row['purchase_date'] ?></td>
                             <td class="text-right"><?= $row['total']; ?></td> 
                             <td class="text-center"><?= $row['paymentMode'] ?></td>
-                            <td><?= $row['statusName'] ?></td>
+                            <td id="showNewStatus<?= $row['id'] ?>"><?= $row['statusName'] ?></td>
                             <td>
-                                <span title="Update Status"><button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>','<?= $row['statusId'] ?>','<?= $row['statusName'] ?>')"><i class="far fa-edit"></i></button></span>
-                               
+                               <span title="Update Status"><button id="btnUpdateStatus<?= $row['id'] ?>" type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>', '<?= $row['statusId'] ?>')"><i class="far fa-edit"></i></button></span>
+                      
+
                                 <span title="View Order Details"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>')"><i class="fas fa-search"></i></button></span>
                                 
                             </td>

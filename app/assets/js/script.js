@@ -646,39 +646,47 @@ $("#btnEditUserAccess").click(()=>{
 
 // =================================== ORDER HISTORY (ADMIN) =================================== //
 //to display on Modal
-function updateStatus(orderId, transactionCode, statusId, statusName) {
+function updateStatus(orderId, transactionCode, statusId) {
+	console.log(orderId + " " + transactionCode);
 	
-	$("#transactionCode").html("Reference Number: " + transactionCode + "<br><input type='hidden' id='orderId' value='" + orderId + "'>");
-	// alert(statusId);
+	$("#transactionCode").html("Reference Number: " + transactionCode + "<br><input type='hidden' id='modalOrderId' value='" + orderId + "'>");
+
+
 	
 	//use switch-case to display order status (statusName) as Pending/Completed/Cancelled; display "selected" radio buttons
+		// Pending - show all buttons 
 	if (statusId == 1) {
-		$("#updateStatusMessage").html("Status: " + statusName + "<br><p class='mt-1 mb-0'>Select a status:</p><div class='pl-3'><label class='radio'><input type='radio' name='orderStatusId' value='1' checked>  Pending</label><br><label class='radio'><input type='radio' name='orderStatusId' value='2'>  Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId' value='3'>  Cancelled</label></div>");
-	} else if (statusId == 2){
-	  	$("#updateStatusMessage").html("Status: " + statusName + "<br><p class='mt-1 mb-0'>Select a status:</p><div class='pl-3'><label class='radio'><input type='radio' name='orderStatusId' value='1'>  Pending</label><br><label class='radio'><input type='radio' name='orderStatusId' value='2' checked>  Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId' value='3'>  Cancelled</label></div>");
+		$("#updateStatusMessage").html("Status: Pending" + "<p class='mt-1 mb-0'>Select a status:</p><div class='pl-3'><label class='radio'><input type='radio' name='orderStatusId' value='2'>  Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId' value='3'>  Cancelled</label></div>");
+	} else if (statusId == 2) {
+		$("#updateStatusMessage").html("This order is already Completed."); 
 	} else if (statusId == 3) {
-	    $("#updateStatusMessage").html("Status: " + statusName + "<br><p class='mt-1 mb-0'>Select a status:</p><div class='pl-3'><label class='radio'><input type='radio' name='orderStatusId' value='1'>  Pending</label><br><label class='radio'><input type='radio' name='orderStatusId' value='2'>  Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId'  value='3' checked>  Cancelled</label></div>");
+		$("#updateStatusMessage").html("This order has been Cancelled."); 
 	}
 		
 }
 
 function changeOrderStatus() {
 	let orderStatusId = $("input[name='orderStatusId']:checked").val();
-	let orderId = $("#orderId").val();
+	let modalOrderId = $("#modalOrderId").val();
 	
 	// console.log(orderStatusId + " " + orderId);
 
 	$.post("../controllers/change_order_status.php",
 				{"orderStatusId" : orderStatusId,
-				"orderId" : orderId},
+				"modalOrderId" : modalOrderId},
 				function(data){
-					if(data == 1){
+					if(data){
+						//disable button
+						// $("#btnUpdateStatus" + orderId).prop("disabled", true);
+						// $("#btnUpdateStatus" + orderId).removeClass("btn-info");
+						// $("#btnUpdateStatus" + orderId).addClass("btn-secondary");
 						// alert("Updates saved!");
 						$("#orderHistoryAlertMsg").html("<i class='far fa-check-square fa-lg'></i> Updates saved!");
 						$("#orderHistoryAlertMsg").fadeOut(1100, 
 							function() {
 						    // Animation complete.
-						    document.location = 'orderHistory.php'; 
+						    // document.location = 'orderHistory.php';
+						    $("#showNewStatus" + modalOrderId).html(data);
 						 });	
 					} 
 		});
