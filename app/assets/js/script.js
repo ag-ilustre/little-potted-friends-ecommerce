@@ -73,6 +73,41 @@ function newAddToCart(id){
 }
 
 
+//FOR "DISPLAY PRODUCT INFO" MODAL: new add to cart
+function modalNewAddToCart(id){
+	let modalQuantity = $("#modalQuantity" + id).val();
+	// alert(productId);
+	console.log("Quantity: " + modalQuantity);
+	console.log("ProductId: " + id);
+
+	if (modalQuantity > 0) {
+		$.ajax({
+		  url: "../controllers/add_to_cart.php",
+		  method: "POST",
+		  data: 
+		    {
+		      productId: id,
+		      modalQuantity: quantity
+		    },
+		  dataType: "text",
+		    success: function(data){
+		      $('a[href="cart.php"]').html(data);
+		    }
+		});
+	} else {
+		$("#modal_error_quantity" + id).css("color","rgb(185, 74, 72)");
+		$("#modal_error_quantity" + id).html("*Quantity must be at least 1");
+	}
+}
+
+
+function clearErrorMsgOnQuantity(qtyId) {
+	//testing on show_items.php
+	// alert(qtyId);
+	$("#error_quantity" + qtyId).html("");
+	$("#modal_error_quantity" + qtyId).html("");
+}
+
 //CART
 function loadCart(){
 	$.get("../controllers/load_cart.php",function(data){
@@ -662,7 +697,6 @@ function viewOrder(id, transactionCode) {
 }
 
 function displayProductInfo(id) {
-	$("#displayProductInfo").html("");
 	$.post("../controllers/display_product_info.php",
 		{"id" : id},
 		function(data){

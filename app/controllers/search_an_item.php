@@ -1,6 +1,6 @@
 <?php
 	//connect to the database
-	include 'connect.php';
+	require_once 'connect.php';
 
 	$word = $_POST['word'];
 	
@@ -21,7 +21,7 @@
 	                        </div>
 				            <div class='card-footer'>
 					            <span id='error_quantity$row[id]'></span>
-				                <input type='number' class='form-control mb-2 alignQuantity' min='1' value='1' id='quantity$row[id]' oninput='this.value = Math.abs(this.value)'>
+				                <input type='number' class='form-control mb-2 alignQuantity' min='1' value='1' id='quantity$row[id]' oninput='this.value = Math.abs(this.value)' onfocus='clearErrorMsgOnQuantity($row[id])'>
 				                <button class='btn btn-block btn-info' id='addToCart' data-id='$row[id]' onclick='newAddToCart($row[id])'><i class='fas fa-shopping-cart'></i>  ADD TO CART</button>
 				            </div>
 				          </div>
