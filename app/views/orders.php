@@ -31,18 +31,36 @@
 						while($row = mysqli_fetch_assoc($result)){
 							// row: id | transaction_code | purchase_date | user_id | status_id | payment_mode |
 							$data1 = "";
-							$data1 = "<div class='mb-4 table-responsive'>
-									<h5>Order ID: <span class='customerOrderDetails'>$row[transaction_code]</span> | Placed on: <span class='customerOrderDetails'>$row[purchase_date]</span> | Total: <span class='customerOrderDetails'>&#x20B1; $row[total]</span> | Status: <span class='customerOrderDetails'>$row[status_name]</span></h5>
-									<table class='table table-hover'>
-									  <thead>
-									    <tr>
-									      <th class='text-center'>Product</th>
-									      <th class='text-center'>Price</th>
-									      <th class='text-center'>Quantity</th>
-									      <th class='text-center'>Subtotal</th>
-									    </tr>
-									  </thead>
-									  <tbody>";
+
+								if ($row['status_id'] != 1) {
+									$data1 = "<div class='mb-4 table-responsive'>
+											<h5>Order ID: <span class='customerOrderDetails'>$row[transaction_code]</span> | Placed on: <span class='customerOrderDetails'>$row[purchase_date]</span> | Total: <span class='customerOrderDetails'>&#x20B1; $row[total]</span> | Status: <span class='customerOrderDetails'>$row[status_name]</span></h5>
+											<table class='table table-hover'>
+											  <thead>
+											    <tr>
+											      <th class='text-center'>Product</th>
+											      <th class='text-center'>Price</th>
+											      <th class='text-center'>Quantity</th>
+											      <th class='text-center'>Subtotal</th>
+											    </tr>
+											  </thead>
+											  <tbody>";
+								} else if ($row['status_id'] == 1) {
+									// if order status is Pending, allow CANCEL ORDER
+									$data1 = "<div class='mb-4 table-responsive'>
+											<h5>Order ID: <span class='customerOrderDetails'>$row[transaction_code]</span> | Placed on: <span class='customerOrderDetails'>$row[purchase_date]</span> | Total: <span class='customerOrderDetails'>&#x20B1; $row[total]</span> | Status: <span class='customerOrderDetails' id='cancelledOrder$row[id]'>$row[status_name]</span></h5>
+											<button class='btn btn-danger btnWider m-1' id='btnCancelOrder$row[id]' onclick='cancelOrder($row[id])'>CANCEL ORDER</button>
+											<table class='table table-hover'>
+											  <thead>
+											    <tr>
+											      <th class='text-center'>Product</th>
+											      <th class='text-center'>Price</th>
+											      <th class='text-center'>Quantity</th>
+											      <th class='text-center'>Subtotal</th>
+											    </tr>
+											  </thead>
+											  <tbody>";
+								}
 
 							  $order_id = "";
 							  $order_id = $row["id"];

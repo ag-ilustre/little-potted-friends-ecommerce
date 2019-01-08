@@ -899,6 +899,22 @@ function displayUploadImage(productId,productName) {
 	$("#getProductId").html("<input type='hidden' id='uploadImageProductId' name='uploadImageProductId' value='" + productId + "'>");
 }
 
+function cancelOrder(id) {
+	var ans3 = confirm("Are you sure you want to CANCEL this order?");
+	if(ans3){
+		// alert("You answere YES!");
+		$.ajax({
+			url: "../controllers/cancel_order.php",
+			method: "POST",
+			data: {id:id},
+			dataType: "text",
+			success: function(data){
+				$('#cancelledOrder' + id).html(data);
+				$("#btnCancelOrder" + id).remove();
+			}
+		});
+	}
+}
 
 
 // function uploadImage() {
