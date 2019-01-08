@@ -1,6 +1,6 @@
 <?php
 	//connect to the database
-	include 'connect.php';
+	require_once 'connect.php';
 
 	$data = "";
 	

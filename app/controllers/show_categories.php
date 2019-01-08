@@ -1,5 +1,5 @@
 <?php 
-	require "connect.php";
+	require_once "connect.php";
 
 	$sql = "SELECT * FROM tbl_categories";
 	$result = mysqli_query($conn, $sql);

@@ -3,7 +3,7 @@
 
 <?php   
   
-  include 'connect.php';
+  require_once 'connect.php';
 
   if(!isset($_SESSION["item_count"])) {
     $grand_total = 0;

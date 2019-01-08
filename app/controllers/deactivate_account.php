@@ -2,7 +2,7 @@
 
 <?php 
 
-	require 'connect.php';
+	require_once 'connect.php';
 
 	$deactivateId = $_POST['deactivateId'];
 	$data = "";

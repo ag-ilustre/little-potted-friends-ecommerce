@@ -2,7 +2,7 @@
 
 <?php 
 
-	require 'connect.php';
+	require_once 'connect.php';
 
 	$editUserId = $_POST['editUserId'];
 	$editUserAccess = $_POST['editUserAccess'];

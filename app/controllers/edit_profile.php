@@ -2,7 +2,7 @@
 
 <?php
 	//connect to the database
-	require 'connect.php';
+	require_once 'connect.php';
 
 	$userId = $_POST['userId'];
 	$editFirstName = $_POST['editFirstName'];
