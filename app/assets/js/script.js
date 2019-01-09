@@ -120,24 +120,38 @@ function loadCart(){
 function changeNoItems(id){
 	let items = $("#quantity" + id).val();
 	// console.log(items);
-	let price = $("#price" + id).text();
-	let newPrice = items * price;
-	$("#subTotal" + id).html(newPrice);
-	
-	let a = [];
-	$(".sub-total").each(function(id){
-		a[id] = parseInt($(this).text());
-	});
-	// console.log(a);
-	let sum = 0;
-	$.each(a, function(index, value){
-		sum += value;
-	});
-	// console.log(sum);
-	
-	$("#grandTotal").html(sum);
 
-	
+	if (items == 0) {
+		//instantly removes item from cart
+		$.ajax({
+			url: "../controllers/remove_from_cart.php",
+			method: "POST",
+			data: {productId:id},
+			dataType: "text",
+			success: function(data){
+				$('a[href="cart.php"]').html(data);
+				loadCart();
+			}
+		});
+	} else {
+		let price = $("#price" + id).text();
+		let newPrice = items * price;
+		$("#subTotal" + id).html(newPrice);
+		
+		let a = [];
+		$(".sub-total").each(function(id){
+			a[id] = parseInt($(this).text());
+		});
+		// console.log(a);
+		let sum = 0;
+		$.each(a, function(index, value){
+			sum += value;
+		});
+		// console.log(sum);
+		
+		$("#grandTotal").html(sum);
+
+
 		$.ajax({
 		  url: "../controllers/add_to_cart.php",
 		  method: "POST",
@@ -151,8 +165,9 @@ function changeNoItems(id){
 		    	$('a[href="cart.php"]').html(data);
 					loadCart();
 		    }
-		});
-	
+		});	
+		
+	}
 
 }
 

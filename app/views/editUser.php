@@ -1,4 +1,12 @@
+<?php session_start(); ?>
+
 <?php require_once '../partials/header.php'; ?>
+
+<?php                        
+    if(!isset($_SESSION['email'])){ 
+      header("Location: login.php");
+    }
+?>
 
 <?php 
 	

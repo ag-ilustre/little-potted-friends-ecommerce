@@ -1,4 +1,14 @@
-<?php require_once '../partials/header.php'; ?>
+<?php session_start(); ?>
+
+<?php                        
+    if(!isset($_SESSION['email'])){ 
+        require_once '../partials/header.php';
+    } else {
+        header("Location: profile.php");
+    }
+?>
+
+<!-- <?php  ?> -->
 
 <div class="container">
     <div class="row">

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php require_once '../partials/header.php'; ?>
 
 <!-- Page Content -->

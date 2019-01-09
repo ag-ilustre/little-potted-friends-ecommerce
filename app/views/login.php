@@ -1,6 +1,18 @@
-<?php require '../partials/header.php'; ?>
+<?php                        
+    session_start();
 
+    if (!isset($_SESSION['email'])) { 
+      require_once '../partials/header.php';
+    } else if (isset($_SESSION['email']) && $_SESSION['access'] != "ADMIN") {
+      header("Location: cart.php");
+    } else if ($_SESSION['access'] === "ADMIN") {
+      header("Location: profile.php");
+    }
 
+?>
+
+<!-- <?php  ?> -->
+ 
 	<div class="container">
     <div class="row">
       <div class="col-lg-3"></div>
@@ -41,7 +53,7 @@
   </div>
   <!-- end of container -->
 
-<?php require '../partials/footer.php'; ?>
+<?php require_once '../partials/footer.php'; ?>
 
 
 <!-- <script>

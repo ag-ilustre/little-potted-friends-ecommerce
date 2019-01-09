@@ -1,18 +1,20 @@
-<?php require_once '../partials/header.php'; ?>
+<?php session_start(); ?>
 
 <?php                        
     if(!isset($_SESSION['email'])){ 
       header("Location: login.php");
     } 
 
-    if ($_SESSION["item_count"] == 0) {
-        header("location: ../views/catalog.php");
-    } elseif (!isset($_SESSION["item_count"])) {
-        header("location: ../views/catalog.php");
+    // if ($_SESSION["item_count"] == 0) {
+    //     header("location: ../views/cart.php");
+    // } else
+    if (!isset($_SESSION["item_count"])) {
+        header("location: ../views/cart.php");
     } 
 
 ?>
 
+<?php require_once '../partials/header.php'; ?>
 
 <div class="container">
 	<div class='row mb-3'>
@@ -48,7 +50,7 @@
 
 <?php
      
-      include '../controllers/connect.php';
+      require_once '../controllers/connect.php';
 
       $data = "<table class='table table-hover'>
         <thead>
