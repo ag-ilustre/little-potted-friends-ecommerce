@@ -4,7 +4,7 @@
     if (!isset($_SESSION['email'])) { 
       require_once '../partials/header.php';
     } else if (isset($_SESSION['email']) && $_SESSION['access'] != "ADMIN") {
-      header("Location: cart.php");
+      header("Location: catalog.php");
     } else if ($_SESSION['access'] === "ADMIN") {
       header("Location: profile.php");
     }

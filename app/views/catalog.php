@@ -1,5 +1,13 @@
 <?php session_start(); ?>
 
+<?php                        
+    if (isset($_SESSION['email'])) {
+    	if($_SESSION['access'] == "ADMIN") {
+    		header("Location: profile.php");
+    	}
+	}
+?>
+
 <?php require_once '../partials/header.php'; ?>
 
 <!-- Page Content -->

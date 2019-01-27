@@ -1,15 +1,17 @@
 <?php session_start(); ?>
 
 <?php                        
-    if(!isset($_SESSION['email'])){ 
-      header("Location: login.php");
-    } 
+     if (!isset($_SESSION['email'])) {
+       header("Location: login.php");
+    } elseif ($_SESSION['access'] == "ADMIN") {
+       header("Location: profile.php");
+     }  
 
     // if ($_SESSION["item_count"] == 0) {
     //     header("location: ../views/cart.php");
     // } else
     if (!isset($_SESSION["item_count"])) {
-        header("location: ../views/cart.php");
+      header("location: ../views/cart.php");
     } 
 
 ?>

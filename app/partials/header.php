@@ -51,27 +51,40 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php" id="nav-home">HOME <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="catalog.php" id="nav-catalog">CATALOG <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cart.php" id="nav-cart">
 
-              <!-- <i class="fas fa-shopping-cart"></i> CART  -->
-              <?php 
-                if(isset($_SESSION["item_count"])){
-                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-info itemCount'>". $_SESSION['item_count'] ."</span>";
-                } else {
-                  echo "<i class='fas fa-shopping-cart'></i>CART <span class='badge badge-info itemCount'>0</span>";
-                }
-              ?>               
-              <span class="sr-only">(current)</span>
+        <?php
+          if(!isset($_SESSION['email']) || ($_SESSION['access'] != "ADMIN")) {
+            echo "<li class='nav-item'>
+              <a class='nav-link' href='catalog.php' id='nav-catalog'>CATALOG <span class='sr-only'>(current)</span></a>
+              </li>";
+          }
+        ?>
+         
+
               
-            </a>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="aboutus.php" id="nav-about_us">ABOUT US <span class="sr-only">(current)</span></a>
-          </li> -->
+        <?php 
+           if ((!isset($_SESSION['email'])) || ($_SESSION['access'] != "ADMIN")) {
+            if (isset($_SESSION["item_count"])) {
+              echo "<li class='nav-item'>
+                      <a class='nav-link' href='cart.php' id='nav-cart'>
+                        <i class='fas fa-shopping-cart'></i>CART <span class='badge badge-info itemCount'>". $_SESSION['item_count'] ."</span>
+                        <span class='sr-only'>(current)</span>
+                        
+                      </a>
+                    </li>";
+            } else {
+              echo "<li class='nav-item'>
+                      <a class='nav-link' href='cart.php' id='nav-cart'>
+                        <i class='fas fa-shopping-cart'></i>CART <span class='badge badge-info itemCount'>0</span>
+                        <span class='sr-only'>(current)</span>                            
+                      </a>
+                    </li>";
+            }
+          }
+
+        ?>               
+              
+          
           <li class="nav-item">
             <!-- LOGIN / LOGOUT -->
            <?php 
