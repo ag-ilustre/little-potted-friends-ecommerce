@@ -1,7 +1,9 @@
 <?php session_start(); ?>
 
 <?php                        
-    if ($_SESSION['access'] != "NONE") {
+    if (!$_SESSION['access']) {
+    	header("Location: profile.php");
+    } else if ($_SESSION['access'] == "ADMIN") {
     	header("Location: profile.php");
     }
 ?>
@@ -25,6 +27,7 @@
 				$data1 = "";
 				$data2 = "";
 				$data3 = "";
+				$data23 = "";
 				$order_id = "";
 				$item_id = "";
 
@@ -36,14 +39,19 @@
 						WHERE user_id = '$user_id' ORDER BY purchase_date DESC";
 				$result = mysqli_query($conn, $sql);
 					if(mysqli_num_rows($result) > 0) {	
-						$data = "";					
+						// $data = "";					
 						while($row = mysqli_fetch_assoc($result)){
 							// row: id | transaction_code | purchase_date | user_id | status_id | payment_mode |
-							$data1 = "";
+							$total = number_format($row['total'], 2, '.', ',');
 
 								if ($row['status_id'] != 1) {
-									$data1 = "<div class='mb-4 table-responsive'>
-											<h5>Order ID: <span class='customerOrderDetails'>$row[transaction_code]</span> | Placed on: <span class='customerOrderDetails'>$row[purchase_date]</span> | Total: <span class='customerOrderDetails'>&#x20B1; $row[total]</span> | Status: <span class='customerOrderDetails'>$row[status_name]</span></h5>
+									$data1 = "
+										<div class='card px-2 py-4'>
+											<div class='mb-4 table-responsive'>
+											<p>Order ID: <span class='customerOrderDetails'>$row[transaction_code]</span></p> 
+											<p>Placed on: <span class='customerOrderDetails'>$row[purchase_date]</span></p>
+											<p>Total: <span class='customerOrderDetails'>&#x20B1; $total</span></p>
+											<p>Status: <span class='customerOrderDetails'>$row[status_name]</span></p>
 											<table class='table table-hover'>
 											  <thead>
 											    <tr>
@@ -56,9 +64,14 @@
 											  <tbody>";
 								} else if ($row['status_id'] == 1) {
 									// if order status is Pending, allow CANCEL ORDER
-									$data1 = "<div class='mb-4 table-responsive'>
-											<h5>Order ID: <span class='customerOrderDetails'>$row[transaction_code]</span> | Placed on: <span class='customerOrderDetails'>$row[purchase_date]</span> | Total: <span class='customerOrderDetails'>&#x20B1; $row[total]</span> | Status: <span class='customerOrderDetails' id='cancelledOrder$row[id]'>$row[status_name]</span></h5>
-											<button class='btn btn-danger btnWider m-1' id='btnCancelOrder$row[id]' onclick='cancelOrder($row[id])'>CANCEL ORDER</button>
+									$data1 = "
+										<div class='card px-2 py-4'>
+											<div class='mb-4 table-responsive'>
+											<p>Order ID: <span class='customerOrderDetails'>$row[transaction_code]</span></p> 
+											<p>Placed on: <span class='customerOrderDetails'>$row[purchase_date]</span></p>
+											<p>Total: <span class='customerOrderDetails'>&#x20B1; $total</span></p>
+											<p>Status: <span class='customerOrderDetails' id='cancelledOrder$row[id]'>$row[status_name]</span></p>
+											<p><button class='btn btn-danger btnWider m-1' id='btnCancelOrder$row[id]' onclick='showCancelOrderModal($row[id])'>CANCEL ORDER</button></p>
 											<table class='table table-hover'>
 											  <thead>
 											    <tr>
@@ -71,14 +84,14 @@
 											  <tbody>";
 								}
 
-							  $order_id = "";
-							  $order_id = $row["id"];
+							  $order_id = $row['id'];
+
 							$sql1 = "SELECT * FROM tbl_order_items WHERE order_id = '$order_id'";
 							$result1 = mysqli_query($conn, $sql1);
 
 								if(mysqli_num_rows($result1) > 0) {								
-										$data23 = "";
-										$subtotal = "";
+										
+										// $subtotal = "";
 										while($row = mysqli_fetch_assoc($result1)){
 										// row: id | quantity | price | order_id | item_id
 											$subtotal = $row['subtotal'];
@@ -88,14 +101,12 @@
 													 <td class='text-center'>&#x20B1; $subtotal</td>
 													 ";
 
-											$item_id ="";
 											$item_id = $row['item_id'];
 											
 											//to get the name of the item_id (1:1)
 											$sql2 = "SELECT * FROM tbl_items WHERE id = '$item_id'";
 											$result2 = mysqli_query($conn, $sql2);
 													while($row = mysqli_fetch_assoc($result2)){
-														$data2 = "";
 														$data2 = "<td class='text-center'><img src='$row[img_path]' width='100px' height='100px'>   $row[name]</td>";
 													}
 
@@ -106,7 +117,10 @@
 										
 						    	}
 
-				  		$data .= $data1 . $data23 . "</tbody></table></div><br>";
+				  		$data .= $data1 . $data23 . "</tbody></table>
+				  				</div>
+				  			</div>
+				  			<br>";
 				  		$data1 = "";
 				  		$data23 = "";
 
@@ -122,6 +136,29 @@
 	</div>
 </div>
 
-
+<!-- CANCEL ORDER MODAL -->
+<div class="modal fade" id="cancelOrderModal" tabindex="-1" role="dialog" aria-labelledby="cancelOrderModalTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content bg-light">
+	    	<div class="modal-header">
+	        	<h5 class="modal-title" id="cancelOrderModalTitle">Cancel Order</h5>
+	        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          		<span class="text-dark" aria-hidden="true">&times;</span>
+		        </button>
+	      	</div>
+	      	<div class="modal-body">
+	      		<div class="row m-2">
+		      		<p class="text-dark">Are you sure you want to CANCEL this order?</p>
+	      		</div>
+	      		<div class="row">
+	      			<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+	      				<button type="button" class="btn btn-info btnWider mr-2" id="btnYesCancelOrder" data-dismiss="modal">YES</button>
+      					<button type="button" class="btn btn-dark btnWider" data-dismiss="modal">NO</button>
+	      			</div>
+	      		</div>
+	      	</div> <!-- end of modal-body -->
+	    </div> <!-- end of modal-content -->
+	</div> <!-- end of modal-dialog -->
+</div> <!-- end of modal -->
 
 <?php require '../partials/footer.php'; ?>

@@ -172,40 +172,40 @@ function changeNoItems(id){
 }
 
 //CART
-function removeFromCart(id){
-	var ans = confirm("Are you sure you want to remove this from the cart?");
-	if(ans){
-		// alert("You answere YES!");
-		$.ajax({
-			url: "../controllers/remove_from_cart.php",
-			method: "POST",
-			data: {productId:id},
-			dataType: "text",
-			success: function(data){
-				$('a[href="cart.php"]').html(data);
-				loadCart();
-			}
-		});
-	}
+function removeFromCart(id) {
+	console.log(id);
+	//pass the item id to be removed
+	$("#btnRemoveCartItem").attr("onclick", "removeFromCartItem("+id+")");
+}
+
+function removeFromCartItem(id){
+	$.ajax({
+		url: "../controllers/remove_from_cart.php",
+		method: "POST",
+		data: {productId:id},
+		dataType: "text",
+		success: function(data){
+			$('a[href="cart.php"]').html(data);
+			loadCart();
+		}
+	});
 }
 
 //CART
 
 function emptyCart(value) {
-	var ans1 = confirm("Are you sure you want to remove ALL items?");
-	if(ans1){
-		// alert("You answere YES!");
-		$.ajax({
-			url: "../controllers/empty_cart.php",
-			method: "POST",
-			data: {value:value},
-			dataType: "text",
-			success: function(data){
-				$('a[href="cart.php"]').html(data);
-				loadCart();
-			}
-		});
-	}
+	// alert("You answered YES!");
+	$.ajax({
+		url: "../controllers/empty_cart.php",
+		method: "POST",
+		data: {value:value},
+		dataType: "text",
+		success: function(data){
+			$('a[href="cart.php"]').html(data);
+			loadCart();
+		}
+	});
+
 }
 // =================================== CATALOG BUTTONS AND LINKS =================================== //
 
@@ -802,26 +802,30 @@ function editProductDetails() {
 	}
 } 
 
+function deleteProduct(id, name) {
+	$("#deleteItemId").html(name);
+	//pass the item id to be deleted
+	$("#btnDeleteProduct").attr("onclick", "yesDeleteProduct("+id+")");
+	console.log(id +", "+ name);
+}
 
-
-function deleteProduct(id){
-	var ans2 = confirm("Are you sure you want to remove this product from the catalog?");
-	if(ans2){
-		// alert("You answere YES!");
-		$.post("../controllers/delete_product.php",
-					{"id" : id},
-					function(data){
-						if(data == 1){
-							// alert("Updates saved!");
-							$("#manageProductsAlertMsg").html("<i class='far fa-check-square fa-lg'></i> Product Removed!");
-							$("#manageProductsAlertMsg").fadeOut(1100, 
-								function() {
-							    // Animation complete.
-							    document.location = 'manageProducts.php'; 
-							 });	
-						} 
-			});
-	}
+function yesDeleteProduct(id){
+	
+	// alert("You answered YES!");
+	$.post("../controllers/delete_product.php",
+				{"id" : id},
+				function(data){
+					if(data == 1){
+						// alert("Updates saved!");
+						$("#manageProductsAlertMsg").html("<i class='far fa-check-square fa-lg'></i> Product Removed!");
+						$("#manageProductsAlertMsg").fadeOut(1100, 
+							function() {
+						    // Animation complete.
+						    document.location = 'manageProducts.php'; 
+						 });	
+					} 
+	});
+	
 }
 
 //get value of category id in Add Product (Admin/mManage Products)
@@ -914,21 +918,28 @@ function displayUploadImage(productId,productName) {
 	$("#getProductId").html("<input type='hidden' id='uploadImageProductId' name='uploadImageProductId' value='" + productId + "'>");
 }
 
+
+function showCancelOrderModal(id) {
+	console.log(id);
+	$("#cancelOrderModal").attr("id", "cancelOrderModal"+id);
+	$("#cancelOrderModal"+id).modal('show');
+	//pass the item id to be removed
+	$("#btnYesCancelOrder").attr("onclick", "cancelOrder("+id+")");
+	$("#cancelOrderModal"+id).attr("id", "cancelOrderModal");
+}
+
 function cancelOrder(id) {
-	var ans3 = confirm("Are you sure you want to CANCEL this order?");
-	if(ans3){
-		// alert("You answere YES!");
-		$.ajax({
-			url: "../controllers/cancel_order.php",
-			method: "POST",
-			data: {id:id},
-			dataType: "text",
-			success: function(data){
-				$('#cancelledOrder' + id).html(data);
-				$("#btnCancelOrder" + id).remove();
-			}
-		});
-	}
+	// alert("You answere YES!");
+	$.ajax({
+		url: "../controllers/cancel_order.php",
+		method: "POST",
+		data: {id:id},
+		dataType: "text",
+		success: function(data){
+			$('#cancelledOrder' + id).html(data);
+			$("#btnCancelOrder" + id).remove();
+		}
+	});
 }
 
 
@@ -979,9 +990,6 @@ function cancelOrder(id) {
 
 
 
-// function pageRedirect() {
-//     window.location.href("confirmation.php");
-// }      
 
 
 

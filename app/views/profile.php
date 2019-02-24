@@ -61,7 +61,7 @@
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 	    <div class="modal-content bg-light">
 	      	<div class="modal-header">
-	        	<h5 class="modal-title" id="editProfileModalTitle">EDIT PROFILE</h5>
+	        	<h5 class="modal-title" id="editProfileModalTitle">Edit Profile</h5>
 	        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          		<span class="text-dark" aria-hidden="true">&times;</span>
 		        </button>
@@ -108,21 +108,27 @@
 <div class="modal fade" id="deactivateAcctModal" tabindex="-1" role="dialog" aria-labelledby="deactivateAcctModalTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 	    <div class="modal-content bg-light">
+	    	<div class="modal-header">
+	        	<h5 class="modal-title" id="deactivateAcctModalTitle">Deactivate Account</h5>
+	        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          		<span class="text-dark" aria-hidden="true">&times;</span>
+		        </button>
+	      	</div>
 	      	<div class="modal-body">
 	      		<div class="row mb-1">
 	      			<div class="col-3 col-sm-3 col-md-3 col-lg-3 text-center py-4">
 			      		<i class="fas fa-exclamation-triangle fa-7x text-warning"></i>
 	      			</div>
 	      			<div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-4"">
-			      		<h5 class="text-dark">Are you sure you want to deactivate your account?</h5>
-			      		<h5 class="text-dark">You will no longer be able to log in once your account has been deactivated.</h5>
+			      		<p class="text-dark">You will no longer be able to log in once your account has been deactivated. You will need to register again to activate your current email address.</p>
+			      		<p class="text-dark">Are you sure you want to deactivate your account?</p>
 	      			</div>
 	      			
 	      		</div>
 	      		<div class="row">
 	      			<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-	      				<button type="button" class="btn btn-warning btnWider mr-2" onclick="deactivateAcct(<?= $_SESSION["id"]; ?>)" data-dismiss="modal">YES</button>
-      					<button type="button" class="btn btn-info btnWider" data-dismiss="modal">NO</button>
+	      				<button type="button" class="btn btn-info btnWider mr-2" onclick="deactivateAcct(<?= $_SESSION["id"]; ?>)" data-dismiss="modal">YES</button>
+      					<button type="button" class="btn btn-dark btnWider" data-dismiss="modal">NO</button>
 	      			</div>
 	      		</div>
 	      	</div> <!-- end of modal-body -->

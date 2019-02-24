@@ -50,52 +50,54 @@
       <div class="row">
         <div class="col-lg-8 table-responsive">
 
-<?php
-     
-      require_once '../controllers/connect.php';
+        <?php
+         
+          require_once '../controllers/connect.php';
 
-      $data = "<table class='table table-hover'>
-        <thead>
-          <tr>
-            <th width='40%' class='text-center'>Product</th>
-            <th width='30%' class='text-center'>Price</th>
-            <th width='30%' class='text-center'>Quantity</th>
+          $data = "<table class='table table-hover'>
+            <thead>
+              <tr>
+                <th width='40%' class='text-center'>Product</th>
+                <th width='30%' class='text-center'>Price</th>
+                <th width='30%' class='text-center'>Quantity</th>
 
-          </tr>
-        </thead>
-        <tbody>";
+              </tr>
+            </thead>
+            <tbody>";
 
-      foreach($_SESSION['cart'] as $id => $quantity) {
-         $sql = "SELECT * FROM tbl_items where id = '$id' ";
-                   $result = mysqli_query($conn, $sql);
-                     if(mysqli_num_rows($result) > 0){
-                         while($row = mysqli_fetch_assoc($result)){
-                           $name = $row["name"];
-                           $description = $row["description"];
-                           $price = $row["price"];                             
+          foreach($_SESSION['cart'] as $id => $quantity) {
+             $sql = "SELECT * FROM tbl_items where id = '$id' ";
+                       $result = mysqli_query($conn, $sql);
+                         if(mysqli_num_rows($result) > 0){
+                             while($row = mysqli_fetch_assoc($result)){
+                               $name = $row["name"];
+                               $description = $row["description"];
+                               $price = $row["price"];                             
 
-                              if ($quantity != 0) {
-                               $data .=
-                                 "<tr>
-                                     <td class='text-center'>$name<br><img src='$row[img_path]' width='30%' height='auto'></td>
-                                     <td class='text-center'>&#x20B1; $price</td>
-                                     <td class='text-center'>$quantity</td>
-                                 </tr>";
-                              }
+                                  if ($quantity != 0) {
+                                   $data .=
+                                     "<tr>
+                                         <td class='text-center'>$name<br><img src='$row[img_path]' width='30%' height='auto'></td>
+                                         <td class='text-center'>&#x20B1; $price</td>
+                                         <td class='text-center'>$quantity</td>
+                                     </tr>";
+                                  }
+                             }
                          }
-                     }
-      }
-      $data .= "</tbody></table>";
+          }
+          $data .= "</tbody></table>";
 
-      echo $data;
-?>
+          echo $data;
+          $total = $_SESSION["total"];
+          $formatted_total = number_format($total, 2, '.', ',');
+        ?>
   	    </div>
 
         <div class="col-lg-4">
           <table class="table table-hover text-left">
             <tr>
               <td scope="row"><strong>SUBTOTAL</strong></td>
-              <td><?= "&#x20B1; " . $_SESSION["total"]; ?></td>
+              <td><?= "&#x20B1; " . $formatted_total; ?></td>
             </tr>
             <tr>
               <td scope="row"><strong>SHIPPING (FREE*)</strong></td>
@@ -103,11 +105,11 @@
               <!-- ECHO MOBILE NUMBER -->
             <tr>
               <td scope="row"><strong>TOTAL</strong></td>
-              <td><?= "&#x20B1; " . $_SESSION["total"]; ?></td>
+              <td><?= "&#x20B1; " . $formatted_total; ?></td>
             </tr>
             </tr>
           </table>
-          <p class="text-left"><small>*Until February 14, 2019 only!</small></p>
+          <p class="text-left"><small>*Until March 31, 2019 only!</small></p>
           <button class='btn btn-info btnWider mt-3' id='btnPlaceOrder' type="button">PLACE ORDER</button>
         </div>
       </div>

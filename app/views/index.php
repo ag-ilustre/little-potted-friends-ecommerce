@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php require_once '../partials/header.php'; ?>
 
 <div class="container">
@@ -35,22 +37,28 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active image-container">
-            <div class="image-inner-container">
-              <h1 class="overlay mt-5 p-5 h1ofindex">Welcome to Our Shop</h1>
-              <img class="d-block img-fluid home-background" src="../assets/images/bg1.jpeg.jpeg" alt="First slide">
+          <div class="carousel-item active">
+            <div class="image-container">
+              <div class="image-inner-container">
+                <h1 class="overlay mt-5 p-5 h1ofindex">Welcome to Our Shop</h1>
+                <img class="d-block img-fluid home-background" src="../assets/images/bg1.jpeg.jpeg" alt="First slide">
+              </div>
             </div>
           </div>
-          <div class="carousel-item image-container">
-            <div class="image-inner-container">
-               <div class="overlay mt-5 px-3 ml-1 text-left"><h1 class="m-0 p-1 h1ofindex">Free Shipping</h1><h1 class="m-0 p-1 h1ofindex">up to Feb. 14 2019*!</h1><br><small>*Terms & Conditions Apply</small></div>
-              <img class="d-block img-fluid home-background" src="../assets/images/bg2.jpeg.jpeg" alt="Second slide">
+          <div class="carousel-item">
+            <div class="image-container">
+              <div class="image-inner-container">
+                 <div class="overlay mt-5 px-3 ml-1 text-left"><h1 class="m-0 p-1 h1ofindex">Free Shipping</h1><h1 class="m-0 p-1 h1ofindex">up to March 31, 2019*!</h1><br><small>*Terms & Conditions Apply</small></div>
+                <img class="d-block img-fluid home-background" src="../assets/images/bg2.jpeg.jpeg" alt="Second slide">
+              </div>
             </div>
           </div>
-          <div class="carousel-item image-container">
-            <div class="image-inner-container">
-              <h1 class="overlay mt-5 p-3 slide3text h1ofindex">Start Your Collection</h1>
-              <img class="d-block img-fluid home-background" src="../assets/images/bg3.jpg.jpg" alt="Third slide">
+          <div class="carousel-item">
+            <div class="image-container">
+              <div class="image-inner-container">
+                <h1 class="overlay mt-5 p-3 slide3text h1ofindex">Start Your Collection</h1>
+                <img class="d-block img-fluid home-background" src="../assets/images/bg3.jpg.jpg" alt="Third slide">
+              </div>
             </div>
           </div>
         </div>

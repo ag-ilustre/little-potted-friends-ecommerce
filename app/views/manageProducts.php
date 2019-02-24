@@ -64,7 +64,7 @@
                                 <span title="Upload Image"><button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#uploadImageModal" onclick="displayUploadImage('<?= $row['product_id'] ?>', '<?= $row['product_name'] ?>')"><i class="fas fa-image"></i></button></span>
 
                                 <!-- DELETE -->
-                                <span title="Delete Product"><button type="button" class="btn btn-danger m-1" onclick="deleteProduct('<?= $row['product_id'] ?>')"><i class='fas fa-trash-alt'></i></button></span>
+                                <span title="Delete Product"><button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#deleteProductModal" onclick="deleteProduct('<?= $row['product_id'] ?>', '<?= $row['product_name'] ?>')"><i class='fas fa-trash-alt'></i></button></span>
                                 
                             </td>
                         </tr>
@@ -252,6 +252,40 @@
   </div>
 </div>
 <!-- end of UPLOAD IMAGE MODAL -->
+
+<!-- DELETE PRODUCT MODAL -->
+<div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteProductModalTitle">Delete Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <div class="modal-body">
+            <div class="row m-2">
+              <!-- <div class="col-3 col-sm-3 col-md-3 col-lg-3 text-center py-4">
+                <i class="fas fa-exclamation-triangle fa-3x text-warning"></i>
+              </div>
+              <div class="col-9 col-sm-9 col-md-9 col-lg-9 p-4""> -->
+                <p>Are you sure you want to delete <strong><span id="deleteItemId"></span></strong>?</p>
+                
+              <!-- </div> -->
+              
+            </div>
+            <div class="row">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <button type="button" class="btn btn-info btnWider mr-2" id="btnDeleteProduct" data-dismiss="modal">YES</button>
+                <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">NO</button>
+              </div>
+            </div>
+          </div> <!-- end of modal-body -->
+      </div> <!-- end of modal-content -->
+  </div> <!-- end of modal-dialog -->
+</div> <!-- end of modal -->
 
 
 <?php require '../partials/footer.php'; ?>

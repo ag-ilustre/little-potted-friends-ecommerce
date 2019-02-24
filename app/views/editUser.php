@@ -1,8 +1,8 @@
 <?php session_start(); ?>
 
 <?php                        
-    if (($_SESSION['access'] != "ADMIN") || (!isset($id))) {
-        header("Location: manageUsers.php");
+    if (($_SESSION['access'] != "ADMIN") && (!isset($id))) {
+        header("Location: index.php");
     }
 ?>
 
@@ -39,7 +39,7 @@
     				</div>
     				<div class="form-group">
     					<label>Change Access Privileges (ADMIN/NONE)</label>
-    					<input type="text" value="<?= $row['access']?>" class="form-control" id="editUserAccess">
+    					<input type="text" value="<?= $row['access']?>" class="form-control" id="editUserAccess" placeholder="Type ADMIN or NONE to change access privileges">
                         <p id="error_editUserAccess"></p>   				
     				</div>
 

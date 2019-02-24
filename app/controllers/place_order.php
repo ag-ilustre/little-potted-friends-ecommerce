@@ -44,7 +44,7 @@
 
 
 
-	// echo $user_id ." ". $transaction_code ." ". $purchase_date ." ". $status_id ." ". $payment_mode_id . "<br>"; // to check
+	// echo $transaction_code ." ". $purchase_date ." ". $user_id ." ". $status_id ." ". $payment_mode_id . "<br>"; // to check
 
 	$sql1 = "INSERT INTO tbl_orders (transaction_code, purchase_date, user_id, status_id, payment_mode_id, total)
 				   VALUES ('$transaction_code', '$purchase_date', '$user_id', '$status_id', '$payment_mode_id', '$total')";

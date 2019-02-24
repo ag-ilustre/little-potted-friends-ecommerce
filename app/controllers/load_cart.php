@@ -12,7 +12,7 @@
     $data = "<p>Your cart is empty!</p><a href='../views/catalog.php' class='btn btn-info btnWider mt-5 text-center'>BROWSE CATALOG</a>";
   } else {
     $data = "
-    <div class='text-right mb-2'><button class='btn btn-danger btnWider' onclick='emptyCart(1)'><i class='fas fa-trash-alt'></i>   EMPTY CART</button></div>
+    <div class='text-right mb-2'><button class='btn btn-danger btnWider' data-toggle='modal' data-target='#emptyCartModal'><i class='fas fa-trash-alt'></i>   EMPTY CART</button></div>
 
     <table class='table table-hover'>
       <thead>
@@ -20,7 +20,7 @@
           <th width='30%'>Product</th>
           <th width='15%'>Price</th>
           <th width='20%'>Quantity</th>
-          <th width='25%'>Sub-total</th>
+          <th width='25%'>Subtotal</th>
           <th width='10%'>Action</th>
         </tr>
       </thead>
@@ -42,7 +42,8 @@
 
                            $grand_total += $subTotal;
 
-                            $_SESSION["total"] = number_format($grand_total, 2, '.', ',');
+                            $_SESSION["total"] = $grand_total;
+                            // $_SESSION["total"] = number_format($grand_total, 2, '.', ',');
                             //<input type="text" data-validation="number" data-validation-allowing="range[1;100]">
 
                             //$english_format_number = number_format($number, 2, '.', '');
@@ -52,7 +53,7 @@
                                  <td id='price$id'>&#x20B1; $price</td>
                                  <td><input type='number' class='form-control alignQuantity' value='$quantity' id='quantity$id'  min='1' onkeyup='changeNoItems($id)' onchange='changeNoItems($id)' oninput='this.value = Math.abs(this.value)'></td>
                                  <td class='sub-total' id='subTotal$id'>&#x20B1; $formatted_subTotal </td>
-                                 <td><span title='Remove Item'><button class='btn btn-danger' onclick='removeFromCart($id)'><i class='fas fa-trash-alt'></i></button></span></td>
+                                 <td><span title='Remove Item'><button class='btn btn-danger' data-toggle='modal' data-target='#removeFromCartModal' onclick='removeFromCart($id)'><i class='fas fa-trash-alt'></i></button></span></td>
                              </tr>";
                        }
                    }
