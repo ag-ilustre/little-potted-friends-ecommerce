@@ -731,13 +731,16 @@ function displayProductInfo(id) {
 
 // =================================== MANAGE PRODUCTS (ADMIN) =================================== //
 function displayEditProductDetails(editProductId, editProductName, editProductPrice, editProductDescription, categoryId) {	
+	// $("#editProductModal").attr("id", "editProductModal"+editProductId);
+	// $("#editProductModal"+editProductId).modal('show');
+
 	$("#getEditProductId").html("<input type='hidden' id='editProductId' name='editProductId' value='" + editProductId + "'>");
 	$("#editProductName").attr("value", editProductName);
 	$("#editProductPrice").attr("value", editProductPrice);
 	$("#getEditProductDescription").html("<textarea tyep='text' name='editProductDescription' id='editProductDescription' class='form-control bg-light text-dark'>" + editProductDescription + "</textarea>");
 	$("#optionEditProductCatergoryId" + categoryId).attr("selected","selected");
 
-	// console.log(editProductId + " " + editProductName + " " + editProductPrice + " " + editProductDescription + " " + editProductCategoryId);
+	console.log(editProductId + " " + editProductName + " " + editProductPrice + " " + editProductDescription + " " + editProductCategoryId);
 		
 }
 

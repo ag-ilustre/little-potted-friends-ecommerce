@@ -47,24 +47,33 @@
                     <tbody>
                     <?php 
                         if (mysqli_num_rows($result) > 0) {
-                            while($row = mysqli_fetch_assoc($result)){ ?>
+                            while($row = mysqli_fetch_assoc($result)){ 
+                              $product_id = $row['product_id'];
+                              $product_name = $row['product_name'];
+                              $img_path = $row['img_path'];
+                              $price = $row['price'];
+                              $description = $row['description'];
+                              $category_name = $row['category_name'];
+
+                              ?>
                         <tr>
-                            <td class="text-center"><?= $row['product_id'] ?></td>
-                            <td><?= $row['product_name'] ?></td>
-                            <td class="text-center"><img src="<?= $row['img_path'] ?>" width="25%" height="auto"></td>
-                            <td class="text-right"><?= $row['price'] ?></td>
-                            <td class="text-justify"><?= $row['description'] ?></td>
-                            <td><?= $row['category_name'] ?></td>
+                            <td class="text-center"><?= $product_id ?></td>
+                            <td><?= $product_name ?></td>
+                            <td class="text-center"><img src="<?= $img_path ?>" width="25%" height="auto"></td>
+                            <td class="text-right"><?= $price ?></td>
+                            <td class="text-justify"><?= $description ?></td>
+                            <td><?= $category_name ?></td>
                             <td class="text-center">
                                 <!-- EDIT -->
                                 <!-- VARIABLEs: product_id, product_name, img_path, price, description, category_id, category_name-->
-                                <span title="Edit Product Details"><button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#editProductModal" onclick="displayEditProductDetails('<?= $row['product_id'] ?>','<?= $row['product_name'] ?>','<?= $row['price'] ?>','<?= $row['description'] ?>','<?= $row['category_id'] ?>')"><i class="fas fa-edit"></i></button></span>
+                                <span title="Edit Product Details"><button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#editProductModal" onclick="displayEditProductDetails('<?= $row['product_id']; ?>','<?= $row['product_name']; ?>','<?= $row['price']; ?>','<?= $row['description']; ?>','<?= $row['category_id']; ?>')"><i class="fas fa-edit"></i></button></span>
+                                <!-- <span title="Edit Product Details"><button type="button" class="btn btn-info m-1" id="btnEditProduct$product_id" onclick="showEditProduct('<?= $product_id ?>','<?= $product_name ?>','<?= $price ?>','<?= $description ?>','<?= $category_id ?>')"><i class="fas fa-edit"></i></button></span> -->
 
                                 <!-- UPLOAD IMAGE -->                                
-                                <span title="Upload Image"><button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#uploadImageModal" onclick="displayUploadImage('<?= $row['product_id'] ?>', '<?= $row['product_name'] ?>')"><i class="fas fa-image"></i></button></span>
+                                <span title="Upload Image"><button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#uploadImageModal" onclick="displayUploadImage('<?= $product_id ?>', '<?= $product_name ?>')"><i class="fas fa-image"></i></button></span>
 
                                 <!-- DELETE -->
-                                <span title="Delete Product"><button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#deleteProductModal" onclick="deleteProduct('<?= $row['product_id'] ?>', '<?= $row['product_name'] ?>')"><i class='fas fa-trash-alt'></i></button></span>
+                                <span title="Delete Product"><button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#deleteProductModal" onclick="deleteProduct('<?= $product_id ?>', '<?= $product_name ?>')"><i class='fas fa-trash-alt'></i></button></span>
                                 
                             </td>
                         </tr>
@@ -135,11 +144,9 @@
       </div>
 
       <!-- end of modal-body -->
-      <div class="modal-footer text-center">
-        <div class="text-center mt-3">
-          <button type="button" class="btn btn-info btnWider mr-2" onclick="addProduct()">SAVE</button>
-          <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info btnWider mr-2" onclick="addProduct()">SAVE</button>
+        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
       </div>
     </div>
   </div>
@@ -204,10 +211,8 @@
 
       <!-- end of modal-body -->
       <div class="modal-footer text-center">
-        <div class="text-center mt-3">
-          <button type="button" class="btn btn-info btnWider mr-2" data-dismiss="modal" onclick="editProductDetails()">SAVE</button>
-          <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
-        </div>
+        <button type="button" class="btn btn-info btnWider mr-2" data-dismiss="modal" onclick="editProductDetails()">SAVE</button>
+        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
       </div>
     </div>
   </div>
@@ -219,35 +224,28 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="uploadImageModalTitle">Upload Image</h5>
+        <h5 class="modal-title" id="uploadImageModalTitle">Upload Product Image</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="../controllers/upload_image.php" method="POST" enctype="multipart/form-data" id="formUploadImage">
       <div class="modal-body">
-        <div class="card">
-          <div class="card-header"><span id="displayProductName"></div>
-          <div class="card-body">
-            <form action="../controllers/upload_image.php" method="POST" enctype="multipart/form-data" id="formUploadImage">
-              <div class="form-group">
-                <label>Product Image: </label>
-                <div class="text-center">
-                  <input type="file" name="upload" id="uploadImage" class="mb-3 text-center">
-                <!-- <input type="submit" class="btn btn-info btnWider mr-2" value="SUBMIT"> -->
-                  <span id="getProductId"></span>
-                  <div id="error_uploadImage"></div>
-                  <button type="submit" class="btn btn-info btnWider mr-2">UPLOAD</button>
-                  <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
-                </div>
-              </div>
-              </form>
-            </div>
+        <p><span id="displayProductName"></p>
+        <div class="form-group">
+          <p>Product Image: </p>
+          <div class="text-center">
+            <input type="file" name="upload" id="uploadImage" class="mb-3">
+            <span id="getProductId"></span>
+            <div id="error_uploadImage"></div>
           </div>
         </div>
       </div>
-     <!--  <div class="modal-footer text-center">
-        
-      </div> -->
+      <div class="modal-footer text-center">
+        <button type="submit" class="btn btn-info btnWider mr-2">UPLOAD</button>
+        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
+      </div>
+      </form>
     </div>
   </div>
 </div>
@@ -264,26 +262,19 @@
         </button>
       </div>
       <div class="modal-body">
-
-          <div class="modal-body">
-            <div class="row m-2">
-              <!-- <div class="col-3 col-sm-3 col-md-3 col-lg-3 text-center py-4">
-                <i class="fas fa-exclamation-triangle fa-3x text-warning"></i>
-              </div>
-              <div class="col-9 col-sm-9 col-md-9 col-lg-9 p-4""> -->
-                <p>Are you sure you want to delete <strong><span id="deleteItemId"></span></strong>?</p>
-                
-              <!-- </div> -->
-              
-            </div>
-            <div class="row">
-              <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <button type="button" class="btn btn-info btnWider mr-2" id="btnDeleteProduct" data-dismiss="modal">YES</button>
-                <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">NO</button>
-              </div>
-            </div>
-          </div> <!-- end of modal-body -->
-      </div> <!-- end of modal-content -->
+        <div class="row m-1">
+          <p>Are you sure you want to delete <strong><span id="deleteItemId"></span></strong>?</p>
+        </div>
+      </div> <!-- end of modal-body -->
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+            <button type="button" class="btn btn-info btnWider mr-2" id="btnDeleteProduct" data-dismiss="modal">YES</button>
+            <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">NO</button>
+          </div>
+        </div>
+      </div> <!-- end of modal-footer -->
+    </div> <!-- end of modal-content -->
   </div> <!-- end of modal-dialog -->
 </div> <!-- end of modal -->
 
