@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2019 at 06:45 AM
+-- Generation Time: Feb 24, 2019 at 05:07 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -62,12 +62,16 @@ CREATE TABLE `tbl_items` (
 --
 
 INSERT INTO `tbl_items` (`id`, `name`, `price`, `description`, `img_path`, `category_id`) VALUES
-(1, 'Product 1', '600.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 1),
-(2, 'Product 2', '850.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 1),
-(3, 'Product 3', '456.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 2),
-(4, 'Product 4', '897.90', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 2),
-(5, 'Product 5', '542.80', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 3),
-(6, 'Product 6', '227.90', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '../assets/images/favicon.png', 3);
+(1, 'Hedgehog Cactus', '249.00', 'Hedgehog Cactus is paired with our minimalist white pot. This plant is ideal for home and offices. Plant height, size, and color may vary slightly.', '../assets/images/uploads/minimalistpot.png', 1),
+(2, 'Echeveria Purple Pearl', '379.00', 'Echeveria Purple Pearl is an evergreen succulent forming a large rosette. It is drought tolerant and gets brighter colors with more sun. Your plant height, size, and color may vary slightly.', '../assets/images/uploads/purplecheveria.png', 1),
+(3, 'Echeveria Twin Pots', '659.00', 'Two varieties of Echeveria succulents in minimalist pots. This pet-friendly succulents are ideal for home and offices. Plant height, size and colour may vary slightly.', '../assets/images/uploads/echveriatwins.png', 2),
+(4, 'Fairy Washboards', '899.00', 'These fairy washboard triplets are great indoor plants on sunny or bright windowsills.  Plant height, size, and color may vary slightly.', '../assets/images/uploads/triplepots.png', 2),
+(5, 'Columnar Cacti', '469.00', 'The columnar cacti in orange pot is ideal for home and offices. Plant height, size, and color may vary slightly.', '../assets/images/uploads/orangepot.png', 1),
+(6, 'Schlumbergera', '299.00', 'Schlumbergera cactus is also called Christmas Cactus, Thanksgiving Cactus, or Holiday Cactus because of the seasons that it typically blooms in: between November to January. Its pink flowers and rustic pot make it ideal as table centerpiece! Plant height,', '../assets/images/uploads/rusticpot.png', 1),
+(7, 'Designer Pot', '229.00', 'Level up your gardening and decorating skills with this exclusive designer pot! Dimensions: 4\"x4\"x6\".', '../assets/images/uploads/designerpot.png', 3),
+(8, 'Starter Pot', '89.00', 'Begin your a newfound hobby of growing succulents will this starter pots! Dimensions: 3.5\"x3.5\"x5\".', '../assets/images/uploads/starterpots.png', 3),
+(9, 'Echeveria in Full Bloom', '289.00', 'Echeveria in Full Bloom is a pet-friendly evergreen succulent that is ideal for home and offices. Plant height, size, and color may vary slightly.', '../assets/images/uploads/echeveria.png', 1),
+(29, 'Camera Pot', '479.00', 'Get this limited edition pink camera pot for your next succulent pal! (Plant not included.) Dimensions: 3.5\"x3.5\"x6\".', '../assets/images/favicon.png', 3);
 
 -- --------------------------------------------------------
 
@@ -82,7 +86,7 @@ CREATE TABLE `tbl_orders` (
   `user_id` int(11) DEFAULT NULL,
   `status_id` int(11) DEFAULT NULL,
   `payment_mode_id` int(11) DEFAULT NULL,
-  `total` int(11) NOT NULL
+  `total` decimal(18,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -90,11 +94,21 @@ CREATE TABLE `tbl_orders` (
 --
 
 INSERT INTO `tbl_orders` (`id`, `transaction_code`, `purchase_date`, `user_id`, `status_id`, `payment_mode_id`, `total`) VALUES
-(1, 'DEB7A7BE8235CABB', '2018-12-31 08:14:32', 55, 1, 1, 1906),
-(2, '9D9391A809F9D1FF', '2019-01-01 10:15:29', 67, 2, 1, 3812),
-(3, '13511A8ADE2E02CF', '2019-01-02 13:25:23', 55, 3, 1, 1906),
-(4, 'ACE640AD053C690E', '2019-01-02 13:46:41', 55, 2, 1, 2269),
-(5, '4F95BD388DFD257A', '2019-01-02 15:28:20', 55, 3, 2, 1700);
+(19, 'DB7584842ABE100B', '2019-02-24 10:27:34', 69, 3, 1, '628.00'),
+(23, 'DA912ADE61E1BA06', '2019-02-24 11:08:04', 69, 1, 1, '899.00'),
+(24, 'C3FA6D63374519C5', '2019-02-24 11:08:42', 69, 1, 1, '378.00'),
+(26, 'DA5F57DE341D0874', '2019-02-24 11:14:03', 69, 1, 1, '249.00'),
+(27, 'B3610CC3A61C5F08', '2019-02-24 11:14:13', 69, 1, 1, '379.00'),
+(28, 'F340B4DFD2F1573C', '2019-02-24 11:14:36', 69, 1, 1, '659.00'),
+(29, 'D99F6D06E1B8047B', '2019-02-24 11:24:13', 69, 3, 1, '899.00'),
+(30, '4F0A70F237B50BF8', '2019-02-24 11:24:38', 69, 3, 2, '469.00'),
+(31, 'BA3D433C95F6021A', '2019-02-24 11:25:03', 69, 3, 1, '299.00'),
+(32, '863F9A340B76329C', '2019-02-24 11:25:40', 69, 3, 1, '229.00'),
+(33, '0BCE22D4BCD5EF17', '2019-02-24 11:25:58', 69, 3, 2, '89.00'),
+(34, 'F39D97554139DABF', '2019-02-24 11:26:12', 69, 3, 1, '289.00'),
+(35, '54086666D55D60AD', '2019-02-24 11:26:28', 69, 3, 1, '479.00'),
+(39, 'F5F025AC7C7E415C', '2019-02-24 11:52:08', 69, 3, 1, '2834.00'),
+(40, 'ED7AC93BD4604974', '2019-02-24 11:55:01', 69, 3, 1, '1287.00');
 
 -- --------------------------------------------------------
 
@@ -104,8 +118,9 @@ INSERT INTO `tbl_orders` (`id`, `transaction_code`, `purchase_date`, `user_id`, 
 
 CREATE TABLE `tbl_order_items` (
   `id` int(11) NOT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `price` decimal(18,2) DEFAULT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(18,2) NOT NULL,
+  `subtotal` decimal(18,2) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
   `item_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -114,21 +129,27 @@ CREATE TABLE `tbl_order_items` (
 -- Dumping data for table `tbl_order_items`
 --
 
-INSERT INTO `tbl_order_items` (`id`, `quantity`, `price`, `order_id`, `item_id`) VALUES
-(1, 1, '600.00', 1, 1),
-(2, 1, '850.00', 1, 2),
-(3, 1, '456.00', 1, 3),
-(4, 2, '600.00', 2, 1),
-(5, 2, '850.00', 2, 2),
-(6, 2, '456.00', 2, 3),
-(7, 1, '456.00', 3, 3),
-(8, 1, '600.00', 3, 1),
-(9, 1, '850.00', 3, 2),
-(10, 1, '600.00', 4, 1),
-(11, 1, '897.90', 4, 4),
-(12, 1, '542.80', 4, 5),
-(13, 1, '227.90', 4, 6),
-(14, 2, '850.00', 5, 2);
+INSERT INTO `tbl_order_items` (`id`, `quantity`, `price`, `subtotal`, `order_id`, `item_id`) VALUES
+(29, 1, '249.00', '249.00', 19, 1),
+(30, 1, '379.00', '379.00', 19, 2),
+(38, 1, '899.00', '899.00', 23, 4),
+(39, 1, '89.00', '89.00', 24, 8),
+(40, 1, '289.00', '289.00', 24, 9),
+(50, 1, '249.00', '249.00', 26, 1),
+(51, 1, '379.00', '379.00', 27, 2),
+(52, 1, '659.00', '659.00', 28, 3),
+(53, 1, '899.00', '899.00', 29, 4),
+(54, 1, '469.00', '469.00', 30, 5),
+(55, 1, '299.00', '299.00', 31, 6),
+(56, 1, '229.00', '229.00', 32, 7),
+(57, 1, '89.00', '89.00', 33, 8),
+(58, 1, '289.00', '289.00', 34, 9),
+(59, 1, '479.00', '479.00', 35, 29),
+(81, 2, '659.00', '1318.00', 39, 3),
+(82, 4, '379.00', '1516.00', 39, 2),
+(83, 1, '379.00', '379.00', 40, 2),
+(84, 1, '659.00', '659.00', 40, 3),
+(85, 1, '249.00', '249.00', 40, 1);
 
 -- --------------------------------------------------------
 
@@ -193,21 +214,11 @@ CREATE TABLE `tbl_users` (
 
 INSERT INTO `tbl_users` (`id`, `firstname`, `lastname`, `email`, `password`, `mobile`, `address`, `status`, `access`) VALUES
 (51, 'Anne Gerly', 'Ilustre', 'gerly.ilustre@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'ADMIN'),
-(52, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(53, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(54, 'Anne Gerly', 'Ilustre', '1', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(55, 'ADMIN', 'ONE', 'csp2ecommerce@gmail.com', '84e87fa20792bccf4178abea96460f888aabf775', '09778148407', '2029-E Agusto Francisco St., Sta. Ana, Manila', 'Active', 'ADMIN'),
-(56, 'Anne Gerly', 'Ilustre', 'ag@mail.com', '7c222fb2927d828af22f592134e8932480637c0d', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(57, 'AG', 'Ilustre', 'ag.ilustre@gmail.com', '7c222fb2927d828af22f592134e8932480637c0d', '09171234567', '123 ABC Street, Brgy. 456, Manila 1001', 'Active', 'NONE'),
-(58, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(59, 'Anne Gerly', 'Ilustre', 'agil@mail.com', 'a642a77abd7d4f51bf9226ceaf891fcbb5b299b8', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(60, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '3f196cfb6c4cffe3002c0495a1bc822521b6aa36', '97781484070', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(61, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.co', 'e38ad214943daad1d64c102faec29de4afe9da3d', '09171234567', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(63, 'Anne Gerly', 'Ilustre', 'ag@gmail.com', 'b49eb82469ac2f7c6c7ea9612d8101ac3c5dd6bb', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
+(52, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '9778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'ADMIN'),
+(55, 'ADMIN', 'ONE', 'csp2ecommerce@gmail.com', '84e87fa20792bccf4178abea96460f888aabf775', '09778148407', '123 ABC Street, Sta. Ana, Manila', 'Active', 'ADMIN'),
 (64, 'Anne', 'Ilustre', 'ilustre.ag@gmail.com', '84e87fa20792bccf4178abea96460f888aabf775', '09171234567', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(65, 'Anne Gerly', 'Ilustre', 'nosha1@mail.com', 'ecommerce1', '09778148407', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(66, 'Anne Gerly', 'Ilustre', 'annegerly@yahoo.com', '111', '', '2029-E Agusto Francisco St., Sta. Ana', 'Active', 'NONE'),
-(67, 'Iggie', 'Ilustre', 'ilustreiggie@gmail.com', '73e815e86ff76c9b9a693faa1b1455c424fa80ce', '09055021080', 'Vinzons, Camarines Norte 4603 ', 'Active', 'NONE');
+(69, 'AG', 'Ilustre', 'ag.ilustre@gmail.com', '84e87fa20792bccf4178abea96460f888aabf775', '09778148407', '123456 ABC St., Sta. Ana, Manila ', 'Active', 'NONE'),
+(70, 'Anne', 'Il', 'csp3laravel@gmail.com', '84e87fa20792bccf4178abea96460f888aabf775', '09187654321', '4567 ABC St., Sta. Ana, Manila', 'Active', 'NONE');
 
 --
 -- Indexes for dumped tables
@@ -278,19 +289,19 @@ ALTER TABLE `tbl_categories`
 -- AUTO_INCREMENT for table `tbl_items`
 --
 ALTER TABLE `tbl_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tbl_orders`
 --
 ALTER TABLE `tbl_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_items`
 --
 ALTER TABLE `tbl_order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment_modes`
@@ -308,7 +319,7 @@ ALTER TABLE `tbl_status`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- Constraints for dumped tables
