@@ -13,9 +13,9 @@
 			WHERE id = '$orderId'";
 
 	if (mysqli_query($conn, $sql)) { 
-		if ($orderStatusId = 2) {
+		if ($orderStatusId == 2) {
 			$data = "Completed";
-		} else if ($orderStatusId = 3) {
+		} else if ($orderStatusId == 3) { 
 			$data = "Cancelled";
 		}
 

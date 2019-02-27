@@ -152,8 +152,8 @@
 	      		</div>
 	      		<div class="row">
 	      			<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-	      				<button type="button" class="btn btn-info btnWider mr-2" id="btnYesCancelOrder" data-dismiss="modal">YES</button>
-      					<button type="button" class="btn btn-dark btnWider" data-dismiss="modal">NO</button>
+	      				<button type="button" class="btn btn-info btnSlim mr-2" id="btnYesCancelOrder" data-dismiss="modal">YES</button>
+      					<button type="button" class="btn btn-dark btnSlim" data-dismiss="modal">NO</button>
 	      			</div>
 	      		</div>
 	      	</div> <!-- end of modal-body -->

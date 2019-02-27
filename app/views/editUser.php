@@ -44,9 +44,9 @@
     				</div>
 
                     <div class="text-center">
-                        <button id="btnEditUserAccess" class="btn btn-info btnWider mr-2" type="button">SUBMIT</button>
+                        <button id="btnEditUserAccess" class="btn btn-info btnSlim mr-2" type="button">SUBMIT</button>
         				<!-- <button type="submit" class="btn btn-info btnWider mr-2" onclick="">SUBMIT</button> -->
-        				<input type="reset" class="btn btn-dark btnWider" value="RESET" >
+        				<input type="reset" class="btn btn-dark btnSlim" value="RESET" >
                     </div>
     			    <?php } ?>
     			</form>

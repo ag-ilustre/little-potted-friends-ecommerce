@@ -662,33 +662,39 @@ $("#btnEditUserAccess").click(()=>{
 // =================================== ORDER HISTORY (ADMIN) =================================== //
 //to display on Modal
 function updateStatus(orderId, transactionCode, statusId) {
-	console.log(orderId + " " + transactionCode);
+	// console.log(orderId + " " + transactionCode);
 	
-	$("#transactionCode").html("Reference Number: " + transactionCode + "<br><input type='hidden' id='modalOrderId' value='" + orderId + "'>");
+	$("#transactionCode").attr("id","transactionCode"+orderId);
+	$("#transactionCode"+orderId).html("Reference Number: " + transactionCode + "<br><input type='hidden' id='modalOrder"+orderId+"' value='" + orderId + "'>");
 
 
-	
+	$("#updateStatusMessage").attr("id","updateStatusMessage"+orderId);
 	//use switch-case to display order status (statusName) as Pending/Completed/Cancelled; display "selected" radio buttons
 		// Pending - show all buttons 
 	if (statusId == 1) {
-		$("#updateStatusMessage").html("Status: Pending" + "<p class='mt-1 mb-0'>Select a status:</p><div class='pl-3'><label class='radio'><input type='radio' name='orderStatusId' value='2'>  Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId' value='3'>  Cancelled</label></div>");
+		$("#updateStatusMessage"+orderId).html("Status: Pending" + "<p class='mt-1 mb-0'>Select a status:</p><div class='pl-3'><label class='radio'><input type='radio' name='orderStatusId"+orderId+"' value='2' checked>  Completed</label><br><label class='radio-inline'><input type='radio' name='orderStatusId"+orderId+"' value='3'>  Cancelled</label></div>");
 	} else if (statusId == 2) {
-		$("#updateStatusMessage").html("This order is already Completed."); 
+		$("#updateStatusMessage"+orderId).html("This order is already Completed."); 
 	} else if (statusId == 3) {
-		$("#updateStatusMessage").html("This order has been Cancelled."); 
+		$("#updateStatusMessage"+orderId).html("This order has been Cancelled."); 
 	}
-		
+	
+	
+	$("#btnChangeOrderStatus").attr("id","btnChangeOrderStatus"+orderId);
+	$("#btnChangeOrderStatus"+orderId).attr("onclick","changeOrderStatus("+orderId+")");
+
 }
 
-function changeOrderStatus() {
-	let orderStatusId = $("input[name='orderStatusId']:checked").val();
-	let modalOrderId = $("#modalOrderId").val();
+function changeOrderStatus(orderId) {
+	console.log(orderId);
+	let orderStatusId = $("input[name='orderStatusId"+orderId+"']:checked").val();
+	// let modalOrderId = $("input[id='modalOrder"+orderId+"']").val();
+	console.log(orderStatusId+" "+orderId);
 	
-	// console.log(orderStatusId + " " + orderId);
 
 	$.post("../controllers/change_order_status.php",
 				{"orderStatusId" : orderStatusId,
-				"modalOrderId" : modalOrderId},
+				"modalOrderId" : orderId},
 				function(data){
 					if(data){
 						//disable button
@@ -701,7 +707,9 @@ function changeOrderStatus() {
 							function() {
 						    // Animation complete.
 						    // document.location = 'orderHistory.php';
-						    $("#showNewStatus" + modalOrderId).html(data);
+						    $("#showNewStatus" + orderId).html(data);
+						    $("#btnChangeOrderStatus"+orderId).attr("id","btnChangeOrderStatus");
+
 						 });	
 					} 
 		});

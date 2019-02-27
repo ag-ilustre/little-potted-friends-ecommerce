@@ -55,10 +55,10 @@
                             <td class="text-center"><?= $row['paymentMode'] ?></td>
                             <td id="showNewStatus<?= $row['id'] ?>"><?= $row['statusName'] ?></td>
                             <td>
-                               <span title="Update Status"><button id="btnUpdateStatus<?= $row['id'] ?>" type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>', '<?= $row['statusId'] ?>')"><i class="far fa-edit"></i></button></span>
+                               <span title="Update Status"><button id="btnUpdateStatus<?= $row['id'] ?>" type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#updateStatusModal" onclick="updateStatus('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>', '<?= $row['statusId'] ?>')"><i class="far fa-edit"></i></button></span>
                       
 
-                                <span title="View Order Details"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>')"><i class="fas fa-search"></i></button></span>
+                                <span title="View Order Details"><button type="button" class="btn btn-info m-1" data-toggle="modal" data-target="#viewOrderModal" onclick="viewOrder('<?= $row['id'] ?>','<?= $row['transaction_code'] ?>')"><i class="fas fa-search"></i></button></span>
                                 
                             </td>
                         </tr>
@@ -86,14 +86,19 @@
 
       <!-- Modal body -->
       <div class="modal-body ml-3">
-          <p class="m-1" id="transactionCode"></p>
-          <p class="m-1" id="updateStatusMessage"></p>
-      </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">          
+            <p class="m-1" id="transactionCode"></p>
+            <p class="m-1" id="updateStatusMessage"></p>
+          </div>
+        </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info btnWider mr-2" onclick="changeOrderStatus()" data-dismiss="modal">SAVE</button>
-        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mt-2">
+            <button type="button" class="btn btn-info btnSlim mr-2" id="btnChangeOrderStatus" data-dismiss="modal">SAVE</button>
+            <button type="button" class="btn btn-dark btnSlim" data-dismiss="modal">CANCEL</button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -114,17 +119,20 @@
       <!-- Modal body -->
       <div class="modal-body">
         <div class="row">
-          <div class="col-1"></div>
-          <div class="col-10">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10">
             <p id="viewOrderMessage"></p>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mt-2">
+            <button type="button" class="btn btn-dark btnSlim" data-dismiss="modal">CLOSE</button>
           </div>
         </div>
       </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CLOSE</button>
-      </div>
 
     </div>
   </div>

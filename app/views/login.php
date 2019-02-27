@@ -38,8 +38,8 @@
                  
 
                   <div class="text-center">
-                    <button id="btnLogin" class="btn btn-info btnWider p-1 m-1" type="button">LOGIN</button>
-          				  <input class="btn btn-dark btnWider p-1 m-1" type="reset" value="CLEAR">
+                    <button id="btnLogin" class="btn btn-info btnSlim p-1 m-1" type="button">LOGIN</button>
+          				  <input class="btn btn-dark btnSlim p-1 m-1" type="reset" value="CLEAR">
                   </div>
               </form>  
             </div>               	

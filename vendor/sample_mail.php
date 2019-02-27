@@ -1,7 +1,5 @@
 <?php 
 //app/sample_mail.php
-require 'autoload.php';
-
 require 'phpmailer/phpmailer/src/PHPMailer.php';
 require 'phpmailer/phpmailer/src/Exception.php';
 require 'autoload.php';
@@ -16,8 +14,8 @@ $purchaseDate = date("D, M j, Y, g:i:s");
 $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
 $staff_email = "csp2ecommerce@gmail.com"; //where the email is coming from
-$users_email = $_SESSION["email"]; //where the email will go -- TEST EMAIL!
-// $users_email = $_SESSION["email"]; //where the email will go
+$users_email = $_SESSION["email"]; //where the email will go
+// $users_email = "csp2ecommerce@gmail.com"; //where the email will go -- TEST EMAIL!
 $email_subject = "Order Being Processed: ". $_SESSION["transaction_code"];
 $email_body = "<p>Dear <strong>" . $_SESSION["firstname"] . "</strong>,<br>
 
@@ -58,7 +56,9 @@ try{
 	$mail->Body = $email_body;
 	$mail->send();
 
-	echo "You will receive an email confirmation at " . $_SESSION["email"]; //for testing purposes only, should be thrown to confirmation.php
+	// echo "You will receive an email confirmation at " . $staff_email; 
+	echo "You will receive an email confirmation at " . $_SESSION["email"]; 
+	//for testing purposes only, should be thrown to confirmation.php
 } catch (Exception $e){
 	echo "Message sending failed".''.$mail->ErrorInfo;
 }

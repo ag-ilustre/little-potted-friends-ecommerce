@@ -96,8 +96,8 @@
 					<input id="editAddress" type="text" name="editAddress1" class="form-control bg-light text-dark" value='<?= $_SESSION["address"]; ?>'>
 				</div>
 				<div class="text-center mt-3">
-					<button type="submit" class="btn btn-info btnWider mr-2" onclick="editProfile(<?= $_SESSION["id"]; ?>)" data-dismiss="modal">SAVE</button>
-					<button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
+					<button type="submit" class="btn btn-info btnSlim mr-2" onclick="editProfile(<?= $_SESSION["id"]; ?>)" data-dismiss="modal">SAVE</button>
+					<button type="button" class="btn btn-dark btnSlim" data-dismiss="modal">CANCEL</button>
 				</div>
 	      	</div> <!-- end of modal-body -->
 	    </div> <!-- end of modal-content -->
@@ -116,10 +116,10 @@
 	      	</div>
 	      	<div class="modal-body">
 	      		<div class="row mb-1">
-	      			<div class="col-3 col-sm-3 col-md-3 col-lg-3 text-center py-4">
-			      		<i class="fas fa-exclamation-triangle fa-7x text-warning"></i>
+	      			<div class="col-sm-12 col-md-3 col-lg-3 text-center py-2">
+			      		<i class="fas fa-exclamation-triangle fa-4x text-warning"></i>
 	      			</div>
-	      			<div class="col-9 col-sm-9 col-md-9 col-lg-9 pt-4"">
+	      			<div class="col-sm-12 col-md-9 col-lg-9 py-1"">
 			      		<p class="text-dark">You will no longer be able to log in once your account has been deactivated. You will need to register again to activate your current email address.</p>
 			      		<p class="text-dark">Are you sure you want to deactivate your account?</p>
 	      			</div>
@@ -127,8 +127,8 @@
 	      		</div>
 	      		<div class="row">
 	      			<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-	      				<button type="button" class="btn btn-info btnWider mr-2" onclick="deactivateAcct(<?= $_SESSION["id"]; ?>)" data-dismiss="modal">YES</button>
-      					<button type="button" class="btn btn-dark btnWider" data-dismiss="modal">NO</button>
+	      				<button type="button" class="btn btn-info btnSlim mr-2" onclick="deactivateAcct(<?= $_SESSION["id"]; ?>)" data-dismiss="modal">YES</button>
+      					<button type="button" class="btn btn-dark btnSlim" data-dismiss="modal">NO</button>
 	      			</div>
 	      		</div>
 	      	</div> <!-- end of modal-body -->

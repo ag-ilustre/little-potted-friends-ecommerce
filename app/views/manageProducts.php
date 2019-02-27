@@ -141,13 +141,15 @@
           <p id="error_addProductCategory"></p>
         </div>
         <!-- </form> -->
+  
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mt-2">
+            <button type="button" class="btn btn-info btnSlim mr-2" onclick="addProduct()">SAVE</button>
+            <button type="button" class="btn btn-dark btnSlim" data-dismiss="modal">CANCEL</button>
+          </div>
+        </div>      
       </div>
-
       <!-- end of modal-body -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info btnWider mr-2" onclick="addProduct()">SAVE</button>
-        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
-      </div>
     </div>
   </div>
 </div>
@@ -207,13 +209,15 @@
           <p id="error_editProductCategory"></p>
         </div>
         <!-- </form> -->
-      </div>
 
-      <!-- end of modal-body -->
-      <div class="modal-footer text-center">
-        <button type="button" class="btn btn-info btnWider mr-2" data-dismiss="modal" onclick="editProductDetails()">SAVE</button>
-        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mt-2">
+            <button type="button" class="btn btn-info btnSlim mr-2" data-dismiss="modal" onclick="editProductDetails()">SAVE</button>
+            <button type="button" class="btn btn-dark btnSlim" data-dismiss="modal">CANCEL</button>
+          </div>
+        </div>
       </div>
+      <!-- end of modal-body -->
     </div>
   </div>
 </div>
@@ -240,11 +244,14 @@
             <div id="error_uploadImage"></div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer text-center">
-        <button type="submit" class="btn btn-info btnWider mr-2">UPLOAD</button>
-        <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">CANCEL</button>
-      </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              <button type="submit" class="btn btn-info btnSlim mr-2">UPLOAD</button>
+              <button type="button" class="btn btn-dark btnSlim" data-dismiss="modal">CANCEL</button>
+            </div>
+        </div>
+      </div> 
+      <!-- end of modal-body -->
       </form>
     </div>
   </div>
@@ -265,15 +272,15 @@
         <div class="row m-1">
           <p>Are you sure you want to delete <strong><span id="deleteItemId"></span></strong>?</p>
         </div>
-      </div> <!-- end of modal-body -->
-      <div class="modal-footer">
+      
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-            <button type="button" class="btn btn-info btnWider mr-2" id="btnDeleteProduct" data-dismiss="modal">YES</button>
-            <button type="button" class="btn btn-dark btnWider" data-dismiss="modal">NO</button>
+            <button type="button" class="btn btn-info btnSlim mr-2" id="btnDeleteProduct" data-dismiss="modal">YES</button>
+            <button type="button" class="btn btn-dark btnSlim" data-dismiss="modal">NO</button>
           </div>
         </div>
-      </div> <!-- end of modal-footer -->
+      
+      </div> <!-- end of modal-body -->
     </div> <!-- end of modal-content -->
   </div> <!-- end of modal-dialog -->
 </div> <!-- end of modal -->
